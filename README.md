@@ -1,9 +1,9 @@
 # Todoist
 This web application allows to create the list of tasks and manage them.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
 ## Features
-![Features](readme/photo_2023-11-01_14-03-27.jpg)
+![Features](readme-pictures/photo_2023-11-01_14-03-27.jpg)
 
 ## Development server
 
