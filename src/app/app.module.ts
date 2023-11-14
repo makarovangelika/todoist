@@ -6,6 +6,8 @@ import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.comp
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { TasksPageComponent } from './components/tasks-page/tasks-page.component';
 import { RouterModule, Routes } from '@angular/router';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignUpPageComponent},
@@ -22,6 +24,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    InputTextModule,
+    PasswordModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
