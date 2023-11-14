@@ -8,6 +8,8 @@ import { TasksPageComponent } from './components/tasks-page/tasks-page.component
 import { RouterModule, Routes } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignUpPageComponent},
@@ -26,6 +28,8 @@ const appRoutes: Routes = [
     BrowserModule,
     InputTextModule,
     PasswordModule,
+    ReactiveFormsModule,
+    ButtonModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
