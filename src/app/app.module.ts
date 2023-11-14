@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 
 const appRoutes: Routes = [
-  {path: 'signup', component: SignUpPageComponent},
+  {path: '', component: SignUpPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'tasks', component: TasksPageComponent}
 ]

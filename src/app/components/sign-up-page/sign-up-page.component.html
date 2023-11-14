@@ -1,13 +1,15 @@
 <h2>Регистрация</h2>
-<span class="p-float-label">
-    <input pInputText type="text" id="email" />
-    <label for="email">Email</label>
-</span>
-<span class="p-float-label">
-    <p-password id="password" [toggleMask]="true"></p-password>
-    <label for="password">Пароль</label>
-</span>
-<p-button label="Зарегистрироваться"></p-button>
+<form [formGroup]="registrationForm">
+    <span class="p-float-label">
+        <input pInputText type="text" id="email" formControlName="email" />
+        <label for="email">Email</label>
+    </span>
+    <span class="p-float-label">
+        <p-password id="password" [toggleMask]="true" formControlName="password"></p-password>
+        <label for="password">Пароль</label>
+    </span>
+    <p-button type="submit" label="Зарегистрироваться"></p-button>
+</form>
 <div>Уже есть аккаунт? Тогда 
     <a routerLink="/login">войдите</a>
 </div>
