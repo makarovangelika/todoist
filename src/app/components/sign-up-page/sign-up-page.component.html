@@ -1,5 +1,5 @@
 <h2>Регистрация</h2>
-<form [formGroup]="registrationForm">
+<form [formGroup]="registrationForm" (ngSubmit)="signUp()">
     <span class="p-float-label">
         <input pInputText type="text" id="email" formControlName="email" />
         <label for="email">Email</label>
