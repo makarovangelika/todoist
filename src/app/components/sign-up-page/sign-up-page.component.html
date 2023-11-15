@@ -5,10 +5,23 @@
         <label for="email">Email</label>
     </span>
     <span class="p-float-label">
-        <p-password id="password" [toggleMask]="true" formControlName="password"></p-password>
+        <p-password id="password" [toggleMask]="true" formControlName="password">
+            <ng-template pTemplate="header">
+                <h6>Pick a password</h6>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <p-divider></p-divider>
+                <ul>
+                    <li>At least one lowercase</li>
+                    <li>At least one uppercase</li>
+                    <li>At least one numeric</li>
+                    <li>Minimum 8 characters</li>
+                </ul>
+            </ng-template>
+        </p-password>
         <label for="password">Пароль</label>
     </span>
-    <p-button type="submit" label="Зарегистрироваться"></p-button>
+    <p-button type="submit" label="Зарегистрироваться" [disabled]="!registrationForm.valid"></p-button>
 </form>
 <div>Уже есть аккаунт? Тогда 
     <a routerLink="/login">войдите</a>
