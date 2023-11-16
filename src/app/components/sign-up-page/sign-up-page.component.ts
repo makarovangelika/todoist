@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models';
+import { LoginService } from 'src/app/services/login.service';
 import { SignUpService } from 'src/app/services/sign-up.service';
 
 @Component({
@@ -18,14 +19,17 @@ export class SignUpPageComponent {
 
   constructor(private fb: FormBuilder,
               private signUpService: SignUpService,
-              private router: Router) {}
+              private router: Router,
+              private loginService: LoginService) {}
 
   signUp() {
-    const signupSucess = this.signUpService.registerUser({
+    const user = {
       email: this.registrationForm.value.email as string,
       password: this.registrationForm.value.password as string,
-    });
+    }
+    const signupSucess = this.signUpService.registerUser(user);
     if (signupSucess) {
+      this.loginService.authorizeUser(user);
       this.router.navigate(['/tasks']);
     }
   }

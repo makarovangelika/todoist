@@ -16,4 +16,9 @@ export class LoginService {
     }
     return false;
   }
+
+  authorizeUser(user: User) {
+    const serialisedUser = JSON.stringify(user);
+    localStorage.setItem('authorized user', serialisedUser);
+  }
 }
