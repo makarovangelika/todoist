@@ -1,5 +1,5 @@
 <h2>Войти</h2>
-<form [formGroup]="authForm">
+<form [formGroup]="authForm" (ngSubmit)="login()">
     <span class="p-float-label">
         <input pInputText type="text" id="email" formControlName="email" />
         <label for="email">Email</label>
