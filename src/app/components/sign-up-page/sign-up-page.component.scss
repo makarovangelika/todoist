@@ -1,0 +1,53 @@
+.registration-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 85%;
+
+    h2 {
+        margin-bottom: 2rem;
+    }
+
+    > * {
+        width: 100%;
+    }
+
+    form {
+        > * {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        span {
+            p-password {
+                display: block;
+                
+                .p-password {
+                    width: 100%;
+                }
+            }
+            input, p-password {
+                width: 100%;
+            }
+        }
+        p-button {
+            display: block;
+
+            .p-button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .registration-container {
+        width: 50%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .registration-container {
+        width: 35%;
+    }
+}
