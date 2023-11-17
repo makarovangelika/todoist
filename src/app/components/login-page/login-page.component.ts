@@ -14,6 +14,7 @@ export class LoginPageComponent {
     email: ['', {validators: [Validators.required, Validators.email], updateOn: 'blur'}],
     password: ['', Validators.required]
   })
+  error = false;
 
   constructor(private fb: FormBuilder,
               private loginService: LoginService,
@@ -34,6 +35,8 @@ export class LoginPageComponent {
     if (this.loginService.checkUser(user)) {
       this.loginService.authorizeUser(user);
       this.router.navigate(['/tasks']);
+    } else {
+      this.error = true;
     }
   }
 }
