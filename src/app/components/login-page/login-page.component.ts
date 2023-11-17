@@ -11,13 +11,20 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginPageComponent {
   authForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', {validators: [Validators.required, Validators.email], updateOn: 'blur'}],
     password: ['', Validators.required]
   })
 
   constructor(private fb: FormBuilder,
               private loginService: LoginService,
               private router: Router) {}
+  
+  get email() {
+    return this.authForm.get('email');
+  }
+  get password() {
+    return this.authForm.get('password');
+  }
 
   login() {
     const user = {
