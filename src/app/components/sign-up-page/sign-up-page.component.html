@@ -4,6 +4,14 @@
         <span class="p-float-label w-full">
             <input pInputText type="text" id="email" formControlName="email" class="w-full" />
             <label for="email">Email</label>
+            <div *ngIf="email?.invalid && email?.touched || email?.dirty">
+                <span *ngIf="email?.errors?.['required']">
+                    Обязательное поле
+                </span>
+                <span *ngIf="email?.errors?.['email']">
+                    Неверный формат email
+                </span>
+            </div>
         </span>
         <span class="p-float-label w-full">
             <p-password id="password" [toggleMask]="true" formControlName="password" inputStyleClass="w-full">
@@ -21,6 +29,14 @@
                 </ng-template>
             </p-password>
             <label for="password">Пароль</label>
+            <div *ngIf="password?.invalid && password?.touched || password?.dirty">
+                <span *ngIf="password?.errors?.['required']">
+                    Обязательное поле
+                </span>
+                <span *ngIf="password?.errors?.['pattern']">
+                    Пароль не соответствует требованиям
+                </span>
+            </div>
         </span>
         <button pButton type="submit" label="Зарегистрироваться" [disabled]="!registrationForm.valid" class="w-full"></button>
     </form>

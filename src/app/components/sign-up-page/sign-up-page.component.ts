@@ -13,7 +13,7 @@ import { SignUpService } from 'src/app/services/sign-up.service';
 export class SignUpPageComponent {
 
   registrationForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', {validators: [Validators.required, Validators.email], updateOn: 'blur'}],
     password: ['', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}')]]
   })
 
@@ -21,6 +21,13 @@ export class SignUpPageComponent {
               private signUpService: SignUpService,
               private router: Router,
               private loginService: LoginService) {}
+  
+  get email() {
+    return this.registrationForm.get('email');
+  }
+  get password() {
+    return this.registrationForm.get('password');
+  }
 
   signUp() {
     const user = {
