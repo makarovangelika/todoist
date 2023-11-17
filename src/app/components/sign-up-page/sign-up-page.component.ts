@@ -16,7 +16,7 @@ export class SignUpPageComponent {
     email: ['', {validators: [Validators.required, Validators.email], updateOn: 'blur'}],
     password: ['', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}')]]
   })
-  error = false;
+  error = '';
 
   constructor(private fb: FormBuilder,
               private signUpService: SignUpService,
@@ -35,12 +35,16 @@ export class SignUpPageComponent {
       email: this.registrationForm.value.email as string,
       password: this.registrationForm.value.password as string,
     }
-    const signupSucess = this.signUpService.registerUser(user);
-    if (signupSucess) {
-      this.loginService.authorizeUser(user);
-      this.router.navigate(['/tasks']);
-    } else {
-      this.error = true;
-    }
+    this.signUpService.registerUser(user).subscribe({
+      next: registration => {
+        this.loginService.authorizeUser(user);
+        this.router.navigate(['/tasks']);
+      },
+      error: error => {
+        if (error.message === 'Учётная запись с таким email уже зарегистрирована') {
+          this.error = error.message;
+        }
+      }
+    });
   }
 }

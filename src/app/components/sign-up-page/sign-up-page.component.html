@@ -1,6 +1,6 @@
 <div class="registration-container">
     <h2 class="w-full">Регистрация</h2>
-    <span *ngIf="error" class="registration-error">Учётная запись с таким email уже зарегистрирована</span>
+    <span *ngIf="error" class="registration-error">{{ error }}</span>
     <form [formGroup]="registrationForm" (ngSubmit)="signUp()" class="w-full">
         <span class="p-float-label w-full">
             <input pInputText type="text" id="email" formControlName="email" class="w-full" />
