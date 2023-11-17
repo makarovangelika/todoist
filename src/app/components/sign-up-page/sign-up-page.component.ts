@@ -16,6 +16,7 @@ export class SignUpPageComponent {
     email: ['', {validators: [Validators.required, Validators.email], updateOn: 'blur'}],
     password: ['', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}')]]
   })
+  error = false;
 
   constructor(private fb: FormBuilder,
               private signUpService: SignUpService,
@@ -38,6 +39,8 @@ export class SignUpPageComponent {
     if (signupSucess) {
       this.loginService.authorizeUser(user);
       this.router.navigate(['/tasks']);
+    } else {
+      this.error = true;
     }
   }
 }

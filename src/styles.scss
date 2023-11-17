@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 $small: 640px;
 $large: 1024px;
+$error-color: #e24c4c;
 
 .registration-container {
     display: flex;
@@ -43,6 +44,10 @@ $large: 1024px;
     }
 }
 
-.validation-errors {
-    color: #e24c4c;
+.validation-error {
+    color: $error-color;
+}
+.registration-error {
+    margin-bottom: 1.5rem;
+    color: $error-color;
 }
