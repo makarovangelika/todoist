@@ -31,18 +31,17 @@ export class SignUpPageComponent {
   }
 
   signUp() {
-    const user = {
-      email: this.registrationForm.value.email as string,
-      password: this.registrationForm.value.password as string,
-    }
-    this.signUpService.registerUser(user).subscribe({
-      next: registration => {
+    const email = this.registrationForm.value.email as string;
+    const password = this.registrationForm.value.password as string;
+    
+    this.signUpService.registerUser(email, password).subscribe({
+      next: user => {
         this.loginService.authorizeUser(user);
         this.router.navigate(['/tasks']);
       },
       error: error => {
-        if (error.message === 'Учётная запись с таким email уже зарегистрирована') {
-          this.error = error.message;
+        if (error.message === 'ERR_EMAIL_EXISTS') {
+          this.error = 'Учётная запись с таким email уже зарегистрирована';
         }
       }
     });

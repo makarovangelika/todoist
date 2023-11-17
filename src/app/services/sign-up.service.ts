@@ -10,11 +10,15 @@ export class SignUpService {
 
   constructor(private userStorageService: UserStorageService) { }
 
-  registerUser(user: User): Observable<User> {
+  registerUser(email: string, password: string): Observable<User> {
     const registration = new Observable<User>(subscriber => {
-      if (this.userStorageService.getUser(user.email)) {
-        subscriber.error(new Error("Учётная запись с таким email уже зарегистрирована"));
+      if (this.userStorageService.getUser(email)) {
+        subscriber.error(new Error("ERR_EMAIL_EXISTS"));
         return;
+      }
+      const user = {
+        email: email,
+        password: password,
       }
       this.userStorageService.addUser(user);
       subscriber.next(user);
