@@ -4,7 +4,7 @@
         <span class="p-float-label w-full">
             <input pInputText type="text" id="email" formControlName="email" class="w-full" />
             <label for="email">Email</label>
-            <div *ngIf="email?.invalid && email?.touched || email?.dirty">
+            <div *ngIf="email?.invalid && email?.touched || email?.dirty" class="validation-errors">
                 <span *ngIf="email?.errors?.['required']">
                     Обязательное поле
                 </span>
@@ -29,7 +29,7 @@
                 </ng-template>
             </p-password>
             <label for="password">Пароль</label>
-            <div *ngIf="password?.invalid && password?.touched || password?.dirty">
+            <div *ngIf="password?.invalid && password?.touched || password?.dirty" class="validation-errors">
                 <span *ngIf="password?.errors?.['required']">
                     Обязательное поле
                 </span>
