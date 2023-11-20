@@ -11,6 +11,9 @@ import { PasswordModule } from 'primeng/password';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
+import { CheckboxModule } from 'primeng/checkbox';
+import { TaskComponent } from './components/task/task.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -23,7 +26,8 @@ const appRoutes: Routes = [
     AppComponent,
     SignUpPageComponent,
     LoginPageComponent,
-    TasksPageComponent
+    TasksPageComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     ButtonModule,
     DividerModule,
+    CheckboxModule,
+    FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
