@@ -1,6 +1,6 @@
 <div class="registration-container">
     <h2 class="w-full">Войти</h2>
-    <span *ngIf="error" class="registration-error">Неверно введены email или пароль</span>
+    <span *ngIf="error" class="registration-error">{{ error }}</span>
     <form [formGroup]="authForm" (ngSubmit)="login()" class="w-full">
         <span class="p-float-label w-full">
             <input pInputText type="text" id="email" formControlName="email" class="w-full" />

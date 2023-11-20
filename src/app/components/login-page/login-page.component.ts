@@ -14,7 +14,7 @@ export class LoginPageComponent {
     email: ['', {validators: [Validators.required, Validators.email], updateOn: 'blur'}],
     password: ['', Validators.required]
   })
-  error = false;
+  error = '';
 
   constructor(private fb: FormBuilder,
               private loginService: LoginService,
@@ -30,10 +30,15 @@ export class LoginPageComponent {
   login() {
       const email = this.authForm.value.email as string;
       const password = this.authForm.value.password as string;
-    if (this.loginService.authorizeUser(email, password)) {
-      this.router.navigate(['/tasks']);
-    } else {
-      this.error = true;
-    }
+      this.loginService.authorizeUser(email, password).subscribe({
+        next: authorizedUser => {
+          this.router.navigate(['/tasks']);
+        },
+        error: error => {
+          if (error.message === 'ERR_INVALID_EMAIL_OR_PASSWORD') {
+            this.error = 'Неверно введены email или пароль';
+          }
+        }
+      });
   }
 }
