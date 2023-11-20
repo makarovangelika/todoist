@@ -36,7 +36,7 @@ export class SignUpPageComponent {
     
     this.signUpService.registerUser(email, password).subscribe({
       next: user => {
-        this.loginService.authorizeUser(user);
+        this.loginService.authorizeUser(user.email, user.password);
         this.router.navigate(['/tasks']);
       },
       error: error => {

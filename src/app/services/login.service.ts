@@ -9,16 +9,17 @@ export class LoginService {
 
   constructor(private userStorageService: UserStorageService) { }
 
-  checkUser(user: User) {
-    const registeredUser = this.userStorageService.getUser(user.email);
-    if (registeredUser && (user.password === registeredUser.password)) {
+  authorizeUser(email: string, password: string) {
+    const registeredUser = this.userStorageService.getUser(email);
+    if (registeredUser && (password === registeredUser.password)) {
+      const user = {
+        email: email,
+        password: password
+      }
+      const serialisedUser = JSON.stringify(user);
+      localStorage.setItem('authorized user', serialisedUser);
       return true;
     }
     return false;
-  }
-
-  authorizeUser(user: User) {
-    const serialisedUser = JSON.stringify(user);
-    localStorage.setItem('authorized user', serialisedUser);
   }
 }

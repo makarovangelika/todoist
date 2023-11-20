@@ -28,12 +28,9 @@ export class LoginPageComponent {
   }
 
   login() {
-    const user = {
-      email: this.authForm.value.email as string,
-      password: this.authForm.value.password as string
-    }
-    if (this.loginService.checkUser(user)) {
-      this.loginService.authorizeUser(user);
+      const email = this.authForm.value.email as string;
+      const password = this.authForm.value.password as string;
+    if (this.loginService.authorizeUser(email, password)) {
       this.router.navigate(['/tasks']);
     } else {
       this.error = true;
