@@ -36,8 +36,14 @@ export class SignUpPageComponent {
     
     this.signUpService.registerUser(email, password).subscribe({
       next: user => {
-        this.loginService.authorizeUser(user.email, user.password);
-        this.router.navigate(['/tasks']);
+        this.loginService.authorizeUser(user.email, user.password).subscribe({
+          next: authorizedUser => {
+            this.router.navigate(['/tasks']);
+          },
+          error: error => {
+            this.router.navigate(['/login']);
+          }
+        });
       },
       error: error => {
         if (error.message === 'ERR_EMAIL_EXISTS') {
