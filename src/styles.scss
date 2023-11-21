@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-$small: 640px;
-$large: 1024px;
-$error-color: #e24c4c;
+@import "primeicons/primeicons.css";
+@import 'variables';
 
 .registration-container {
     display: flex;
@@ -50,4 +49,11 @@ $error-color: #e24c4c;
 .registration-error {
     margin-bottom: 1.5rem;
     color: $error-color;
+}
+
+.p-dialog {
+    width: 90%;
+    @media screen and (min-width: $large) {
+        width: 50%;
+    }
 }

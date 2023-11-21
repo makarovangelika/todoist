@@ -14,6 +14,8 @@ import { DividerModule } from 'primeng/divider';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TaskComponent } from './components/task/task.component';
 import { FormsModule } from '@angular/forms';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { AddTaskDialogComponent } from './components/add-task-dialog/add-task-dialog.component';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -27,7 +29,8 @@ const appRoutes: Routes = [
     SignUpPageComponent,
     LoginPageComponent,
     TasksPageComponent,
-    TaskComponent
+    TaskComponent,
+    AddTaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ const appRoutes: Routes = [
     ButtonModule,
     DividerModule,
     CheckboxModule,
+    DynamicDialogModule,
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
