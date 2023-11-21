@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UserStorageService } from './user-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,14 @@ export class TaskService {
     {done: false, description: 'Работать'}
 ]
 
-  constructor() { }
+  constructor(private userStorageService: UserStorageService) { }
 
   getTasks() {
-    return this.tasks;
+    const authorizedUser = this.userStorageService.getAuthorizedUser();
+    const tasks = this.userStorageService.getUser(authorizedUser.email)?.tasks;
+    if (!tasks) {
+      return [];
+    }
+    return tasks;
   }
 }

@@ -20,4 +20,12 @@ export class UserStorageService {
     const item = JSON.stringify(user);
     localStorage.setItem(user.email, item);
   }
+
+  getAuthorizedUser() {
+    const authorizedUser = localStorage.getItem('authorized user');
+    if (authorizedUser === null) {
+      return null;
+    }
+    return JSON.parse(authorizedUser);
+  }
 }
