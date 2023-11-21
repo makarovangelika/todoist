@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-task-dialog',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-task-dialog.component.scss']
 })
 export class AddTaskDialogComponent {
+  addTaskForm = this.fb.group({
+    description: ['', Validators.required]
+  })
 
+  constructor(private fb: FormBuilder) {}
 }

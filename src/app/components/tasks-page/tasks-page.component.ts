@@ -25,7 +25,8 @@ export class TasksPageComponent implements OnInit {
     this.ref = this.dialogService.open(AddTaskDialogComponent, {
       dismissableMask: true,
       modal: true,
-      keepInViewport: true
+      keepInViewport: true,
+      header: 'Новая задача'
     });
   }
 }
