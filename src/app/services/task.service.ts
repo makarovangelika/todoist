@@ -17,9 +17,7 @@ export class TaskService {
     }
     return JSON.parse(tasks);
   }
-  addTask(task: Task) {
-    const tasks = this.getTasks();
-    tasks.push(task);
+  updateTasks(tasks: Task[]) {
     const serializedTasks = JSON.stringify(tasks);
     localStorage.setItem(`tasks: ${this.authorizedUser.email}`, serializedTasks);
   }

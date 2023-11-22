@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, WritableSignal, signal } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Task } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
@@ -11,14 +11,14 @@ import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.compo
   providers: [DialogService]
 })
 export class TasksPageComponent implements OnInit {
-  tasks: Task[] = [];
+  tasks: WritableSignal<Task[]> = signal([]);
   ref: DynamicDialogRef | undefined;
 
   constructor(private taskService: TaskService,
               public dialogService: DialogService) {}
   
   ngOnInit(): void {
-    this.tasks = this.taskService.getTasks();
+    this.tasks.set(this.taskService.getTasks());
   }
 
   show() {
@@ -26,7 +26,15 @@ export class TasksPageComponent implements OnInit {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Новая задача'
+      header: 'Новая задача',
+      data: {
+        addTask(task: Task) {
+          this.tasks.update((tasks: Task[]) => {
+            tasks.push(task);
+            return tasks;
+          })
+        }
+      }
     });
   }
 }
