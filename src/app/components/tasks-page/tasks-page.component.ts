@@ -18,7 +18,7 @@ export class TasksPageComponent {
               public dialogService: DialogService) {
                 effect(() => {
                   this.taskService.updateTasks(this.tasks());
-                })
+                });
               }
 
   show() {
@@ -36,5 +36,10 @@ export class TasksPageComponent {
         }
       }
     });
+  }
+
+  changeStatus = (task: Task) => {
+    task.done = !task.done;
+    this.tasks.set(this.tasks());
   }
 }
