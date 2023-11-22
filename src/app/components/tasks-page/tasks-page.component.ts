@@ -3,6 +3,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Task } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
+import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 
 @Component({
   selector: 'app-tasks-page',
@@ -21,7 +22,7 @@ export class TasksPageComponent {
                 });
               }
 
-  openDialog() {
+  openAddDialog() {
     this.ref = this.dialogService.open(AddTaskDialogComponent, {
       dismissableMask: true,
       modal: true,
@@ -35,6 +36,15 @@ export class TasksPageComponent {
           })
         }
       }
+    });
+  }
+
+  openEditDialog = () => {
+    this.ref = this.dialogService.open(EditTaskDialogComponent, {
+      dismissableMask: true,
+      modal: true,
+      keepInViewport: true,
+      header: 'Изменение задачи'
     });
   }
 

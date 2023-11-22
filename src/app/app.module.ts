@@ -16,6 +16,7 @@ import { TaskComponent } from './components/task/task.component';
 import { FormsModule } from '@angular/forms';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { AddTaskDialogComponent } from './components/add-task-dialog/add-task-dialog.component';
+import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     LoginPageComponent,
     TasksPageComponent,
     TaskComponent,
-    AddTaskDialogComponent
+    AddTaskDialogComponent,
+    EditTaskDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <div class="task">
     <p-checkbox class="task-checkbox" [ngModel]="task.done" (ngModelChange)="changeStatus(task)" [binary]="true"></p-checkbox>
-    <span>{{ task.description }}</span>
+    <span (click)="openEditDialog()">{{ task.description }}</span>
 </div>
 <p-divider></p-divider>
