@@ -10,8 +10,8 @@ import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.compo
   styleUrls: ['./tasks-page.component.scss'],
   providers: [DialogService]
 })
-export class TasksPageComponent implements OnInit {
-  tasks: WritableSignal<Task[]> = signal([]);
+export class TasksPageComponent {
+  tasks: WritableSignal<Task[]> = signal(this.taskService.getTasks());
   ref: DynamicDialogRef | undefined;
 
   constructor(private taskService: TaskService,
@@ -20,10 +20,6 @@ export class TasksPageComponent implements OnInit {
                   this.taskService.updateTasks(this.tasks());
                 })
               }
-  
-  ngOnInit(): void {
-    this.tasks.set(this.taskService.getTasks());
-  }
 
   show() {
     this.ref = this.dialogService.open(AddTaskDialogComponent, {
