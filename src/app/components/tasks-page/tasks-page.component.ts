@@ -21,7 +21,7 @@ export class TasksPageComponent {
                 });
               }
 
-  show() {
+  openDialog() {
     this.ref = this.dialogService.open(AddTaskDialogComponent, {
       dismissableMask: true,
       modal: true,

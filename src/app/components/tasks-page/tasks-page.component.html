@@ -1,2 +1,2 @@
-<button pButton (click)="show()" label="Добавить задачу" icon="pi pi-plus"></button>
+<button class="addtask-button" pButton (click)="openDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
 <app-task *ngFor="let task of tasks()" [task]="task" [changeStatus]="changeStatus"></app-task>
