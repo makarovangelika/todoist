@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Task, TaskForm } from 'src/app/models';
+import { v4 as uuid4 } from "uuid";
 
 @Component({
   selector: 'app-add-task-dialog',
@@ -18,9 +19,10 @@ export class AddTaskDialogComponent {
 
   addTask() {
     const task = {
+      id: uuid4(),
       done: false,
       description: this.addTaskForm.value.description
-    } as Task;
+    };
     this.dynamicDialogConfig.data.addTask(task);
     this.ref.close();
   }

@@ -47,10 +47,10 @@ export class TasksPageComponent {
       header: 'Изменение задачи',
       data: {
         task: task,
-        updateTask: (editedTask: Task, updateTaskData: UpdateTaskData) => {
+        updateTask: (editedTaskId: string, updateTaskData: UpdateTaskData) => {
           this.tasks.update(tasks => {
             return tasks.map(task => {
-              if (task === editedTask) {
+              if (task.id === editedTaskId) {
                 task = {
                   ...task,
                   ...updateTaskData

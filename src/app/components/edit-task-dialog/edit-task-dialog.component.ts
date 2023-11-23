@@ -16,11 +16,11 @@ export class EditTaskDialogComponent {
   constructor(public dynamicDialogConfig: DynamicDialogConfig,
               public ref: DynamicDialogRef) {}
 
-  editTask() {
+  saveEditedTask() {
     const updateTaskData = {
       description: this.editTaskForm.value.description
     }
-    this.dynamicDialogConfig.data.updateTask(this.dynamicDialogConfig.data.task, updateTaskData);
+    this.dynamicDialogConfig.data.updateTask(this.dynamicDialogConfig.data.task.id, updateTaskData);
     this.ref.close();
   }
 }

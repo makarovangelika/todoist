@@ -9,6 +9,7 @@ export interface UserForm {
     password: FormControl<string | null>
 }
 export interface Task {
+    id: string,
     done: boolean,
     description: string
 }
