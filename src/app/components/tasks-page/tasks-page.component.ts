@@ -1,4 +1,4 @@
-import { Component, OnInit, WritableSignal, effect, signal } from '@angular/core';
+import { Component, WritableSignal, effect, signal } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Task } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';

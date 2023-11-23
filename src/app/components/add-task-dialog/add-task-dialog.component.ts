@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Task } from 'src/app/models';
-import { TaskService } from 'src/app/services/task.service';
+import { Task, TaskForm } from 'src/app/models';
 
 @Component({
   selector: 'app-add-task-dialog',
@@ -10,13 +9,11 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./add-task-dialog.component.scss']
 })
 export class AddTaskDialogComponent {
-  addTaskForm = this.fb.group({
-    description: ['', Validators.required]
+  addTaskForm: FormGroup = new FormGroup<TaskForm>({
+    description: new FormControl(null, Validators.required)
   });
 
-  constructor(private fb: FormBuilder,
-              private taskService: TaskService,
-              public ref: DynamicDialogRef,
+  constructor(public ref: DynamicDialogRef,
               public dynamicDialogConfig: DynamicDialogConfig) {}
 
   addTask() {

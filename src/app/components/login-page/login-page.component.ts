@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models';
+import { UserForm } from 'src/app/models';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -10,14 +10,13 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  authForm = this.fb.group({
-    email: ['', {validators: [Validators.required, Validators.email], updateOn: 'blur'}],
-    password: ['', Validators.required]
+  authForm: FormGroup = new FormGroup<UserForm>({
+    email: new FormControl(null, {validators: [Validators.required, Validators.email], updateOn: 'blur'}),
+    password: new FormControl(null, Validators.required)
   })
   error = '';
 
-  constructor(private fb: FormBuilder,
-              private loginService: LoginService,
+  constructor(private loginService: LoginService,
               private router: Router) {}
   
   get email() {

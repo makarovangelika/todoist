@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models';
+import { UserForm } from 'src/app/models';
 import { LoginService } from 'src/app/services/login.service';
 import { SignUpService } from 'src/app/services/sign-up.service';
 
@@ -12,14 +12,14 @@ import { SignUpService } from 'src/app/services/sign-up.service';
 })
 export class SignUpPageComponent {
 
-  registrationForm = this.fb.group({
-    email: ['', {validators: [Validators.required, Validators.email], updateOn: 'blur'}],
-    password: ['', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}')]]
+  registrationForm: FormGroup = new FormGroup<UserForm>({
+    email: new FormControl(null, {validators: [Validators.required, Validators.email], updateOn: 'blur'}),
+    password: new FormControl(null, [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}')])
   })
+  
   error = '';
 
-  constructor(private fb: FormBuilder,
-              private signUpService: SignUpService,
+  constructor(private signUpService: SignUpService,
               private router: Router,
               private loginService: LoginService) {}
   
