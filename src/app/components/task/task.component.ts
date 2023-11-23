@@ -9,5 +9,5 @@ import { Task } from 'src/app/models';
 export class TaskComponent {
   @Input() task!: Task;
   @Input() changeStatus!: (task: Task) => void;
-  @Input() openEditDialog!: () => void
+  @Input() openEditDialog!: (task: Task) => void;
 }

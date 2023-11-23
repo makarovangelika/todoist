@@ -1,1 +1,4 @@
-
+<form [formGroup]="editTaskForm" (ngSubmit)="editTask()">
+    <input pInputText type="text" placeholder="Описание" formControlName="description" />
+    <button pButton type="submit" label="Сохранить" [disabled]="!editTaskForm.dirty"></button>
+</form>

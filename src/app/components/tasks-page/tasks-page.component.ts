@@ -1,6 +1,6 @@
 import { Component, WritableSignal, effect, signal } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Task } from 'src/app/models';
+import { Task, TaskForm, UpdateTaskData } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
@@ -39,12 +39,28 @@ export class TasksPageComponent {
     });
   }
 
-  openEditDialog = () => {
+  openEditDialog = (task: Task) => {
     this.ref = this.dialogService.open(EditTaskDialogComponent, {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Изменение задачи'
+      header: 'Изменение задачи',
+      data: {
+        task: task,
+        updateTask: (editedTask: Task, updateTaskData: UpdateTaskData) => {
+          this.tasks.update(tasks => {
+            return tasks.map(task => {
+              if (task === editedTask) {
+                task = {
+                  ...task,
+                  ...updateTaskData
+                }
+              }
+              return task;
+            });
+          });
+        }
+      }
     });
   }
 
