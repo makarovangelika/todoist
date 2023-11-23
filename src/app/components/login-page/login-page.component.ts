@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserForm } from 'src/app/models';
+import { Error, UserForm } from 'src/app/models';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginPageComponent {
     email: new FormControl(null, {validators: [Validators.required, Validators.email], updateOn: 'blur'}),
     password: new FormControl(null, Validators.required)
   })
-  error = '';
+  error: Error = null;
 
   constructor(private loginService: LoginService,
               private router: Router) {}

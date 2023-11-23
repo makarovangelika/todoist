@@ -15,3 +15,4 @@ export interface Task {
 export interface TaskForm {
     description: FormControl<string | null>
 }
+export type Error = string | null
