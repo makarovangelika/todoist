@@ -64,8 +64,17 @@ export class TasksPageComponent {
     });
   }
 
-  changeStatus = (task: Task) => {
-    task.done = !task.done;
-    this.tasks.set(this.tasks());
+  changeStatus = (taskId: string) => {
+    this.tasks.update(tasks => {
+      return tasks.map(task => {
+        if (task.id === taskId) {
+          task = {
+            ...task,
+            done: !task.done
+          }
+        }
+        return task;
+      });
+    });
   }
 }
