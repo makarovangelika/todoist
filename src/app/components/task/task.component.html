@@ -1,5 +1,11 @@
 <div class="task">
-    <p-checkbox class="task-checkbox" [ngModel]="task.done" (ngModelChange)="changeStatus(task.id)" [binary]="true"></p-checkbox>
-    <span (click)="openEditDialog(task)">{{ task.description }}</span>
+    <div class="task-body">
+        <p-checkbox class="task-checkbox" [ngModel]="task.done" (ngModelChange)="changeStatus(task.id)" [binary]="true"></p-checkbox>
+        <span>{{ task.description }}</span>
+    </div>
+    <span class="p-buttonset">
+        <button pButton (click)="openEditDialog(task)" icon="pi pi-pencil" class="p-button-outlined"></button>
+        <button pButton icon="pi pi-trash" class="p-button-outlined"></button>
+    </span>
 </div>
 <p-divider></p-divider>
