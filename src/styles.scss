@@ -57,6 +57,9 @@
         width: 50%;
     }
 }
-.confirm-delete-button {
+.accept-delete-button {
     background-color: $error-color;
+}
+.confirm-delete-button {
+    font-size: 0.9rem;
 }
