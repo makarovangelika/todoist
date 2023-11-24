@@ -11,8 +11,11 @@ import { v4 as uuid4 } from "uuid";
 })
 export class AddTaskDialogComponent {
   addTaskForm: FormGroup = new FormGroup<TaskForm>({
-    description: new FormControl(null, Validators.required)
+    description: new FormControl(null, Validators.required),
+    deadline: new FormControl(null)
   });
+
+  minDate: Date = new Date();
 
   constructor(public ref: DynamicDialogRef,
               public dynamicDialogConfig: DynamicDialogConfig) {}
@@ -21,7 +24,8 @@ export class AddTaskDialogComponent {
     const task = {
       id: uuid4(),
       done: false,
-      description: this.addTaskForm.value.description
+      description: this.addTaskForm.value.description,
+      deadline: this.addTaskForm.value.deadline
     };
     this.dynamicDialogConfig.data.addTask(task);
     this.ref.close();

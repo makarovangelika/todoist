@@ -11,10 +11,12 @@ export interface UserForm {
 export interface Task {
     id: string,
     done: boolean,
-    description: string
+    description: string,
+    deadline: string
 }
 export interface TaskForm {
-    description: FormControl<string | null>
+    description: FormControl<string | null>,
+    deadline: FormControl<string | null>
 }
 export type Error = string | null
 export interface UpdateTaskData {

@@ -31,14 +31,16 @@ export class TasksPageComponent {
       keepInViewport: true,
       header: 'Новая задача',
       data: {
-        addTask: (task: Task) => {
-          this.tasks.update((tasks: Task[]) => {
-            tasks.push(task);
-            return tasks;
-          })
-        }
+        addTask: this.addTask
       }
     });
+  }
+
+  addTask = (task: Task) => {
+    this.tasks.update((tasks: Task[]) => {
+      tasks.push(task);
+      return tasks;
+    })
   }
 
   openEditDialog = (task: Task) => {
@@ -49,20 +51,22 @@ export class TasksPageComponent {
       header: 'Изменение задачи',
       data: {
         task: task,
-        updateTask: (editedTaskId: string, updateTaskData: UpdateTaskData) => {
-          this.tasks.update(tasks => {
-            return tasks.map(task => {
-              if (task.id === editedTaskId) {
-                task = {
-                  ...task,
-                  ...updateTaskData
-                }
-              }
-              return task;
-            });
-          });
-        }
+        updateTask: this.updateTask
       }
+    });
+  }
+
+  updateTask = (editedTaskId: string, updateTaskData: UpdateTaskData) => {
+    this.tasks.update(tasks => {
+      return tasks.map(task => {
+        if (task.id === editedTaskId) {
+          task = {
+            ...task,
+            ...updateTaskData
+          }
+        }
+        return task;
+      });
     });
   }
 

@@ -1,4 +1,5 @@
 <form [formGroup]="addTaskForm" (ngSubmit)="addTask()">
     <input pInputText type="text" formControlName="description" placeholder="Описание" class="p-inputtext-sm" />
+    <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" appendTo="body" placeholder="Срок" [firstDayOfWeek]="1"></p-calendar>
     <button pButton class="addtask-button" type="submit" label="Добавить" [disabled]="!addTaskForm.valid"></button>
 </form>
