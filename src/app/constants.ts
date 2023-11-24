@@ -1,0 +1,1 @@
+export const PRIORITIES = ['Низкий', 'Средний', 'Высокий'];

@@ -11,7 +11,8 @@ import { TaskForm } from 'src/app/models';
 export class EditTaskDialogComponent {
   editTaskForm: FormGroup = new FormGroup<TaskForm>({
     description: new FormControl(this.dynamicDialogConfig.data.task.description),
-    deadline: new FormControl(this.dynamicDialogConfig.data.task.deadline)
+    deadline: new FormControl(this.dynamicDialogConfig.data.task.deadline),
+    priority: new FormControl(this.dynamicDialogConfig.data.task.priority)
   });
 
   minDate = new Date();

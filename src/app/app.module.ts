@@ -19,6 +19,7 @@ import { AddTaskDialogComponent } from './components/add-task-dialog/add-task-di
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CalendarModule  } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown'; 
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     DynamicDialogModule,
     ConfirmDialogModule,
     CalendarModule,
+    DropdownModule,
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
