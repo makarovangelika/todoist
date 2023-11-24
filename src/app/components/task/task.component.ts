@@ -10,4 +10,7 @@ export class TaskComponent {
   @Input() task!: Task;
   @Input() changeStatus!: (taskId: string) => void;
   @Input() openEditDialog!: (task: Task) => void;
+  @Input() confirmDelete!: (taskId: string) => void;
+
+  constructor() {}
 }

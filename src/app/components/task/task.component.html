@@ -3,9 +3,9 @@
         <p-checkbox class="task-checkbox" [ngModel]="task.done" (ngModelChange)="changeStatus(task.id)" [binary]="true"></p-checkbox>
         <span>{{ task.description }}</span>
     </div>
-    <span class="p-buttonset">
+    <div>
         <button pButton (click)="openEditDialog(task)" icon="pi pi-pencil" class="p-button-outlined"></button>
-        <button pButton icon="pi pi-trash" class="p-button-outlined"></button>
-    </span>
+        <button pButton icon="pi pi-trash" (click)="confirmDelete(task.id)" class="p-button-outlined task-button"></button>
+    </div>
 </div>
 <p-divider></p-divider>

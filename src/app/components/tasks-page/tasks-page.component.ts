@@ -4,19 +4,21 @@ import { Task, UpdateTaskData } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-tasks-page',
   templateUrl: './tasks-page.component.html',
   styleUrls: ['./tasks-page.component.scss'],
-  providers: [DialogService]
+  providers: [DialogService, ConfirmationService]
 })
 export class TasksPageComponent {
   tasks: WritableSignal<Task[]> = signal(this.taskService.getTasks());
   ref: DynamicDialogRef | undefined;
 
   constructor(private taskService: TaskService,
-              public dialogService: DialogService) {
+              public dialogService: DialogService,
+              private confirmationService: ConfirmationService) {
                 effect(() => {
                   this.taskService.updateTasks(this.tasks());
                 });
@@ -62,6 +64,27 @@ export class TasksPageComponent {
         }
       }
     });
+  }
+
+  deleteTask = (taskId: string) => {
+    this.tasks.update(tasks => {
+      return tasks.filter(task => {
+        return task.id !== taskId;
+      })
+    })
+  }
+
+  confirmDelete = (taskId: string) => {
+    this.confirmationService.confirm({
+      message: 'Вы уверены, что хотите удалить задачу?',
+      header: 'Подтвердите удаление задачи',
+      acceptLabel: 'Да',
+      rejectLabel: 'Нет',
+      acceptButtonStyleClass: 'confirm-delete-button',
+      accept: () => {
+        this.deleteTask(taskId);
+      }
+    })
   }
 
   changeStatus = (taskId: string) => {

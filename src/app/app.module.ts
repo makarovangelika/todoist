@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { AddTaskDialogComponent } from './components/add-task-dialog/add-task-dialog.component';
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     DividerModule,
     CheckboxModule,
     DynamicDialogModule,
+    ConfirmDialogModule,
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
