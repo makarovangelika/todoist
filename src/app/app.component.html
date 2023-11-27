@@ -1,13 +1,1 @@
-<p-sidebar [(visible)]="sidebarVisible">
-    <ng-template pTemplate="header">
-        <span>{{ userStorageService.getAuthorizedUser().email}}</span>
-    </ng-template>
-    <ng-template pTemplate="footer">
-        <p-button label="Выйти" styleClass="p-button-text" icon="pi pi-sign-out"></p-button>
-    </ng-template>
-</p-sidebar>
-<div class="header">
-    <button pButton (click)="sidebarVisible = true" label="Меню" icon="pi pi-arrow-right" iconPos="right" class="open-menu"></button>
-    <h1>Todoist</h1>
-</div>
 <router-outlet></router-outlet>

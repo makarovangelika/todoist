@@ -1,3 +1,16 @@
-<button class="addtask-button" pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
-<app-task *ngFor="let task of tasks()" [task]="task" [changeStatus]="changeStatus" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
+<p-sidebar [(visible)]="sidebarVisible">
+    <ng-template pTemplate="header">
+        <span>{{ userStorageService.getAuthorizedUser().email}}</span>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <p-button label="Выйти" styleClass="p-button-text" icon="pi pi-sign-out"></p-button>
+    </ng-template>
+</p-sidebar>
+<header>
+    <button pButton (click)="sidebarVisible = true" label="Меню" icon="pi pi-arrow-right" iconPos="right"></button>
+    <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
+</header>
+<div class="tasks">
+    <app-task *ngFor="let task of tasks()" [task]="task" [changeStatus]="changeStatus" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
+</div>
 <p-confirmDialog></p-confirmDialog>
