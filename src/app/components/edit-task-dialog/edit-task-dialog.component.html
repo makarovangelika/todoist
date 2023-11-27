@@ -1,5 +1,6 @@
 <form [formGroup]="editTaskForm" (ngSubmit)="saveEditedTask()">
     <input pInputText type="text" placeholder="Описание" formControlName="description" />
     <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" appendTo="body" placeholder="Срок" [firstDayOfWeek]="1"></p-calendar>
+    <p-dropdown formControlName="priority" [options]="priorities" appendTo="body" tooltip="Выберите приоритет" tooltipPosition="top"></p-dropdown>
     <button pButton type="submit" label="Сохранить" [disabled]="!editTaskForm.dirty" class="savechanges-button inputtext-sm"></button>
 </form>

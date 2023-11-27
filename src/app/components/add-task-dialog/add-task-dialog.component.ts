@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { PRIORITIES } from 'src/app/constants';
+import { getOptions } from 'src/app/constants';
 import { Priority, TaskForm } from 'src/app/models';
 import { v4 as uuid4 } from "uuid";
 
@@ -18,7 +18,7 @@ export class AddTaskDialogComponent {
   });
 
   minDate: Date = new Date();
-  priorities = PRIORITIES;
+  priorities = getOptions();
 
   constructor(public ref: DynamicDialogRef,
               public dynamicDialogConfig: DynamicDialogConfig) {}

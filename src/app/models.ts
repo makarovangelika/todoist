@@ -21,9 +21,9 @@ export interface TaskForm {
     priority: FormControl<Priority | null>
 }
 export enum Priority {
-    low = "Низкий",
-    medium = "Средний",
-    high = "Высокий"
+    low = "low",
+    medium = "medium",
+    high = "high"
 }
 
 export type Error = string | null

@@ -3,7 +3,7 @@
         <p-checkbox class="task-checkbox" [ngModel]="task.done" (ngModelChange)="changeStatus(task.id)" [binary]="true"></p-checkbox>
         <span>{{ task.description }}</span>
         <span>{{ task.deadline | date:'dd.MM.yy' }}</span>
-        <span>{{ task.priority }}</span>
+        <span>{{ priorityLabels[task.priority] }}</span>
     </div>
     <div>
         <button pButton (click)="openEditDialog(task)" icon="pi pi-pencil" class="p-button-outlined"></button>

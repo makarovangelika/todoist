@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { getOptions } from 'src/app/constants';
 import { TaskForm } from 'src/app/models';
 
 @Component({
@@ -16,6 +17,7 @@ export class EditTaskDialogComponent {
   });
 
   minDate = new Date();
+  priorities = getOptions();
 
   constructor(public dynamicDialogConfig: DynamicDialogConfig,
               public ref: DynamicDialogRef) {}
@@ -23,7 +25,8 @@ export class EditTaskDialogComponent {
   saveEditedTask() {
     const updateTaskData = {
       description: this.editTaskForm.value.description,
-      deadline: this.editTaskForm.value.deadline
+      deadline: this.editTaskForm.value.deadline,
+      priority: this.editTaskForm.value.priority
     }
     this.dynamicDialogConfig.data.updateTask(this.dynamicDialogConfig.data.task.id, updateTaskData);
     this.ref.close();
