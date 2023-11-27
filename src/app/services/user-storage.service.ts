@@ -28,4 +28,7 @@ export class UserStorageService {
     }
     return JSON.parse(authorizedUser);
   }
+  logout() {
+    localStorage.removeItem('authorized user');
+  }
 }

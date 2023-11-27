@@ -5,7 +5,6 @@ import { TaskService } from 'src/app/services/task.service';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { ConfirmationService } from 'primeng/api';
-import { UserStorageService } from 'src/app/services/user-storage.service';
 
 @Component({
   selector: 'app-tasks-page',
@@ -20,7 +19,6 @@ export class TasksPageComponent {
 
   constructor(private taskService: TaskService,
               public dialogService: DialogService,
-              public userStorageService: UserStorageService,
               private confirmationService: ConfirmationService) {
                 effect(() => {
                   this.taskService.updateTasks(this.tasks());

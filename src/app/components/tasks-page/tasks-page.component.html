@@ -1,13 +1,6 @@
-<p-sidebar [(visible)]="sidebarVisible">
-    <ng-template pTemplate="header">
-        <span>{{ userStorageService.getAuthorizedUser().email}}</span>
-    </ng-template>
-    <ng-template pTemplate="footer">
-        <p-button label="Выйти" styleClass="p-button-text" icon="pi pi-sign-out"></p-button>
-    </ng-template>
-</p-sidebar>
+<app-user-menu [sidebarVisible]="sidebarVisible"></app-user-menu>
 <header>
-    <button pButton (click)="sidebarVisible = true" label="Меню" icon="pi pi-arrow-right" iconPos="right"></button>
+    <button pButton (click)="sidebarVisible = true" icon="pi pi-align-justify"></button>
     <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
 </header>
 <div class="tasks">

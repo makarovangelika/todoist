@@ -21,6 +21,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CalendarModule  } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     TasksPageComponent,
     TaskComponent,
     AddTaskDialogComponent,
-    EditTaskDialogComponent
+    EditTaskDialogComponent,
+    UserMenuComponent
   ],
   imports: [
     BrowserModule,
