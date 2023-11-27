@@ -17,7 +17,7 @@ export interface Task {
 }
 export interface TaskForm {
     description: FormControl<string | null>,
-    deadline: FormControl<string | null>,
+    deadline: FormControl<Date | null>,
     priority: FormControl<Priority | null>
 }
 export enum Priority {
