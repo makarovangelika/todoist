@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserStorageService } from './services/user-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todoist';
+  sidebarVisible = false;
+
+  constructor(public userStorageService: UserStorageService) {}
 }
