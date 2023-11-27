@@ -31,3 +31,7 @@ export type Error = string | null
 export interface UpdateTaskData {
     description: string
 }
+
+export interface Category {
+    name: string;
+}

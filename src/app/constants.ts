@@ -14,3 +14,12 @@ export function getOptions() {
         }
     })
 }
+
+export const DEFAULT_CATEGORIES = [
+    {
+        name: "Дом"
+    },
+    {
+        name: " Работа"
+    }
+]
