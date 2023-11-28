@@ -3,11 +3,11 @@
         <span>{{ userStorageService.getAuthorizedUser().email}}</span>
     </ng-template>
     <ng-template pTemplate="content">
-        <p-menu [model]="menuItems">
-            <ng-template pTemplate="item" let-item>
-                <span>{{ item.label }}</span>
-            </ng-template>
-        </p-menu>
+        <div class="category-menu">
+            <span class="category-menu-title">Мои категории</span>
+            <p-button icon="pi pi-plus" (click)="openAddDialog()" styleClass="p-button-text"></p-button>
+        </div>
+        <span *ngFor="let category of categories()" class="category-name">{{ category.name }}</span>
     </ng-template>
     <ng-template pTemplate="footer">
         <p-button label="Выйти" (click)="logout()" styleClass="p-button-text" icon="pi pi-sign-out"></p-button>
