@@ -6,7 +6,7 @@ import { DEFAULT_CATEGORIES } from '../constants';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriesService {
+export class CategoryService {
   authorizedUser = this.userStorageService.getAuthorizedUser();
 
   constructor(private userStorageService: UserStorageService) {}

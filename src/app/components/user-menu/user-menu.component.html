@@ -1,6 +1,13 @@
-<p-sidebar [(visible)]="sidebarVisible">
+<p-sidebar [(visible)]="sidebarVisible" (onHide)="toggleSidebarVisibility()">
     <ng-template pTemplate="header">
         <span>{{ userStorageService.getAuthorizedUser().email}}</span>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <p-menu [model]="menuItems">
+            <ng-template pTemplate="item" let-item>
+                <span>{{ item.label }}</span>
+            </ng-template>
+        </p-menu>
     </ng-template>
     <ng-template pTemplate="footer">
         <p-button label="Выйти" (click)="logout()" styleClass="p-button-text" icon="pi pi-sign-out"></p-button>

@@ -107,4 +107,8 @@ export class TasksPageComponent {
       });
     });
   }
+
+  toggleSidebarVisibility = () => {
+    this.sidebarVisible = !this.sidebarVisible;
+  }
 }
