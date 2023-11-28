@@ -1,0 +1,4 @@
+<form [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
+    <input pInputText type="text" formControlName="name" placeholder="Название" />
+    <button pButton type="submit" label="Добавить" [disabled]="!addCategoryForm.valid"></button>
+</form>

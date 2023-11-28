@@ -35,3 +35,6 @@ export interface UpdateTaskData {
 export interface Category {
     name: string;
 }
+export interface CategoryForm {
+    name: FormControl<string | null>
+}

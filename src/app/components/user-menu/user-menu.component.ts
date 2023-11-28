@@ -1,37 +1,52 @@
-import { Component, Input, OnInit, WritableSignal, signal } from '@angular/core';
+import { Component, Input, WritableSignal, effect, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Category } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
 import { UserStorageService } from 'src/app/services/user-storage.service';
+import { AddCategoryDialogComponent } from '../add-category-dialog/add-category-dialog.component';
 
 @Component({
   selector: 'app-user-menu',
   templateUrl: './user-menu.component.html',
   styleUrls: ['./user-menu.component.scss']
 })
-export class UserMenuComponent implements OnInit {
+export class UserMenuComponent {
   @Input() sidebarVisible = false;
   @Input() toggleSidebarVisibility!: () => void
   categories: WritableSignal<Category[]> = signal(this.categoryService.getCategories());
-  menuItems: MenuItem[] | undefined;
+  ref: DynamicDialogRef | undefined;
 
   constructor(public userStorageService: UserStorageService,
               private categoryService: CategoryService,
-              private router: Router) {}
-
-  ngOnInit() {
-    this.menuItems = [{
-      label: "Мои категории",
-      items: this.categories().map(category => {
-        return { label: category.name }
-      })
-    }
-    ]
-  }
+              public dialogService: DialogService,
+              private router: Router) {
+                effect(() => {
+                  this.categoryService.updateCategories(this.categories())
+                })
+              }
 
   logout() {
     this.userStorageService.logout();
     this.router.navigate(['/login']);
+  }
+
+  openAddDialog() {
+    this.ref = this.dialogService.open(AddCategoryDialogComponent, {
+      dismissableMask: true,
+      modal: true,
+      keepInViewport: true,
+      header: 'Добавить категорию',
+      data: {
+        addCategory: this.addCategory
+      }
+    })
+  }
+  addCategory = (category: Category) => {
+    this.categories.update(categories => {
+      categories.push(category);
+      return categories;
+    })
   }
 }

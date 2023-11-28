@@ -22,7 +22,7 @@ import { CalendarModule  } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
-import { MenuModule } from 'primeng/menu';
+import { AddCategoryDialogComponent } from './components/add-category-dialog/add-category-dialog.component';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -39,7 +39,8 @@ const appRoutes: Routes = [
     TaskComponent,
     AddTaskDialogComponent,
     EditTaskDialogComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    AddCategoryDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +56,6 @@ const appRoutes: Routes = [
     DropdownModule,
     FormsModule,
     SidebarModule,
-    MenuModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
