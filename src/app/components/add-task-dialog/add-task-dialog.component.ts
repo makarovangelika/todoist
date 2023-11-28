@@ -17,6 +17,10 @@ export class AddTaskDialogComponent {
     priority: new FormControl(Priority.low)
   });
 
+  get description() {
+    return this.addTaskForm.get('description');
+  }
+
   minDate: Date = new Date();
   priorities = getOptions();
 

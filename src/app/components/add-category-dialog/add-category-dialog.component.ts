@@ -16,6 +16,10 @@ export class AddCategoryDialogComponent {
   constructor(public ref: DynamicDialogRef,
               public dynamicDialogConfig: DynamicDialogConfig) {}
 
+  get name() {
+    return this.addCategoryForm.get('name');
+  }
+
   addCategory() {
     const category = {
       name: this.addCategoryForm.value.name

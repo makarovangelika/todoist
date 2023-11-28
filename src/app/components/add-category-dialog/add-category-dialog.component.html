@@ -1,4 +1,8 @@
 <form [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
     <input pInputText type="text" formControlName="name" placeholder="Название" />
+    <div *ngIf="name?.invalid && name?.touched || name?.dirty">
+        <span *ngIf="name?.errors?.['required']" class="validation-error">Обязательное поле</span>
+    </div>
+    <span></span>
     <button pButton type="submit" label="Добавить" [disabled]="!addCategoryForm.valid"></button>
 </form>

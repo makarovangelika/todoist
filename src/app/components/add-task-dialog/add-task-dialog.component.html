@@ -1,5 +1,8 @@
 <form [formGroup]="addTaskForm" (ngSubmit)="addTask()">
     <input pInputText type="text" formControlName="description" placeholder="Описание" class="p-inputtext-sm" />
+    <div *ngIf="description?.invalid && description?.touched || description?.dirty">
+        <span *ngIf="description?.errors?.['required']" class="validation-error">Обязательное поле</span>
+    </div>
     <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" appendTo="body" placeholder="Срок" [firstDayOfWeek]="1"></p-calendar>
     <p-dropdown formControlName="priority" [options]="priorities" appendTo="body" tooltip="Выберите приоритет" tooltipPosition="top"></p-dropdown>
     <button pButton class="addtask-button" type="submit" label="Добавить" [disabled]="!addTaskForm.valid"></button>
