@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CategoryForm } from 'src/app/models';
 
 @Component({
@@ -17,5 +17,14 @@ export class EditCategoryDialogComponent {
     return this.editCategoryForm.get('name');
   }
 
-  constructor(private dynamicDialogConfig: DynamicDialogConfig) {}
+  constructor(public dynamicDialogConfig: DynamicDialogConfig,
+              public ref: DynamicDialogRef) {}
+
+  saveEditedCategory() {
+    const updateCategoryData = {
+      name: this.editCategoryForm.value.name
+    }
+    this.dynamicDialogConfig.data.updateCategory(this.dynamicDialogConfig.data.category.name, updateCategoryData);
+    this.ref.close();
+  }
 }
