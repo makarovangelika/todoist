@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, WritableSignal, effect, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
+import { ConfirmationService, MenuItem } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Category, UpdateCategoryData } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
@@ -24,7 +24,8 @@ export class UserMenuComponent implements OnInit {
   constructor(public userStorageService: UserStorageService,
               private categoryService: CategoryService,
               public dialogService: DialogService,
-              private router: Router) {
+              private router: Router,
+              private confirmationService: ConfirmationService) {
                 effect(() => {
                   this.categoryService.updateCategories(this.categories())
                 })
@@ -41,7 +42,10 @@ export class UserMenuComponent implements OnInit {
         },
         {
           label: "Удалить",
-          icon: "pi pi-times"
+          icon: "pi pi-times",
+          command: () => {
+            this.confirmDelete(this.activeCategory.name);
+          }
         }
       ]
     }
@@ -96,4 +100,26 @@ export class UserMenuComponent implements OnInit {
       })
     })
   }
+
+  confirmDelete(categoryName: string) {
+    this.confirmationService.confirm({
+      message: `Вы уверены, что хотите удалить категорию ${categoryName}?`,
+      header: 'Удалить категорию?',
+      acceptLabel: 'Удалить',
+      rejectLabel: 'Отмена',
+      acceptButtonStyleClass: 'accept-delete-button confirm-delete-button',
+      rejectButtonStyleClass: 'confirm-delete-button',
+      accept: () => {
+        this.deleteCategory(categoryName);
+      }
+    })
+  }
+
+   deleteCategory = (categoryName: string) => {
+    this.categories.update(categories => {
+      return categories.filter(category => {
+        return category.name !== categoryName;
+      })
+    })
+   } 
 }

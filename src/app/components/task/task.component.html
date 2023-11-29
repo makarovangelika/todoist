@@ -6,8 +6,8 @@
         <span>{{ priorityLabels[task.priority] }}</span>
     </div>
     <div>
-        <button pButton (click)="openEditDialog(task)" icon="pi pi-pencil" class="p-button-outlined"></button>
-        <button pButton icon="pi pi-trash" (click)="confirmDelete(task.id)" class="p-button-outlined task-button"></button>
+        <button pButton (click)="openEditDialog(task)" icon="pi pi-pencil" class="p-button-outlined" pTooltip="Изменить задачу" tooltipPosition="left"></button>
+        <button pButton icon="pi pi-trash" (click)="confirmDelete(task.id)" class="p-button-outlined task-button" pTooltip="Удалить задачу" tooltipPosition="left"></button>
     </div>
 </div>
 <p-divider></p-divider>

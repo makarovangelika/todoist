@@ -82,7 +82,7 @@ export class TasksPageComponent {
   confirmDelete = (taskId: string) => {
     this.confirmationService.confirm({
       message: 'Вы уверены, что хотите удалить задачу?',
-      header: 'Подтвердите удаление задачи',
+      header: 'Удалить задачу?',
       acceptLabel: 'Удалить',
       rejectLabel: 'Отмена',
       acceptButtonStyleClass: 'accept-delete-button confirm-delete-button',

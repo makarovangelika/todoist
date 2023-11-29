@@ -5,12 +5,12 @@
     <ng-template pTemplate="content">
         <div class="category-menu">
             <span class="category-menu-title">Мои категории</span>
-            <p-button icon="pi pi-plus" (click)="openAddDialog()" styleClass="p-button-text"></p-button>
+            <p-button icon="pi pi-plus" (click)="openAddDialog()" pTooltip="Добавить категорию" styleClass="p-button-text"></p-button>
         </div>
         <div class="category-name" *ngFor="let category of categories()">
             <span>{{ category.name }}</span>
             <p-menu #menu [popup]="true" [model]="menuItems" appendTo="body"></p-menu>
-            <p-button icon="pi pi-ellipsis-h" styleClass="p-button-text" (click)="activeCategory = category; menu.toggle($event)"></p-button>
+            <p-button icon="pi pi-ellipsis-h" styleClass="p-button-text" (click)="activeCategory = category; menu.toggle($event)" pTooltip="Действия в категории"></p-button>
         </div>
     </ng-template>
     <ng-template pTemplate="footer">
