@@ -24,6 +24,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { AddCategoryDialogComponent } from './components/add-category-dialog/add-category-dialog.component';
 import { MenuModule } from 'primeng/menu';
+import { EditCategoryDialogComponent } from './components/edit-category-dialog/edit-category-dialog.component';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     AddTaskDialogComponent,
     EditTaskDialogComponent,
     UserMenuComponent,
-    AddCategoryDialogComponent
+    AddCategoryDialogComponent,
+    EditCategoryDialogComponent
   ],
   imports: [
     BrowserModule,

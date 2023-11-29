@@ -38,3 +38,6 @@ export interface Category {
 export interface CategoryForm {
     name: FormControl<string | null>
 }
+export interface UpdateCategoryData {
+    name: string
+}

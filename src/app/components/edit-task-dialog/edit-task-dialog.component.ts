@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { getOptions } from 'src/app/constants';
 import { TaskForm } from 'src/app/models';
@@ -11,7 +11,7 @@ import { TaskForm } from 'src/app/models';
 })
 export class EditTaskDialogComponent {
   editTaskForm: FormGroup = new FormGroup<TaskForm>({
-    description: new FormControl(this.dynamicDialogConfig.data.task.description),
+    description: new FormControl(this.dynamicDialogConfig.data.task.description, Validators.required),
     deadline: new FormControl(new Date(this.dynamicDialogConfig.data.task.deadline)),
     priority: new FormControl(this.dynamicDialogConfig.data.task.priority)
   });

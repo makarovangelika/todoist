@@ -10,7 +10,7 @@
         <div class="category-name" *ngFor="let category of categories()">
             <span>{{ category.name }}</span>
             <p-menu #menu [popup]="true" [model]="menuItems" appendTo="body"></p-menu>
-            <p-button icon="pi pi-ellipsis-h" styleClass="p-button-text" (click)="menu.toggle($event)"></p-button>
+            <p-button icon="pi pi-ellipsis-h" styleClass="p-button-text" (click)="activeCategory = category; menu.toggle($event)"></p-button>
         </div>
     </ng-template>
     <ng-template pTemplate="footer">
