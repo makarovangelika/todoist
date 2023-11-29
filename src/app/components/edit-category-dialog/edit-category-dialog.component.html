@@ -1,1 +1,7 @@
-<p>edit-category-dialog works!</p>
+<div *ngIf="name?.invalid && name?.touched || name?.dirty">
+    <span *ngIf="name?.errors?.['required']" class="validation-error">Обязательное поле</span>
+</div>
+<form [formGroup]="editCategoryForm">
+    <input pInputText type="text" placeholder="Название" formControlName="name" />
+    <button pButton type="submit" label="Сохранить" [disabled]="!editCategoryForm.dirty || !editCategoryForm.valid"></button>
+</form>

@@ -13,5 +13,9 @@ export class EditCategoryDialogComponent {
     name: new FormControl(this.dynamicDialogConfig.data.category.name, Validators.required)
   });
 
+  get name() {
+    return this.editCategoryForm.get('name');
+  }
+
   constructor(private dynamicDialogConfig: DynamicDialogConfig) {}
 }
