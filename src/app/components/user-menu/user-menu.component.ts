@@ -43,9 +43,9 @@ export class UserMenuComponent {
       }
     })
   }
-  addCategory = (category: Category) => {
+  addCategory = (newCategory: Category) => {
     this.categories.update(categories => {
-      categories.push(category);
+      categories.push(newCategory);
       return categories;
     })
   }
