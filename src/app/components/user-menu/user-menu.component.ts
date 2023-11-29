@@ -1,4 +1,4 @@
-import { Component, Input, WritableSignal, effect, signal } from '@angular/core';
+import { Component, Input, OnInit, WritableSignal, effect, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -12,11 +12,12 @@ import { AddCategoryDialogComponent } from '../add-category-dialog/add-category-
   templateUrl: './user-menu.component.html',
   styleUrls: ['./user-menu.component.scss']
 })
-export class UserMenuComponent {
+export class UserMenuComponent implements OnInit {
   @Input() sidebarVisible = false;
   @Input() toggleSidebarVisibility!: () => void
   categories: WritableSignal<Category[]> = signal(this.categoryService.getCategories());
   ref: DynamicDialogRef | undefined;
+  menuItems: MenuItem[] | undefined;
 
   constructor(public userStorageService: UserStorageService,
               private categoryService: CategoryService,
@@ -27,6 +28,19 @@ export class UserMenuComponent {
                 })
               }
 
+    ngOnInit() {
+      this.menuItems = [
+        {
+          label: "Редактировать",
+          icon: "pi pi-pencil"
+        },
+        {
+          label: "Удалить",
+          icon: "pi pi-times"
+        }
+      ]
+    }
+    
   logout() {
     this.userStorageService.logout();
     this.router.navigate(['/login']);

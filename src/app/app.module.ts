@@ -23,6 +23,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { AddCategoryDialogComponent } from './components/add-category-dialog/add-category-dialog.component';
+import { MenuModule } from 'primeng/menu';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     FormsModule,
     SidebarModule,
     BrowserAnimationsModule,
+    MenuModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
