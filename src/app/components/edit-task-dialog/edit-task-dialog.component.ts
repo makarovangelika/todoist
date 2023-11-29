@@ -19,6 +19,10 @@ export class EditTaskDialogComponent {
   minDate = new Date();
   priorities = getOptions();
 
+  get description() {
+    return this.editTaskForm.get('description');
+  }
+
   constructor(public dynamicDialogConfig: DynamicDialogConfig,
               public ref: DynamicDialogRef) {}
 
