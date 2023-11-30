@@ -1,10 +1,14 @@
+<div *ngIf="description?.invalid && description?.touched || description?.dirty">
+    <span *ngIf="description?.errors?.['required']" class="validation-error">Обязательное поле</span>
+</div>
 <form [formGroup]="addTaskForm" (ngSubmit)="addTask()">
-    <input pInputText type="text" formControlName="description" placeholder="Описание" pTooltip="Введите описание" tooltipPosition="top" />
-    <div *ngIf="description?.invalid && description?.touched || description?.dirty">
-        <span *ngIf="description?.errors?.['required']" class="validation-error">Обязательное поле</span>
+    <input pInputText type="text" formControlName="description" placeholder="Описание" pTooltip="Введите описание" tooltipPosition="top" class="form-control" />
+    <div class="form-control deadline-priority">
+        <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" class="form-control-half" styleClass="form-control-half-primeng" appendTo="body" pTooltip="Выберите срок" tooltipPosition="top" placeholder="Срок" [firstDayOfWeek]="1"></p-calendar>
+        <p-dropdown formControlName="priority" [options]="priorities" appendTo="body" class="form-control-half" styleClass="form-control-half-primeng" tooltip="Выберите приоритет" tooltipPosition="top" placeholder="Приоритет"></p-dropdown>
     </div>
-    <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" appendTo="body" pTooltip="Выберите срок" tooltipPosition="top" placeholder="Срок" [firstDayOfWeek]="1"></p-calendar>
-    <p-dropdown formControlName="priority" [options]="priorities" appendTo="body" tooltip="Выберите приоритет" tooltipPosition="top" placeholder="Приоритет"></p-dropdown>
-    <p-dropdown formControlName="category" [options]="categories" tooltip="Выберите категорию" appendTo="body" placeholder="Категория" tooltipPosition="top"></p-dropdown>
-    <button pButton class="addtask-button" type="submit" label="Добавить" [disabled]="!addTaskForm.valid"></button>
+    <div class="taskform-footer">
+        <p-dropdown formControlName="category" [options]="categories" tooltip="Выберите категорию" appendTo="body" placeholder="Категория" tooltipPosition="top" styleClass="category-dropdown-primeng" class="form-control category-dropdown"></p-dropdown>
+        <button pButton class="addtask-button" type="submit" label="Добавить" [disabled]="!addTaskForm.valid"></button>
+    </div>
 </form>

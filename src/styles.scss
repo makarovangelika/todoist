@@ -10,7 +10,7 @@
     margin: 0 auto;
     width: 85%;
 
-    @media screen and (min-width: $small) {
+    @media screen and (min-width: $medium) {
         width: 50%;
     }
     @media screen and (min-width: $large) {
@@ -74,4 +74,30 @@
 }
 .category-button {
     color: #495057;
+}
+.form-control {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+.category-dropdown {
+    display: block;
+}
+.category-dropdown-primeng {
+    width: 100%;
+}
+.form-control-half {
+    width: 49.5%;
+    display: inline-block;
+}
+.form-control-half-primeng {
+    width: 100%;
+}
+.deadline-priority {
+    display: flex;
+    justify-content: space-between;
+}
+.taskform-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
