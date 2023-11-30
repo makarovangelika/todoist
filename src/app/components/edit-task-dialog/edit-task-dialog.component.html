@@ -1,9 +1,10 @@
 <form [formGroup]="editTaskForm" (ngSubmit)="saveEditedTask()">
-    <input pInputText type="text" placeholder="Описание" formControlName="description" />
+    <input pInputText type="text" placeholder="Описание" formControlName="description" pTooltip="Измените описание" tooltipPosition="top" />
     <div *ngIf="description?.invalid && description?.touched || description?.dirty">
         <span *ngIf="description?.errors?.['required']" class="validation-error">Обязательное поле</span>
     </div>
-    <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" appendTo="body" placeholder="Срок" [firstDayOfWeek]="1"></p-calendar>
-    <p-dropdown formControlName="priority" [options]="priorities" appendTo="body" tooltip="Выберите приоритет" tooltipPosition="top"></p-dropdown>
+    <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" appendTo="body" pTooltip="Измените срок" tooltipPosition="top" placeholder="Срок" [firstDayOfWeek]="1"></p-calendar>
+    <p-dropdown formControlName="priority" [options]="priorities" appendTo="body" tooltip="Измените приоритет" tooltipPosition="top"></p-dropdown>
+    <p-dropdown formControlName="category" [options]="categories" tooltip="Измените категорию" appendTo="body" placeholder="Категория" tooltipPosition="top"></p-dropdown>
     <button pButton type="submit" label="Сохранить" [disabled]="!editTaskForm.dirty || !editTaskForm.valid" class="savechanges-button inputtext-sm"></button>
 </form>

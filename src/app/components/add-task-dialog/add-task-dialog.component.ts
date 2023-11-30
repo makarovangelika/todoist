@@ -25,14 +25,12 @@ export class AddTaskDialogComponent {
 
   minDate: Date = new Date();
   priorities = getOptions();
-  get categories() {
-    return this.categoryService.getCategories().map(category => {
-      return {
-        label: category.name,
-        value: category
-      }
-    })
-  }
+  categories = this.categoryService.getCategories().map(category => {
+    return {
+      label: category.name,
+      value: category
+    }
+  });
 
   constructor(public ref: DynamicDialogRef,
               public dynamicDialogConfig: DynamicDialogConfig,

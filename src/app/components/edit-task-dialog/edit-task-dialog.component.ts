@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { getOptions } from 'src/app/constants';
 import { TaskForm } from 'src/app/models';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-edit-task-dialog',
@@ -10,9 +11,11 @@ import { TaskForm } from 'src/app/models';
   styleUrls: ['./edit-task-dialog.component.scss']
 })
 export class EditTaskDialogComponent {
+  initialDate = this.dynamicDialogConfig.data.task.deadline ? new Date(this.dynamicDialogConfig.data.task.deadline) : null;
+  
   editTaskForm: FormGroup = new FormGroup<TaskForm>({
     description: new FormControl(this.dynamicDialogConfig.data.task.description, Validators.required),
-    deadline: new FormControl(new Date(this.dynamicDialogConfig.data.task.deadline)),
+    deadline: new FormControl(this.initialDate),
     priority: new FormControl(this.dynamicDialogConfig.data.task.priority),
     category: new FormControl(this.dynamicDialogConfig.data.task.category)
   });
@@ -23,9 +26,16 @@ export class EditTaskDialogComponent {
   get description() {
     return this.editTaskForm.get('description');
   }
+  categories = this.categoryService.getCategories().map(category => {
+      return {
+        label: category.name,
+        value: category
+      }
+    });
 
   constructor(public dynamicDialogConfig: DynamicDialogConfig,
-              public ref: DynamicDialogRef) {}
+              public ref: DynamicDialogRef,
+              private categoryService: CategoryService) {}
 
   saveEditedTask() {
     const updateTaskData = {
