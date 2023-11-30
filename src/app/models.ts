@@ -13,12 +13,14 @@ export interface Task {
     done: boolean,
     description: string,
     deadline: string,
-    priority: Priority
+    priority: Priority,
+    category: Category | null
 }
 export interface TaskForm {
     description: FormControl<string | null>,
     deadline: FormControl<Date | null>,
-    priority: FormControl<Priority | null>
+    priority: FormControl<Priority | null>,
+    category: FormControl<Category | null>
 }
 export enum Priority {
     low = "low",

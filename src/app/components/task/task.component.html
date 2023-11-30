@@ -4,6 +4,7 @@
         <span>{{ task.description }}</span>
         <span>{{ task.deadline | date:'dd.MM.yy' }}</span>
         <span>{{ priorityLabels[task.priority] }}</span>
+        <span>{{ task.category?.name }}</span>
     </div>
     <div>
         <button pButton (click)="openEditDialog(task)" icon="pi pi-pencil" class="p-button-outlined" pTooltip="Изменить задачу" tooltipPosition="left"></button>
