@@ -1,7 +1,9 @@
+@import '../../../variables.scss';
 .category-menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-left: 0.2rem
 }
 .category-menu-title {
     font-weight: bold;
@@ -10,4 +12,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 0.4rem;
+}
+.category-wrapper:hover {
+    background-color: $menu-hover-color;
 }

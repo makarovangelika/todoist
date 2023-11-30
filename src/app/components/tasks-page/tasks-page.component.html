@@ -1,7 +1,9 @@
 <app-user-menu [sidebarVisible]="sidebarVisible" [toggleSidebarVisibility]="toggleSidebarVisibility"></app-user-menu>
 <header>
-    <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
-    <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
+    <div class="header">
+        <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
+        <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
+    </div>
 </header>
 <div class="tasks">
     <app-task *ngFor="let task of tasks()" [task]="task" [changeStatus]="changeStatus" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
