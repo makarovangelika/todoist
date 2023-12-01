@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Error, UserForm } from 'src/app/models';
+import { CustomError, UserForm } from 'src/app/models';
 import { LoginService } from 'src/app/services/login.service';
 import { SignUpService } from 'src/app/services/sign-up.service';
 
@@ -17,7 +17,7 @@ export class SignUpPageComponent {
     password: new FormControl(null, [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}')])
   })
   
-  error: Error = null;
+  error: CustomError = null;
 
   constructor(private signUpService: SignUpService,
               private router: Router,

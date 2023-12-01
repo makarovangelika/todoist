@@ -28,7 +28,7 @@ export enum Priority {
     high = "high"
 }
 
-export type Error = string | null
+export type CustomError = string | null
 
 export interface UpdateTaskData {
     description: string

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { CategoryForm } from 'src/app/models';
+import { CategoryForm, CustomError } from 'src/app/models';
 
 @Component({
   selector: 'app-add-category-dialog',
@@ -12,6 +12,8 @@ export class AddCategoryDialogComponent {
   addCategoryForm: FormGroup = new FormGroup<CategoryForm>({
     name: new FormControl(null, Validators.required)
   });
+
+  error: CustomError = null
 
   constructor(public ref: DynamicDialogRef,
               public dynamicDialogConfig: DynamicDialogConfig) {}
