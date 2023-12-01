@@ -1,4 +1,10 @@
+@import '../../../variables.scss';
 .savechanges-button {
     display: block;
     margin-top: 1rem;
+    @media screen and (min-width: $medium) and (max-width: $large),
+                      (min-width: $extra-large) {
+        margin-top: 0;
+        width: 30%;
+    }
 }
