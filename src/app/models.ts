@@ -44,7 +44,8 @@ export interface UpdateCategoryData {
     name: string
 }
 
-export enum SortValues {
+export enum SortValue {
+    default = "default",
     deadline = "deadline",
     priorityUp = "priorityUp",
     priorityDown = "priorityDown",
@@ -52,5 +53,5 @@ export enum SortValues {
 }
 export interface SortOption {
     label: string,
-    value: SortValues
+    value: SortValue
 }
