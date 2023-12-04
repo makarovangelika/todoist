@@ -9,7 +9,12 @@
 }
 .task-body {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    @media screen and (min-width: $medium) {
+        flex-direction: row;
+        align-items: center;
+        width: 87%;
+    }
 }
 .task-button {
     margin-left: 0.3rem;
@@ -23,4 +28,26 @@
 }
 .high-priority {
     color: red;
+}
+.task-title {
+    display: flex;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    @media screen and (min-width: $medium) {
+        margin-bottom: 0;
+        width: 40%;
+    }
+}
+.task-property {
+    margin-left: 33.2px;
+    @media screen and (min-width: $medium) {
+        margin-left: 0;
+        width: 20%
+    }
+    .pi {
+        margin-right: 0.3rem;
+    } 
+}
+.task-buttons {
+    display: flex;
 }

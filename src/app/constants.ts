@@ -25,9 +25,10 @@ export const DEFAULT_CATEGORIES = [
 ]
 
 export const SORT_LABELS = {
-    [SortValues.deadline]: "по сроку",
-    [SortValues.priority]: "по приоритету",
-    [SortValues.category]: "по категории"
+    [SortValues.deadline]: "Сначала срочные",
+    [SortValues.priorityUp]: "По возрастанию приоритета",
+    [SortValues.priorityDown]: "По убыванию приоритета",
+    [SortValues.category]: "По категории"
 }
 
 export function getSortOptions(): SortOption[] {

@@ -3,13 +3,24 @@
         'low-priority': task.priority === 'low',
         'medium-priority': task.priority === 'medium',
         'high-priority': task.priority === 'high'}">
-            <p-checkbox class="task-checkbox" [ngModel]="task.done" (ngModelChange)="changeStatus(task.id)" [binary]="true"></p-checkbox>
-            <span>{{ task.description }}</span>
-            <span>{{ task.deadline | date:'dd.MM.yy' }}</span>
-            <span>{{ priorityLabels[task.priority] }}</span>
-            <span>{{ task.category?.name }}</span>
+            <div class="task-title">
+                <p-checkbox class="task-checkbox" [ngModel]="task.done" (ngModelChange)="changeStatus(task.id)" [binary]="true"></p-checkbox>
+                <span>{{ task.description }}</span>
+            </div>
+            <div class="task-property">
+                <i class="pi pi-clock" *ngIf="task.deadline"></i>
+                <span>{{ task.deadline | date:'dd.MM.yy' }}</span>
+            </div>
+            <div class="task-property">
+                <i class="pi pi-flag-fill" *ngIf="task.priority"></i>
+                <span>{{ priorityLabels[task.priority] }}</span>
+            </div>
+            <div class="task-property">
+                <i class="pi pi-hashtag" *ngIf="task.category"></i>
+                <span>{{ task.category?.name }}</span>
+            </div>
     </div>
-    <div>
+    <div class="task-buttons">
         <button pButton (click)="openEditDialog(task)" icon="pi pi-pencil" class="p-button-outlined" pTooltip="Изменить задачу" tooltipPosition="left"></button>
         <button pButton icon="pi pi-trash" (click)="confirmDelete(task.id)" class="p-button-outlined task-button" pTooltip="Удалить задачу" tooltipPosition="left"></button>
     </div>

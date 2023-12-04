@@ -112,10 +112,13 @@
     }
 }
 .sort-dropdown-primeng {
-    width: 250px;
+    width: 295px;
     border-color: #3B82F6;
     margin-bottom: 1rem;
+    .p-dropdown-label {
+        font-size: 0.9rem;
+    }
 }
 .sort-dropdown-primeng .p-dropdown-trigger {
-    color: #3B82F6
+    color: #3B82F6;
 }
