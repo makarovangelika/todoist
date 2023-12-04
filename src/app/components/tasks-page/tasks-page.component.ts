@@ -1,10 +1,11 @@
-import { Component, WritableSignal, effect, signal } from '@angular/core';
+import { Component, OnInit, WritableSignal, effect, signal } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Task, UpdateTaskData } from 'src/app/models';
+import { SortOption, Task, UpdateTaskData } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MenuItem } from 'primeng/api';
+import { getSortOptions } from 'src/app/constants';
 
 @Component({
   selector: 'app-tasks-page',
@@ -16,6 +17,8 @@ export class TasksPageComponent {
   tasks: WritableSignal<Task[]> = signal(this.taskService.getTasks());
   ref: DynamicDialogRef | undefined;
   sidebarVisible = false;
+  sortOption!: SortOption;
+  sortOptions: SortOption[] = getSortOptions();
 
   constructor(private taskService: TaskService,
               public dialogService: DialogService,

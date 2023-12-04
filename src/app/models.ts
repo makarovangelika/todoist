@@ -43,3 +43,13 @@ export interface CategoryForm {
 export interface UpdateCategoryData {
     name: string
 }
+
+export enum SortValues {
+    deadline = "deadline",
+    priority = "priority",
+    category = "category"
+}
+export interface SortOption {
+    label: string,
+    value: SortValues
+}

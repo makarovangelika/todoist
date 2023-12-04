@@ -1,4 +1,4 @@
-import { Priority } from "./models";
+import { Priority, SortOption, SortValues } from "./models";
 
 export const PRIORITY_LABELS = {
     [Priority.low]: "Низкий",
@@ -23,3 +23,18 @@ export const DEFAULT_CATEGORIES = [
         name: " Работа"
     }
 ]
+
+export const SORT_LABELS = {
+    [SortValues.deadline]: "по сроку",
+    [SortValues.priority]: "по приоритету",
+    [SortValues.category]: "по категории"
+}
+
+export function getSortOptions(): SortOption[] {
+    return <SortOption[]>(Object.keys(SORT_LABELS) as Array<keyof typeof SortValues>).map(option => {
+        return {
+            label: SORT_LABELS[option],
+            value: option
+        }
+    })
+}
