@@ -4,10 +4,9 @@ import { SortOption, SortValue, Task, UpdateTaskData } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
-import { ConfirmationService, MenuItem } from 'primeng/api';
-import { SORT_LABELS, getSortOptions } from 'src/app/constants';
+import { ConfirmationService } from 'primeng/api';
+import { getSortOptionByValue, getSortOptions } from 'src/app/constants';
 import { SortTasksService } from 'src/app/services/sort-tasks.service';
-import { DropdownChangeEvent } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-tasks-page',
@@ -39,8 +38,9 @@ export class TasksPageComponent {
   })
   ref: DynamicDialogRef | undefined;
   sidebarVisible = false;
-  sortOption: WritableSignal<SortOption> = signal(getSortOptions()[0]);
+  sortOption: WritableSignal<SortOption> = signal(getSortOptionByValue(SortValue.default));
   sortOptions: SortOption[] = getSortOptions();
+  sortTooltip = "Сортировать";
 
   constructor(private taskService: TaskService,
               public dialogService: DialogService,
@@ -136,5 +136,16 @@ export class TasksPageComponent {
 
   toggleSidebarVisibility = () => {
     this.sidebarVisible = !this.sidebarVisible;
+  }
+
+  triggerSortByDeadline() {
+    if (this.sortOption().value === SortValue.default) {
+      this.sortOption.set(getSortOptionByValue(SortValue.deadline));
+      this.sortTooltip = "Отменить сортировку";
+    }
+    else if (this.sortOption().value === SortValue.deadline) {
+      this.sortOption.set(getSortOptionByValue(SortValue.default));
+      this.sortTooltip = "Сортировать";
+    }
   }
 }

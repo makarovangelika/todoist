@@ -55,3 +55,9 @@ export function getSortOptions(): SortOption[] {
         }
     })
 }
+
+export function getSortOptionByValue(value: SortValue): SortOption {
+    return <SortOption>getSortOptions().find(option => {
+        return option.value === value;
+    })
+}
