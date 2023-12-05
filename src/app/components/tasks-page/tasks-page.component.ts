@@ -22,10 +22,14 @@ export class TasksPageComponent {
       return this.tasks();
     }
 
-    return [...this.tasks()].sort((task, nextTask) => {
+    return [...this.tasks()].sort((prevTask, nextTask) => {
       switch(this.sortOption().value) {
         case SortValue.deadline:
-          return this.sortTasksService.sortByDeadline(task, nextTask);
+          return this.sortTasksService.sortByDeadline(prevTask, nextTask);
+        case SortValue.priorityUp:
+          return this.sortTasksService.sortByPriority(prevTask, nextTask, this.sortOption().value);
+        case SortValue.priorityDown:
+          return this.sortTasksService.sortByPriority(prevTask, nextTask, this.sortOption().value);
         default:
           return 0;
       }

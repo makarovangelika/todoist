@@ -6,6 +6,12 @@ export const PRIORITY_LABELS = {
     [Priority.high]: "Высокий"
 };
 
+export const PRIORITY_CODES  = {
+    [Priority.low]: 1,
+    [Priority.medium]: 2,
+    [Priority.high]: 3
+}
+
 export function getOptions() {
     return (Object.keys(PRIORITY_LABELS) as Array<keyof typeof Priority>).map(value => {
         return {
