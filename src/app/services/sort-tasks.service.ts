@@ -40,4 +40,21 @@ export class SortTasksService {
       return nextTaskWeight - prevTaskWeight;
     };
   }
+
+  sortByCategory(prevTask: Task, nextTask: Task) {
+    if (prevTask.category?.name === nextTask.category?.name) {
+      return 0;
+    }
+    if (!prevTask.category) {
+      return 1;
+    }
+    if (!nextTask.category) {
+      return -1;
+    }
+    if (prevTask.category.name < nextTask.category.name) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
 }

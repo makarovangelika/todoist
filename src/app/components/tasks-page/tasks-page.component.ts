@@ -30,6 +30,8 @@ export class TasksPageComponent {
           return this.sortTasksService.sortByPriority(prevTask, nextTask, this.sortOption().value);
         case SortValue.priorityDown:
           return this.sortTasksService.sortByPriority(prevTask, nextTask, this.sortOption().value);
+        case SortValue.category:
+          return this.sortTasksService.sortByCategory(prevTask, nextTask);
         default:
           return 0;
       }
