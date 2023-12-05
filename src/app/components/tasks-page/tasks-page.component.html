@@ -6,7 +6,13 @@
     </div>
 </header>
 <div class="tasks">
-   <p-dropdown styleClass="sort-dropdown-primeng" [options]="sortOptions" [(ngModel)]="sortOption" placeholder="Сортировать" [showClear]="true" optionLabel="label"></p-dropdown>
-    <app-task *ngFor="let task of tasks()" [task]="task" [changeStatus]="changeStatus" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
+    <p-dropdown class="sort-dropdown" styleClass="sort-dropdown-primeng" [options]="sortOptions" [ngModel]="sortOption()" (ngModelChange)="sortOption.set($event)" optionLabel="label"></p-dropdown>
+    <div class="sort-panel">
+        <div class="task-title">Описание</div>
+        <button pButton class="task-property" label="Срок"></button>
+        <button pButton class="task-property" label="Приоритет"></button>
+        <button pButton class="task-property" label="Категория"></button>
+    </div>
+    <app-task *ngFor="let task of sortedTasks()" [task]="task" [changeStatus]="changeStatus" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
 </div>
 <p-confirmDialog></p-confirmDialog>

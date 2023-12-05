@@ -13,7 +13,7 @@
     @media screen and (min-width: $medium) {
         flex-direction: row;
         align-items: center;
-        width: 87%;
+        width: 82%;
     }
 }
 .task-button {
@@ -35,14 +35,12 @@
     font-size: 1.1rem;
     @media screen and (min-width: $medium) {
         margin-bottom: 0;
-        width: 40%;
     }
 }
 .task-property {
     margin-left: 33.2px;
     @media screen and (min-width: $medium) {
         margin-left: 0;
-        width: 20%
     }
     .pi {
         margin-right: 0.3rem;

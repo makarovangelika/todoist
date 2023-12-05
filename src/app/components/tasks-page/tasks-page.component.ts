@@ -1,11 +1,13 @@
-import { Component, OnInit, WritableSignal, effect, signal } from '@angular/core';
+import { Component, OnInit, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { SortOption, Task, UpdateTaskData } from 'src/app/models';
+import { SortOption, SortValue, Task, UpdateTaskData } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { ConfirmationService, MenuItem } from 'primeng/api';
-import { getSortOptions } from 'src/app/constants';
+import { SORT_LABELS, getSortOptions } from 'src/app/constants';
+import { SortTasksService } from 'src/app/services/sort-tasks.service';
+import { DropdownChangeEvent } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-tasks-page',
@@ -15,13 +17,28 @@ import { getSortOptions } from 'src/app/constants';
 })
 export class TasksPageComponent {
   tasks: WritableSignal<Task[]> = signal(this.taskService.getTasks());
+  sortedTasks: Signal<Task[]> = computed(() => {
+    if (this.sortOption().value === SortValue.default) {
+      return this.tasks();
+    }
+
+    return [...this.tasks()].sort((task, nextTask) => {
+      switch(this.sortOption().value) {
+        case SortValue.deadline:
+          return this.sortTasksService.sortByDeadline(task, nextTask);
+        default:
+          return 0;
+      }
+    })
+  })
   ref: DynamicDialogRef | undefined;
   sidebarVisible = false;
-  sortOption!: SortOption;
+  sortOption: WritableSignal<SortOption> = signal(getSortOptions()[0]);
   sortOptions: SortOption[] = getSortOptions();
 
   constructor(private taskService: TaskService,
               public dialogService: DialogService,
+              private sortTasksService: SortTasksService,
               private confirmationService: ConfirmationService) {
                 effect(() => {
                   this.taskService.updateTasks(this.tasks());

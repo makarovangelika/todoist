@@ -122,3 +122,12 @@
 .sort-dropdown-primeng .p-dropdown-trigger {
     color: #3B82F6;
 }
+
+@media screen and (min-width: $medium) {
+    .task-title {
+        width: 40%;
+    }
+    .task-property {
+        width: 20%
+    }
+}
