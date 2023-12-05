@@ -6,11 +6,7 @@ export const PRIORITY_LABELS = {
     [Priority.high]: "Высокий"
 };
 
-export const PRIORITY_CODES  = {
-    [Priority.low]: 1,
-    [Priority.medium]: 2,
-    [Priority.high]: 3
-}
+export const PRIORITY_WEIGHTS  = new Map<string, number>();
 
 export function getOptions() {
     return (Object.keys(PRIORITY_LABELS) as Array<keyof typeof Priority>).map(value => {
@@ -20,6 +16,19 @@ export function getOptions() {
         }
     })
 }
+
+getOptions().forEach(option => {
+    switch (option.value) {
+        case Priority.low:
+            PRIORITY_WEIGHTS.set(option.value, 1);
+            break;
+        case Priority.medium:
+            PRIORITY_WEIGHTS.set(option.value, 2);
+            break;
+        case Priority.high:
+            PRIORITY_WEIGHTS.set(option.value, 3);
+    }
+})
 
 export const DEFAULT_CATEGORIES = [
     {

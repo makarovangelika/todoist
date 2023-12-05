@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SortValue, Task } from '../models';
-import { PRIORITY_CODES } from '../constants';
+import { PRIORITY_WEIGHTS } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -32,10 +32,12 @@ export class SortTasksService {
     if (!nextTask.priority) {
       return -1;
     }
+    const prevTaskWeight = PRIORITY_WEIGHTS.get(prevTask.priority)!;
+    const nextTaskWeight = PRIORITY_WEIGHTS.get(nextTask.priority)!;
     if (sortValue === SortValue.priorityUp) {
-      return PRIORITY_CODES[prevTask.priority] - PRIORITY_CODES[nextTask.priority];
+      return prevTaskWeight - nextTaskWeight;
     } else {
-      return PRIORITY_CODES[nextTask.priority] - PRIORITY_CODES[prevTask.priority];
+      return nextTaskWeight - prevTaskWeight;
     };
   }
 }
