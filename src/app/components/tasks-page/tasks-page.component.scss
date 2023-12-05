@@ -29,11 +29,16 @@ header {
 
 .sort-panel {
     display: none;
-    width: 82%;
+    width: 86%;
+    margin-bottom: 1rem;
     @media screen and (min-width: $medium) {
         display: block;
     }
 }
 .task-title {
     display: inline-block;
+}
+.sort-button-clicked {
+    background: $theme-color;
+    color: $white-color;
 }
