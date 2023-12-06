@@ -26,6 +26,7 @@ import { AddCategoryDialogComponent } from './components/add-category-dialog/add
 import { MenuModule } from 'primeng/menu';
 import { EditCategoryDialogComponent } from './components/edit-category-dialog/edit-category-dialog.component';
 import { TooltipModule } from 'primeng/tooltip';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     SidebarModule,
     BrowserAnimationsModule,
     MenuModule,
+    SplitButtonModule,
     TooltipModule,
     RouterModule.forRoot(appRoutes)
   ],

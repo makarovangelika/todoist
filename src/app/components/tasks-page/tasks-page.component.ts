@@ -4,7 +4,7 @@ import { SortOption, SortValue, Task, UpdateTaskData } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MenuItem } from 'primeng/api';
 import { getSortOptionByValue, getSortOptions } from 'src/app/constants';
 import { SortTasksService } from 'src/app/services/sort-tasks.service';
 
@@ -41,6 +41,7 @@ export class TasksPageComponent {
   sortOption: WritableSignal<SortOption> = signal(getSortOptionByValue(SortValue.default));
   sortOptions: SortOption[] = getSortOptions();
   sortTooltip = "Сортировать";
+  sortPriorityItems: MenuItem[];
 
   constructor(private taskService: TaskService,
               public dialogService: DialogService,
@@ -49,6 +50,14 @@ export class TasksPageComponent {
                 effect(() => {
                   this.taskService.updateTasks(this.tasks());
                 });
+                 this.sortPriorityItems = [{
+                  label: "По возрастанию",
+                  icon: " pi pi-sort-up"
+                 },
+                {
+                  label: "По убыванию",
+                  icon: "pi pi-sort-down"
+                }]
               }
 
   openAddDialog() {
@@ -147,5 +156,8 @@ export class TasksPageComponent {
       this.sortOption.set(getSortOptionByValue(SortValue.default));
       this.sortTooltip = "Сортировать";
     }
+  }
+  triggerSortByPriority() {
+
   }
 }

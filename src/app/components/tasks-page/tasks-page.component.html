@@ -9,10 +9,10 @@
     <p-dropdown class="sort-dropdown" styleClass="sort-dropdown-primeng" [options]="sortOptions" [ngModel]="sortOption()" (ngModelChange)="sortOption.set($event)" optionLabel="label"></p-dropdown>
     <div class="sort-panel">
         <div class="task-title">&nbsp;</div>
-        <button pButton class="task-property p-button-raised p-button-text" label="Срок" (click)="triggerSortByDeadline()" icon="pi pi-sort-alt" tooltipPosition="top" [pTooltip]="sortTooltip" iconPos="right" [ngClass]="{
+        <button pButton class="task-property p-button-raised p-button-text" label="Срок" (click)="triggerSortByDeadline()" icon="pi pi-sort" tooltipPosition="top" [pTooltip]="sortTooltip" iconPos="right" [ngClass]="{
             'sort-button-clicked': sortOption().value === 'deadline'
         }"></button>
-        <button pButton class="task-property p-button-raised p-button-text" label="Приоритет" ></button>
+        <p-splitButton styleClass="task-property sort-priority-button p-button-raised p-button-text" label="Приоритет" [model]="sortPriorityItems" ></p-splitButton>
         <button pButton class="task-property p-button-raised p-button-text" label="Категория"></button>
     </div>
     <app-task *ngFor="let task of sortedTasks()" [task]="task" [changeStatus]="changeStatus" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
