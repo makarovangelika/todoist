@@ -40,8 +40,13 @@ export class TasksPageComponent {
   sidebarVisible = false;
   sortOption: WritableSignal<SortOption> = signal(getSortOptionByValue(SortValue.default));
   sortOptions: SortOption[] = getSortOptions();
-  sortTooltip = "Сортировать";
+  sortTooltip = {
+    deadline: "Сортировать",
+    priority: "Сортировать",
+    category: "Сортировать"
+  };
   sortPriorityItems: MenuItem[];
+  sortPriorityIcon = 'pi pi-sort';
 
   constructor(private taskService: TaskService,
               public dialogService: DialogService,
@@ -52,11 +57,24 @@ export class TasksPageComponent {
                 });
                  this.sortPriorityItems = [{
                   label: "По возрастанию",
-                  icon: " pi pi-sort-up"
+                  icon: " pi pi-sort-up",
+                  command: () => {
+                    this.triggerSortByPriorityUp();
+                  }
                  },
                 {
                   label: "По убыванию",
-                  icon: "pi pi-sort-down"
+                  icon: "pi pi-sort-down",
+                  command: () => {
+                    this.triggerSortByPriorityDown();
+                  }
+                },
+                {
+                  label: "Отменить",
+                  icon: "pi pi-times",
+                  command: () => {
+                    this.cancelSortByPriority();
+                  }
                 }]
               }
 
@@ -150,14 +168,33 @@ export class TasksPageComponent {
   triggerSortByDeadline() {
     if (this.sortOption().value === SortValue.default) {
       this.sortOption.set(getSortOptionByValue(SortValue.deadline));
-      this.sortTooltip = "Отменить сортировку";
+      this.sortTooltip.deadline = "Отменить сортировку";
     }
     else if (this.sortOption().value === SortValue.deadline) {
       this.sortOption.set(getSortOptionByValue(SortValue.default));
-      this.sortTooltip = "Сортировать";
+      this.sortTooltip.deadline = "Сортировать";
     }
   }
-  triggerSortByPriority() {
-
+  triggerSortByPriorityUp() {
+    this.sortOption.set(getSortOptionByValue(SortValue.priorityUp));
+    this.sortPriorityIcon = "pi pi-sort-up";
+  }
+  triggerSortByPriorityDown() {
+    this.sortOption.set(getSortOptionByValue(SortValue.priorityDown));
+    this.sortPriorityIcon = "pi pi-sort-down";
+  }
+  cancelSortByPriority() {
+    this.sortOption.set(getSortOptionByValue(SortValue.default));
+    this.sortPriorityIcon = "pi pi-sort"
+  }
+  triggerSortByCategory() {
+    if (this.sortOption().value === SortValue.default) {
+      this.sortOption.set(getSortOptionByValue(SortValue.category));
+      this.sortTooltip.category = "Отменить сортировку";
+    }
+    else if (this.sortOption().value === SortValue.category) {
+      this.sortOption.set(getSortOptionByValue(SortValue.default));
+      this.sortTooltip.category = "Сортировать";
+    }
   }
 }
