@@ -1,9 +1,7 @@
 <app-user-menu [sidebarVisible]="sidebarVisible" [toggleSidebarVisibility]="toggleSidebarVisibility"></app-user-menu>
 <header>
-    <div class="header">
-        <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
-        <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
-    </div>
+    <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
+    <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
 </header>
 <div class="tasks">
     <p-dropdown class="sort-dropdown" styleClass="sort-dropdown-primeng" [options]="sortOptions" [ngModel]="sortOption()" (ngModelChange)="sortOption.set($event)" optionLabel="label"></p-dropdown>

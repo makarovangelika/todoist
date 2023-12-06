@@ -6,20 +6,20 @@ app-task {
     top: 5rem;
     position: relative;
 }
-.header {
-    display: flex;
-    align-items: center;
-    height: 3rem;
-    margin-top: 0.5rem;
-    width: 100%;
-    button {
-        margin-right: 2rem;
-    }
-}
 header {
     position: fixed;
     z-index: 1;
     width: 100%;
+    display: flex;
+    align-items: center;
+    height: 4.8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    top: 0;
+    background: white;
+    button {
+        margin-right: 2rem;
+    }
 }
 @media screen and (min-width: $medium) {
     .sort-dropdown { 
