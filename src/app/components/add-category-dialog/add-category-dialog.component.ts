@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { CategoryForm, CustomError } from 'src/app/models';
+import { CategoryForm } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
 import { categoryNameValidator } from 'src/app/validators';
 

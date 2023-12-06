@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CategoryForm } from 'src/app/models';
+import { CategoryService } from 'src/app/services/category.service';
+import { categoryNameValidator, editCategoryNameValidator } from 'src/app/validators';
 
 @Component({
   selector: 'app-edit-category-dialog',
@@ -10,7 +12,7 @@ import { CategoryForm } from 'src/app/models';
 })
 export class EditCategoryDialogComponent {
   editCategoryForm: FormGroup = new FormGroup<CategoryForm>({
-    name: new FormControl(this.dynamicDialogConfig.data.category.name, Validators.required)
+    name: new FormControl(this.dynamicDialogConfig.data.category.name, [Validators.required, editCategoryNameValidator(this.categoryService.getCategories(), this.dynamicDialogConfig.data.category)])
   });
 
   get name() {
@@ -18,6 +20,7 @@ export class EditCategoryDialogComponent {
   }
 
   constructor(public dynamicDialogConfig: DynamicDialogConfig,
+              private categoryService: CategoryService,
               public ref: DynamicDialogRef) {}
 
   saveEditedCategory() {
