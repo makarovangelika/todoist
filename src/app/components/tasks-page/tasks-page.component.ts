@@ -1,4 +1,4 @@
-import { Component, OnInit, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
+import { Component, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { SortOption, SortValue, Task, UpdateTaskData } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
@@ -16,26 +16,14 @@ import { SortTasksService } from 'src/app/services/sort-tasks.service';
 })
 export class TasksPageComponent {
   tasks: WritableSignal<Task[]> = signal(this.taskService.getTasks());
+
   sortedTasks: Signal<Task[]> = computed(() => {
     if (this.sortOption().value === SortValue.default) {
       return this.tasks();
     }
-
-    return [...this.tasks()].sort((prevTask, nextTask) => {
-      switch(this.sortOption().value) {
-        case SortValue.deadline:
-          return this.sortTasksService.sortByDeadline(prevTask, nextTask);
-        case SortValue.priorityUp:
-          return this.sortTasksService.sortByPriority(prevTask, nextTask, this.sortOption().value);
-        case SortValue.priorityDown:
-          return this.sortTasksService.sortByPriority(prevTask, nextTask, this.sortOption().value);
-        case SortValue.category:
-          return this.sortTasksService.sortByCategory(prevTask, nextTask);
-        default:
-          return 0;
-      }
-    })
+    return this.sortTasksService.sort(this.tasks(), this.sortOption());
   })
+
   ref: DynamicDialogRef | undefined;
   sidebarVisible = false;
   sortOption: WritableSignal<SortOption> = signal(getSortOptionByValue(SortValue.default));

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SortValue, Task } from '../models';
+import { SortOption, SortValue, Task } from '../models';
 import { PRIORITY_WEIGHTS } from '../constants';
 
 @Injectable({
@@ -8,6 +8,23 @@ import { PRIORITY_WEIGHTS } from '../constants';
 export class SortTasksService {
 
   constructor() { }
+
+  sort(tasks: Task[], sortOption: SortOption) {
+    return [...tasks].sort((prevTask, nextTask) => {
+      switch(sortOption.value) {
+        case SortValue.deadline:
+          return this.sortByDeadline(prevTask, nextTask);
+        case SortValue.priorityUp:
+          return this.sortByPriority(prevTask, nextTask, sortOption.value);
+        case SortValue.priorityDown:
+          return this.sortByPriority(prevTask, nextTask, sortOption.value);
+        case SortValue.category:
+          return this.sortByCategory(prevTask, nextTask);
+        default:
+          return 0;
+      }
+    })
+  }
 
   sortByDeadline(prevTask: Task, nextTask: Task) {
     if (prevTask.deadline === nextTask.deadline) {
