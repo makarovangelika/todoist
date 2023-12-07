@@ -3,7 +3,10 @@ app-task {
     display: block;
 }
 .tasks {
-    top: 5rem;
+    top: 7.8rem;
+    @media screen and (min-width: $medium) {
+        top: 5rem;
+    }
     position: relative;
 }
 header {
@@ -11,8 +14,16 @@ header {
     z-index: 1;
     width: 100%;
     display: flex;
-    align-items: center;
-    height: 4.8rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    @media screen and (min-width: $medium) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 4.8rem;
+    }
+    height: 7.8rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     top: 0;
@@ -45,4 +56,11 @@ header {
 .task-property {
     padding-left: 0.4rem;
     padding-right: 0.4rem;
+}
+app-filter {
+    margin-right: 2rem;
+}
+.header-buttons {
+    display: flex;
+    flex-wrap: nowrap;
 }

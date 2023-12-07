@@ -1,7 +1,10 @@
 <app-user-menu [sidebarVisible]="sidebarVisible" [toggleSidebarVisibility]="toggleSidebarVisibility"></app-user-menu>
 <header>
-    <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
-    <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
+    <div class="header-buttons">
+        <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
+        <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
+    </div>
+    <app-filter></app-filter>
 </header>
 <div class="tasks">
     <p-dropdown class="sort-dropdown" styleClass="sort-dropdown-primeng" [options]="sortOptions" [ngModel]="sortOption()" (ngModelChange)="sortOption.set($event)" optionLabel="label"></p-dropdown>
@@ -18,6 +21,6 @@
              'sort-button-clicked': sortOption().value === 'category'
         }"></button>
     </div>
-    <app-task *ngFor="let task of sortedTasks()" [task]="task" [changeStatus]="changeStatus" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
+    <app-task *ngFor="let task of filteredTasks()" [task]="task" [changeStatus]="changeStatus" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
 </div>
 <p-confirmDialog></p-confirmDialog>
