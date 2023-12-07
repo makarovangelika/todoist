@@ -7,6 +7,7 @@ import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.co
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { getSortOptionByValue, getSortOptions } from 'src/app/constants';
 import { SortTasksService } from 'src/app/services/sort-tasks.service';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-tasks-page',
@@ -24,6 +25,10 @@ export class TasksPageComponent {
     return this.sortTasksService.sort(this.tasks(), this.sortOption());
   })
 
+  filteredTasks: Signal<Task[]> = computed(() => {
+    return this.filterService.filterByTerm(this.sortedTasks());
+  })
+
   ref: DynamicDialogRef | undefined;
   sidebarVisible = false;
   sortOption: WritableSignal<SortOption> = signal(getSortOptionByValue(SortValue.default));
@@ -39,6 +44,7 @@ export class TasksPageComponent {
   constructor(private taskService: TaskService,
               public dialogService: DialogService,
               private sortTasksService: SortTasksService,
+              private filterService: FilterService,
               private confirmationService: ConfirmationService) {
                 effect(() => {
                   this.taskService.updateTasks(this.tasks());
@@ -185,4 +191,5 @@ export class TasksPageComponent {
       this.sortTooltip.category = "Сортировать";
     }
   }
+  
 }
