@@ -27,6 +27,7 @@ import { MenuModule } from 'primeng/menu';
 import { EditCategoryDialogComponent } from './components/edit-category-dialog/edit-category-dialog.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { FilterComponent } from './components/filter/filter.component';
+import { AdditionalFiltersComponent } from './components/additional-filters/additional-filters.component';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     UserMenuComponent,
     AddCategoryDialogComponent,
     EditCategoryDialogComponent,
-    FilterComponent
+    FilterComponent,
+    AdditionalFiltersComponent
   ],
   imports: [
     BrowserModule,
