@@ -55,3 +55,15 @@ export interface SortOption {
     label: string,
     value: SortValue
 }
+
+export interface FilterForm {
+    //status: FormControl<boolean | null>,
+    deadlineRange: FormControl<Date[] | null>,
+    //priority: FormControl<Priority[] | null>,
+    //category: FormControl<Category[] | null>
+}
+
+export interface Filters {
+    term: string | null;
+    deadlineRange: Date[] | null;
+}

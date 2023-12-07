@@ -1,5 +1,5 @@
 <div class="p-inputgroup">
     <i class="p-inputgroup-addon pi pi-search"></i>
-    <input type="text" pInputText placeholder="Поиск" [ngModel]="filterService.term()" (ngModelChange)="filterService.changeTerm($event)" class="p-inputtext-sm" />
+    <input type="text" pInputText placeholder="Поиск" [ngModel]="filterService.filters().term" (ngModelChange)="filterService.changeTerm($event)" class="p-inputtext-sm" />
     <button pButton icon=" pi pi-sliders-h" class="p-inputgroup-addon" (click)="openAdditionalFilters()"></button>
 </div>

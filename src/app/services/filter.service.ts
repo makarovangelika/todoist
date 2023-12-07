@@ -1,24 +1,31 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { Task } from '../models';
+import { Filters, Task } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
-  term: WritableSignal<string | null> = signal(null);
+  filters: WritableSignal<Filters> = signal({
+    term: null,
+    deadlineRange: null
+  });
 
   constructor() { }
 
   changeTerm(newTerm: string | null) {
-    this.term.set(newTerm);
+    this.filters.update(filters => {
+      filters.term = newTerm;
+      return filters;
+    })
   }
 
   filterByTerm(tasks: Task[]) {
-    if (!this.term()) {
+    if (!this.filters().term) {
       return tasks;
     }
     return tasks.filter(task => {
-      return task.description.toLowerCase().includes(this.term()?.toLowerCase()!);
+      return task.description.toLowerCase().includes(this.filters().term?.toLowerCase()!);
     })
   }
+
 }

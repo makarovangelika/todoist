@@ -1,1 +1,4 @@
-
+<form [formGroup]="filterForm" (ngSubmit)="filter()">
+    <p-calendar formControlName="deadlineRange" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" selectionMode="range" placeholder="Период"></p-calendar>
+    <button pButton type="submit" label="Применить" [disabled]="!filterForm.dirty"></button>
+</form>
