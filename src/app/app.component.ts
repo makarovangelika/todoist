@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import * as translations from '../../ru.json';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private config: PrimeNGConfig) {}
 
   ngOnInit() {
-    this.config.setTranslation(translations);
+    this.config.setTranslation(require('../../ru.json').ru);
   }
 }
