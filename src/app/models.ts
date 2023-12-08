@@ -65,8 +65,8 @@ export interface SortTooltip {
 export interface FilterForm {
     status: FormControl<Status | null>,
     deadlineFrom: FormControl<Date | null>,
-    deadlineTo: FormControl<Date | null>
-    //priority: FormControl<Priority[] | null>,
+    deadlineTo: FormControl<Date | null>,
+    priority: FormControl<Priority[] | null>
     //category: FormControl<Category[] | null>
 }
 
@@ -74,12 +74,14 @@ export interface Filters {
     term: string | null,
     deadlineFrom: Date | null,
     deadlineTo: Date | null,
-    status: Status | null
+    status: Status | null,
+    priority: Priority[] | null
 }
 export interface FilterFormData {
     deadlineFrom: Date | null,
     deadlineTo: Date | null,
-    status: Status | null
+    status: Status | null,
+    priority: Priority[] | null
 }
 
 export enum Status {

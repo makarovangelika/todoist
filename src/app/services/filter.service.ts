@@ -9,7 +9,8 @@ export class FilterService {
     term: null,
     deadlineFrom: null,
     deadlineTo: null,
-    status: Status.all
+    status: Status.all,
+    priority: null
   });
 
   constructor() { }
@@ -56,6 +57,17 @@ export class FilterService {
     })
   }
 
+  filterByPriority(tasks: Task[]) {
+    return tasks.filter(task => {
+      for (let priority of this.filters().priority!) {
+        if (task.priority === priority) {
+          return true;
+        }
+      }
+      return false;
+    })
+  }
+
   updateFilters(filterFormData: FilterFormData) {
     this.filters.update(filters => {
       return {
@@ -77,6 +89,9 @@ export class FilterService {
     }
     if (this.filters().status) {
       tasks = this.filterByStatus(tasks);
+    }
+    if (this.filters().priority) {
+      tasks = this.filterByPriority(tasks);
     }
     return tasks;
   }

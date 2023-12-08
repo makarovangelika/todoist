@@ -3,5 +3,9 @@
     <p-dropdown [options]="statusOptions" id="status-dropdown" formControlName="status" appendTo="body"></p-dropdown>
     <p-calendar formControlName="deadlineFrom" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Начало периода"></p-calendar>
     <p-calendar formControlName="deadlineTo" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Конец периода"></p-calendar>
+    <div *ngFor="let priority of priorities">
+        <p-checkbox name="group" [value]="priority.value" [formControl]="$any(filterForm.controls['priority'])" [inputId]="priority.value"></p-checkbox>
+        <label [for]="priority.value">{{ priority.label }}</label>
+    </div>
     <button pButton type="submit" label="Применить" [disabled]="!filterForm.dirty"></button>
 </form>
