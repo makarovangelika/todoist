@@ -67,3 +67,6 @@ export interface Filters {
     term: string | null;
     deadlineRange: Date[] | null;
 }
+export interface FilterFormData {
+    deadlineRange: Date[] | null
+}

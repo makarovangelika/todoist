@@ -1,5 +1,5 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { Filters, Task } from '../models';
+import { FilterFormData, Filters, Task } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -28,4 +28,12 @@ export class FilterService {
     })
   }
 
+  updateFilters(filters: FilterFormData) {
+    this.filters.update(filters => {
+      return {
+        ...this.filters,
+        ...filters
+      }
+    })
+  }
 }
