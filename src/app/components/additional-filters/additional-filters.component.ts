@@ -12,7 +12,8 @@ import { FilterService } from 'src/app/services/filter.service';
 export class AdditionalFiltersComponent {
   filterForm: FormGroup = new FormGroup<FilterForm>({
     //status: new FormControl(null),
-    deadlineRange: new FormControl(null),
+    deadlineFrom: new FormControl(null),
+    deadlineTo: new FormControl(null)
     //priority: new FormControl(null),
     //category: new FormControl(null)
   })
@@ -22,7 +23,8 @@ export class AdditionalFiltersComponent {
 
   filter() {
     const filters = {
-      deadlineRange: this.filterForm.value.deadlineRange
+      deadlineFrom: this.filterForm.value.deadlineFrom,
+      deadlineTo: this.filterForm.value.deadlineTo
     }
     this.filterService.updateFilters(filters);
     this.ref.close();

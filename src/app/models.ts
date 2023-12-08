@@ -58,15 +58,18 @@ export interface SortOption {
 
 export interface FilterForm {
     //status: FormControl<boolean | null>,
-    deadlineRange: FormControl<Date[] | null>,
+    deadlineFrom: FormControl<Date | null>,
+    deadlineTo: FormControl<Date | null>
     //priority: FormControl<Priority[] | null>,
     //category: FormControl<Category[] | null>
 }
 
 export interface Filters {
     term: string | null;
-    deadlineRange: Date[] | null;
+    deadlineFrom: Date | null;
+    deadlineTo: Date | null
 }
 export interface FilterFormData {
-    deadlineRange: Date[] | null
+    deadlineFrom: Date | null;
+    deadlineTo: Date | null
 }

@@ -26,7 +26,7 @@ export class TasksPageComponent {
   })
 
   filteredTasks: Signal<Task[]> = computed(() => {
-    return this.filterService.filterByTerm(this.sortedTasks());
+    return this.filterService.filter(this.sortedTasks());
   })
 
   ref: DynamicDialogRef | undefined;
