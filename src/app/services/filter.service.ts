@@ -43,6 +43,19 @@ export class FilterService {
     })
   }
 
+  filterByStatus(tasks: Task[]) {
+    return tasks.filter(task => {
+      if (this.filters().status === Status.done) {
+        return task.done;
+      }
+      if (this.filters().status === Status.undone) {
+        return !task.done;
+      } else {
+        return true;
+      }
+    })
+  }
+
   updateFilters(filterFormData: FilterFormData) {
     this.filters.update(filters => {
       return {
@@ -61,6 +74,9 @@ export class FilterService {
     }
     if (this.filters().deadlineTo) {
       tasks = this.filterByDeadlineTo(tasks);
+    }
+    if (this.filters().status) {
+      tasks = this.filterByStatus(tasks);
     }
     return tasks;
   }
