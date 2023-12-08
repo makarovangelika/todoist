@@ -1,5 +1,5 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { FilterFormData, Filters, Task } from '../models';
+import { FilterFormData, Filters, Status, Task } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,8 @@ export class FilterService {
   filters: WritableSignal<Filters> = signal({
     term: null,
     deadlineFrom: null,
-    deadlineTo: null
+    deadlineTo: null,
+    status: Status.all
   });
 
   constructor() { }
@@ -38,7 +39,7 @@ export class FilterService {
     return tasks.filter(task => {
       const taskDeadline = new Date(task.deadline).getTime();
       const deadlineTo = this.filters().deadlineTo!.getTime();
-      return taskDeadline <= deadlineTo;
+      return taskDeadline <= deadlineTo && task.deadline;
     })
   }
 

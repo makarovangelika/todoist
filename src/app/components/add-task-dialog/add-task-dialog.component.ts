@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { getOptions } from 'src/app/constants';
+import { getPriorityOptions } from 'src/app/constants';
 import { Priority, TaskForm } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
 import { v4 as uuid4 } from "uuid";
@@ -24,7 +24,7 @@ export class AddTaskDialogComponent {
   }
 
   minDate: Date = new Date();
-  priorities = getOptions();
+  priorities = getPriorityOptions();
   categories = this.categoryService.getCategories().map(category => {
     return {
       label: category.name,

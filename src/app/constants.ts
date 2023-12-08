@@ -1,4 +1,4 @@
-import { Priority, SortOption, SortValue } from "./models";
+import { Priority, SortOption, SortValue, Status } from "./models";
 
 export const PRIORITY_LABELS = {
     [Priority.low]: "Низкий",
@@ -8,7 +8,7 @@ export const PRIORITY_LABELS = {
 
 export const PRIORITY_WEIGHTS  = new Map<string, number>();
 
-export function getOptions() {
+export function getPriorityOptions() {
     return (Object.keys(PRIORITY_LABELS) as Array<keyof typeof Priority>).map(value => {
         return {
             label: PRIORITY_LABELS[value],
@@ -17,7 +17,7 @@ export function getOptions() {
     })
 }
 
-getOptions().forEach(option => {
+getPriorityOptions().forEach(option => {
     switch (option.value) {
         case Priority.low:
             PRIORITY_WEIGHTS.set(option.value, 1);
@@ -48,10 +48,10 @@ export const SORT_LABELS = {
 }
 
 export function getSortOptions(): SortOption[] {
-    return <SortOption[]>(Object.keys(SORT_LABELS) as Array<keyof typeof SortValue>).map(option => {
+    return <SortOption[]>(Object.keys(SORT_LABELS) as Array<keyof typeof SortValue>).map(value => {
         return {
-            label: SORT_LABELS[option],
-            value: option
+            label: SORT_LABELS[value],
+            value: value
         }
     })
 }
@@ -59,5 +59,20 @@ export function getSortOptions(): SortOption[] {
 export function getSortOptionByValue(value: SortValue): SortOption {
     return <SortOption>getSortOptions().find(option => {
         return option.value === value;
+    })
+}
+
+const STATUS_LABELS = {
+    [Status.all]: "Все",
+    [Status.done]: "Только выполненные",
+    [Status.undone]: "Только невыполненные"
+}
+
+export function getStatusOptions() {
+    return (Object.keys(STATUS_LABELS) as Array<keyof typeof Status>).map(value => {
+        return {
+            label: STATUS_LABELS[value],
+            value: value
+        }
     })
 }

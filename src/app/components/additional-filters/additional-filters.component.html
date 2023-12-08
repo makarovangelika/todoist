@@ -1,4 +1,6 @@
 <form [formGroup]="filterForm" (ngSubmit)="filter()">
+    <label for="status-dropdown">Показывать:</label>
+    <p-dropdown [options]="statusOptions" id="status-dropdown" formControlName="status" appendTo="body"></p-dropdown>
     <p-calendar formControlName="deadlineFrom" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Начало периода"></p-calendar>
     <p-calendar formControlName="deadlineTo" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Конец периода"></p-calendar>
     <button pButton type="submit" label="Применить" [disabled]="!filterForm.dirty"></button>

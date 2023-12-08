@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { getOptions } from 'src/app/constants';
+import { getPriorityOptions } from 'src/app/constants';
 import { TaskForm } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -21,7 +21,7 @@ export class EditTaskDialogComponent {
   });
 
   minDate = new Date();
-  priorities = getOptions();
+  priorities = getPriorityOptions();
 
   get description() {
     return this.editTaskForm.get('description');
