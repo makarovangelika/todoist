@@ -73,3 +73,9 @@ export interface FilterFormData {
     deadlineFrom: Date | null;
     deadlineTo: Date | null
 }
+
+export interface SortTooltip {
+    deadline: string,
+    priority: string,
+    category: string
+}

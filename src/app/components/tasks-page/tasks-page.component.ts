@@ -1,6 +1,6 @@
 import { Component, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { SortOption, SortValue, Task, UpdateTaskData } from 'src/app/models';
+import { SortOption, SortTooltip, SortValue, Task, UpdateTaskData } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
@@ -33,11 +33,15 @@ export class TasksPageComponent {
   sidebarVisible = false;
   sortOption: WritableSignal<SortOption> = signal(getSortOptionByValue(SortValue.default));
   sortOptions: SortOption[] = getSortOptions();
-  sortTooltip = {
-    deadline: "Сортировать",
-    priority: "Сортировать",
-    category: "Сортировать"
-  };
+
+  sortTooltip: Signal<SortTooltip> = computed(() => {
+    return {
+      deadline: this.sortOption().value === SortValue.deadline ? "Отменить сортировку" : "Сортировать",
+      priority: "Сортировать",
+      category: this.sortOption().value === SortValue.category ? "Отменить сортировку" : "Сортировать"
+    }
+  });
+  
   sortPriorityItems: MenuItem[];
   sortPriorityIcon = 'pi pi-sort';
 
@@ -160,13 +164,11 @@ export class TasksPageComponent {
   }
 
   triggerSortByDeadline() {
-    if (this.sortOption().value === SortValue.default) {
+    if (this.sortOption().value !== SortValue.deadline) {
       this.sortOption.set(getSortOptionByValue(SortValue.deadline));
-      this.sortTooltip.deadline = "Отменить сортировку";
     }
     else if (this.sortOption().value === SortValue.deadline) {
       this.sortOption.set(getSortOptionByValue(SortValue.default));
-      this.sortTooltip.deadline = "Сортировать";
     }
   }
   triggerSortByPriorityUp() {
@@ -182,13 +184,11 @@ export class TasksPageComponent {
     this.sortPriorityIcon = "pi pi-sort"
   }
   triggerSortByCategory() {
-    if (this.sortOption().value === SortValue.default) {
+    if (this.sortOption().value !== SortValue.category) {
       this.sortOption.set(getSortOptionByValue(SortValue.category));
-      this.sortTooltip.category = "Отменить сортировку";
     }
     else if (this.sortOption().value === SortValue.category) {
       this.sortOption.set(getSortOptionByValue(SortValue.default));
-      this.sortTooltip.category = "Сортировать";
     }
   }
   
