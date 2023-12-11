@@ -135,3 +135,13 @@
         width: 20%
     }
 }
+.status-dropdown {
+    width: 100%;
+}
+.filter-calendar {
+    margin-bottom: 0.4rem;
+    width: 150px;
+    @media screen and (min-width: $medium) {
+        margin-right: 0.4rem;
+    }
+}

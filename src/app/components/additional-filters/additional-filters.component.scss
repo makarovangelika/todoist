@@ -1,0 +1,43 @@
+@import '../../../variables.scss';
+
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.filter {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+    .filter-label {
+        margin-right: 2rem;
+        width: 34%;
+    }
+}
+#priority-filter, #category-filter {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    .checkbox {
+        margin-bottom: 0.4rem;
+        display: flex;
+        align-items: center;
+        label {
+            margin-left: 0.5rem;
+        }
+    }
+}
+#status-filter, #deadline-filter {
+    width: 55%;
+}
+.status-filter {
+    align-items: center;
+}
+#deadline-filter {
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: $medium) and (max-width: $large),
+                      (min-width: $extra-large) {
+                        flex-direction: row;
+    }
+}

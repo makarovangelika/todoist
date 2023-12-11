@@ -1,17 +1,32 @@
-<form [formGroup]="filterForm" (ngSubmit)="filter()">
-    <label for="status-dropdown">Показывать</label>
-    <p-dropdown [options]="statusOptions" id="status-dropdown" formControlName="status" appendTo="body"></p-dropdown>
-    <p-calendar formControlName="deadlineFrom" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Начало периода"></p-calendar>
-    <p-calendar formControlName="deadlineTo" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Конец периода"></p-calendar>
-    <span>Приоритет</span>
-    <div *ngFor="let priority of priorities">
-        <p-checkbox name="priorityGroup" [value]="priority.value" [formControl]="$any(filterForm.controls['priority'])" [inputId]="priority.value"></p-checkbox>
-        <label [for]="priority.value">{{ priority.label }}</label>
+<form [formGroup]="filterForm" (ngSubmit)="filter()" class="filter-form">
+    <div class="filter status-filter">
+        <label for="status-filter" class="filter-label">Показывать</label>
+        <p-dropdown [options]="statusOptions" id="status-filter" formControlName="status" appendTo="body" styleClass="status-dropdown"></p-dropdown>
     </div>
-    <span>Категория</span>
-    <div *ngFor="let category of userCategories">
-        <p-checkbox name="categoryGroup" [value]="category" [formControl]="$any(filterForm.controls['category'])" [inputId]="category.name"></p-checkbox>
-        <label [for]="category">{{ category.name }}</label>
+    <div class="filter">
+        <label for="deadline-filter" class="filter-label">Срок</label>
+        <div id="deadline-filter">
+            <p-calendar formControlName="deadlineFrom" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Начало" styleClass="filter-calendar"></p-calendar>
+            <p-calendar formControlName="deadlineTo" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Конец" styleClass="filter-calendar"></p-calendar>
+        </div>
+    </div>
+    <div class="filter">
+        <label for="priority-filter" class="filter-label">Приоритет</label>
+        <div id="priority-filter">
+            <div *ngFor="let priority of priorities" class="checkbox">
+                <p-checkbox name="priorityGroup" [value]="priority.value" [formControl]="$any(filterForm.controls['priority'])" [inputId]="priority.value"></p-checkbox>
+                <label [for]="priority.value">{{ priority.label }}</label>
+            </div>
+        </div>
+    </div>
+    <div class="filter">
+        <label for="category-filter" class="filter-label">Категория</label>
+        <div id="category-filter">
+            <div *ngFor="let category of userCategories" class="checkbox">
+                <p-checkbox name="categoryGroup" [value]="category" [formControl]="$any(filterForm.controls['category'])" [inputId]="category.name"></p-checkbox>
+                <label [for]="category">{{ category.name }}</label>
+            </div>
+        </div>
     </div>
     <button pButton type="submit" label="Применить" [disabled]="!filterForm.dirty"></button>
 </form>
