@@ -10,7 +10,8 @@ export class FilterService {
     deadlineFrom: null,
     deadlineTo: null,
     status: Status.all,
-    priority: null
+    priority: null,
+    category: null
   });
 
   constructor() { }

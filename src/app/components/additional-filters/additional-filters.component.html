@@ -1,11 +1,17 @@
 <form [formGroup]="filterForm" (ngSubmit)="filter()">
-    <label for="status-dropdown">Показывать:</label>
+    <label for="status-dropdown">Показывать</label>
     <p-dropdown [options]="statusOptions" id="status-dropdown" formControlName="status" appendTo="body"></p-dropdown>
     <p-calendar formControlName="deadlineFrom" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Начало периода"></p-calendar>
     <p-calendar formControlName="deadlineTo" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Конец периода"></p-calendar>
+    <span>Приоритет</span>
     <div *ngFor="let priority of priorities">
-        <p-checkbox name="group" [value]="priority.value" [formControl]="$any(filterForm.controls['priority'])" [inputId]="priority.value"></p-checkbox>
+        <p-checkbox name="priorityGroup" [value]="priority.value" [formControl]="$any(filterForm.controls['priority'])" [inputId]="priority.value"></p-checkbox>
         <label [for]="priority.value">{{ priority.label }}</label>
+    </div>
+    <span>Категория</span>
+    <div *ngFor="let category of userCategories">
+        <p-checkbox name="categoryGroup" [value]="category" [formControl]="$any(filterForm.controls['category'])" [inputId]="category"></p-checkbox>
+        <label [for]="category">{{ category }}</label>
     </div>
     <button pButton type="submit" label="Применить" [disabled]="!filterForm.dirty"></button>
 </form>

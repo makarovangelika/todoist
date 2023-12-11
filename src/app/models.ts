@@ -67,7 +67,7 @@ export interface FilterForm {
     deadlineFrom: FormControl<Date | null>,
     deadlineTo: FormControl<Date | null>,
     priority: FormControl<Priority[] | null>
-    //category: FormControl<Category[] | null>
+    category: FormControl<Category[] | null>
 }
 
 export interface Filters {
@@ -75,13 +75,15 @@ export interface Filters {
     deadlineFrom: Date | null,
     deadlineTo: Date | null,
     status: Status | null,
-    priority: Priority[] | null
+    priority: Priority[] | null,
+    category: Category[] | null
 }
 export interface FilterFormData {
     deadlineFrom: Date | null,
     deadlineTo: Date | null,
     status: Status | null,
-    priority: Priority[] | null
+    priority: Priority[] | null,
+    category: Category[] | null
 }
 
 export enum Status {
