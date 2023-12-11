@@ -94,6 +94,17 @@ export class FilterService {
     })
   }
 
+  clearFilters() {
+    this.filters.set({
+      term: null,
+      deadlineFrom: null,
+      deadlineTo: null,
+      status: Status.all,
+      priority: null,
+      category: null
+    })
+  }
+
   filter(tasks: Task[]) {
     if (this.filters().term) {
       tasks = this.filterByTerm(tasks);
@@ -113,6 +124,7 @@ export class FilterService {
     if (this.filters().category) {
       tasks = this.filterByCategory(tasks);
     }
+    console.log(this.filters());
     return tasks;
   }
 }

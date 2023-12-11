@@ -49,7 +49,11 @@ export class AdditionalFiltersComponent implements OnInit {
       category: this.filterForm.value.category
     }
     this.filterService.updateFilters(filters);
-    console.log(this.filterService.filters());
     this.ref.close();
+  }
+  
+  clearFilters() {
+    this.filterService.clearFilters();
+    this.filterForm.reset();
   }
 }

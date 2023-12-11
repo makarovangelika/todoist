@@ -28,5 +28,8 @@
             </div>
         </div>
     </div>
-    <button pButton type="submit" label="Применить" [disabled]="!filterForm.dirty"></button>
+    <div class="filter-buttons">
+        <button pButton type="button" label="Сбросить" (click)="clearFilters()" class="clear-filters"></button>
+        <button pButton type="submit" label="Применить" [disabled]="!filterForm.dirty"></button>
+    </div>
 </form>
