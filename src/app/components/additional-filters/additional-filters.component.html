@@ -10,8 +10,8 @@
     </div>
     <span>Категория</span>
     <div *ngFor="let category of userCategories">
-        <p-checkbox name="categoryGroup" [value]="category" [formControl]="$any(filterForm.controls['category'])" [inputId]="category"></p-checkbox>
-        <label [for]="category">{{ category }}</label>
+        <p-checkbox name="categoryGroup" [value]="category" [formControl]="$any(filterForm.controls['category'])" [inputId]="category.name"></p-checkbox>
+        <label [for]="category">{{ category.name }}</label>
     </div>
     <button pButton type="submit" label="Применить" [disabled]="!filterForm.dirty"></button>
 </form>

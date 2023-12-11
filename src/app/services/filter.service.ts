@@ -68,6 +68,22 @@ export class FilterService {
       return false;
     })
   }
+  filterByCategory(tasks: Task[]) {
+    return tasks.filter(task => {
+      for (let category of this.filters().category!) {
+        if (!task.category) {
+          if (category.name === "Без категории") {
+            return true;
+          }
+        } else {
+          if (task.category.name === category.name) {
+            return true;
+          }
+        }
+      }
+      return false;
+    })
+  }
 
   updateFilters(filterFormData: FilterFormData) {
     this.filters.update(filters => {
@@ -93,6 +109,9 @@ export class FilterService {
     }
     if (this.filters().priority) {
       tasks = this.filterByPriority(tasks);
+    }
+    if (this.filters().category) {
+      tasks = this.filterByCategory(tasks);
     }
     return tasks;
   }

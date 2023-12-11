@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { getPriorityOptions, getStatusOptions } from 'src/app/constants';
-import { FilterForm } from 'src/app/models';
+import { Category, FilterForm } from 'src/app/models';
 import { FilterService } from 'src/app/services/filter.service';
 import { TaskService } from 'src/app/services/task.service';
 
@@ -22,7 +22,9 @@ export class AdditionalFiltersComponent implements OnInit {
 
   statusOptions = getStatusOptions();
   priorities = getPriorityOptions();
-  userCategories: string[] = ["Без категории"];
+  userCategories: Category[] = [{
+    name: "Без категории"
+  }];
 
   constructor(private ref: DynamicDialogRef,
               private filterService: FilterService,
@@ -31,8 +33,8 @@ export class AdditionalFiltersComponent implements OnInit {
   ngOnInit() {
     this.taskService.getTasks().forEach(task => {
       if (task.category) {
-        if (!this.userCategories?.includes(task.category.name)) {
-          this.userCategories.push(task.category.name)
+        if (!this.userCategories?.some(category => category.name === task.category?.name)) {
+          this.userCategories.push(task.category)
         }
       }
     })
@@ -47,6 +49,7 @@ export class AdditionalFiltersComponent implements OnInit {
       category: this.filterForm.value.category
     }
     this.filterService.updateFilters(filters);
+    console.log(this.filterService.filters());
     this.ref.close();
   }
 }
