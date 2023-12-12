@@ -1,4 +1,4 @@
-import { Component, Input, WritableSignal } from '@angular/core';
+import { Component } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FilterService } from 'src/app/services/filter.service';
 import { AdditionalFiltersComponent } from '../additional-filters/additional-filters.component';

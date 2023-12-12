@@ -19,7 +19,6 @@ header {
     align-items: flex-start;
     @media screen and (min-width: $medium) {
         flex-direction: row;
-        justify-content: space-between;
         align-items: center;
         height: 4.8rem;
     }
