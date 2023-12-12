@@ -1,5 +1,5 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { FilterFormData, Filters, Priority, Status, Task } from '../models';
+import { Category, FilterFormData, Filters, Priority, Status, Task } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -127,6 +127,17 @@ export class FilterService {
       return {
         ...filters,
         priority: filters.priority!.length ? filters.priority : null
+      }
+    })
+  }
+
+  removeCategoryCheckbox(category: Category) {
+    this.filters.update(filters => {
+      const index = filters.category!.indexOf(category);
+      filters.category?.splice(index, 1);
+      return {
+        ...filters,
+        category: filters.category!.length ? filters.category : null
       }
     })
   }

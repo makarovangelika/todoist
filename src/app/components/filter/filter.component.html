@@ -23,4 +23,10 @@
             {{ priorityLabels[priority] }}
         </button>
     </p-chip>
+    <p-chip [removable]="true" *ngFor="let category of filterService.filters().category" (onRemove)="filterService.removeCategoryCheckbox(category)">
+        <button type="button" (click)="openAdditionalFilters()">
+            <i class="pi pi-hashtag"></i>
+            {{ category.name }}
+        </button>
+    </p-chip>
 </div>
