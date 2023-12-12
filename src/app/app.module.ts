@@ -28,6 +28,7 @@ import { EditCategoryDialogComponent } from './components/edit-category-dialog/e
 import { TooltipModule } from 'primeng/tooltip';
 import { FilterComponent } from './components/filter/filter.component';
 import { AdditionalFiltersComponent } from './components/additional-filters/additional-filters.component';
+import { ChipModule } from 'primeng/chip';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -67,6 +68,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MenuModule,
     TooltipModule,
+    ChipModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

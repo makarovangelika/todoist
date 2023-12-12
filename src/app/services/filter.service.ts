@@ -105,6 +105,21 @@ export class FilterService {
     })
   }
 
+  clearFilter(filter: string) {
+    this.filters.update(filters => {
+      if (filter === "status") {
+        return {
+          ...filters,
+          [filter]: Status.all
+        }
+      }
+      return {
+        ...filters,
+        [filter]: null
+      }
+    })
+  }
+
   filter(tasks: Task[]) {
     if (this.filters().term) {
       tasks = this.filterByTerm(tasks);
@@ -124,7 +139,6 @@ export class FilterService {
     if (this.filters().category) {
       tasks = this.filterByCategory(tasks);
     }
-    console.log(this.filters());
     return tasks;
   }
 }

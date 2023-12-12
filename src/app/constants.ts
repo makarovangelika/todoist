@@ -62,10 +62,10 @@ export function getSortOptionByValue(value: SortValue): SortOption {
     })
 }
 
-const STATUS_LABELS = {
+export const STATUS_LABELS = {
     [Status.all]: "Все",
-    [Status.done]: "Только выполненные",
-    [Status.undone]: "Только невыполненные"
+    [Status.done]: "Выполненные",
+    [Status.undone]: "Невыполненные"
 }
 
 export function getStatusOptions() {

@@ -2,6 +2,7 @@ import { Component, Input, WritableSignal } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FilterService } from 'src/app/services/filter.service';
 import { AdditionalFiltersComponent } from '../additional-filters/additional-filters.component';
+import { SORT_LABELS, STATUS_LABELS } from 'src/app/constants';
 
 @Component({
   selector: 'app-filter',
@@ -10,6 +11,7 @@ import { AdditionalFiltersComponent } from '../additional-filters/additional-fil
 })
 export class FilterComponent {
   ref: DynamicDialogRef | undefined;
+  statusLabels = STATUS_LABELS;
 
   constructor(public filterService: FilterService,
               private dialogService: DialogService) {}

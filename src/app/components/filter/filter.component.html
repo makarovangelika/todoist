@@ -2,4 +2,7 @@
     <i class="p-inputgroup-addon pi pi-search"></i>
     <input type="text" pInputText placeholder="Поиск" [ngModel]="filterService.filters().term" (ngModelChange)="filterService.changeTerm($event)" class="p-inputtext-sm" />
     <button pButton icon=" pi pi-sliders-h" class="p-inputgroup-addon" (click)="openAdditionalFilters()"></button>
+    <p-chip [removable]="true" *ngIf="filterService.filters().status !== 'all'" (onRemove)="filterService.clearFilter('status')">
+        <button pButton type="button" [label]="statusLabels[filterService.filters().status!]" (click)="openAdditionalFilters()"></button>
+    </p-chip>
 </div>
