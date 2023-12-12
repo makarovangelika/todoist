@@ -3,6 +3,24 @@
     <input type="text" pInputText placeholder="Поиск" [ngModel]="filterService.filters().term" (ngModelChange)="filterService.changeTerm($event)" class="p-inputtext-sm" />
     <button pButton icon=" pi pi-sliders-h" class="p-inputgroup-addon" (click)="openAdditionalFilters()"></button>
     <p-chip [removable]="true" *ngIf="filterService.filters().status !== 'all'" (onRemove)="filterService.clearFilter('status')">
-        <button pButton type="button" [label]="statusLabels[filterService.filters().status!]" (click)="openAdditionalFilters()"></button>
+        <button type="button" (click)="openAdditionalFilters()">
+            {{ statusLabels[filterService.filters().status!] }}
+        </button>
+    </p-chip>
+    <p-chip [removable]="true" *ngIf="filterService.filters().deadlineFrom" (onRemove)="filterService.clearFilter('deadlineFrom')">
+        <button type="button" (click)="openAdditionalFilters()">
+            с {{filterService.filters().deadlineFrom | date:'dd.MM.yy' }}
+        </button>
+    </p-chip>
+    <p-chip [removable]="true" *ngIf="filterService.filters().deadlineTo" (onRemove)="filterService.clearFilter('deadlineTo')">
+        <button type="button" (click)="openAdditionalFilters()">
+            по {{ filterService.filters().deadlineTo | date:'dd.MM.yy' }}
+        </button>
+    </p-chip>
+    <p-chip [removable]="true" *ngFor="let priority of filterService.filters().priority" (onRemove)="filterService.removePriorityCheckbox(priority)">
+        <button type="button" (click)="openAdditionalFilters()">
+            <i class="pi pi-flag-fill"></i>
+            {{ priorityLabels[priority] }}
+        </button>
     </p-chip>
 </div>
