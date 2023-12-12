@@ -1,8 +1,5 @@
-import { Component } from '@angular/core';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Component, Input } from '@angular/core';
 import { FilterService } from 'src/app/services/filter.service';
-import { AdditionalFiltersComponent } from '../additional-filters/additional-filters.component';
-import { PRIORITY_LABELS, STATUS_LABELS } from 'src/app/constants';
 
 @Component({
   selector: 'app-filter',
@@ -10,19 +7,8 @@ import { PRIORITY_LABELS, STATUS_LABELS } from 'src/app/constants';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
-  ref: DynamicDialogRef | undefined;
-  statusLabels = STATUS_LABELS;
-  priorityLabels = PRIORITY_LABELS;
+  @Input() openAdditionalFilters!: () => void
 
-  constructor(public filterService: FilterService,
-              private dialogService: DialogService) {}
+  constructor(public filterService: FilterService) {}
 
-  openAdditionalFilters() {
-    this.ref = this.dialogService.open(AdditionalFiltersComponent, {
-      dismissableMask: true,
-      modal: true,
-      keepInViewport: true,
-      header: "Фильтры"
-    })
-  }
 }

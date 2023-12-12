@@ -29,6 +29,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { FilterComponent } from './components/filter/filter.component';
 import { AdditionalFiltersComponent } from './components/additional-filters/additional-filters.component';
 import { ChipModule } from 'primeng/chip';
+import { FilterChipsComponent } from './components/filter-chips/filter-chips.component';
 
 const appRoutes: Routes = [
   {path: '', component: SignUpPageComponent},
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     AddCategoryDialogComponent,
     EditCategoryDialogComponent,
     FilterComponent,
-    AdditionalFiltersComponent
+    AdditionalFiltersComponent,
+    FilterChipsComponent
   ],
   imports: [
     BrowserModule,

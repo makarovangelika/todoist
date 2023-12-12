@@ -4,9 +4,10 @@
         <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
         <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
     </div>
-    <app-filter></app-filter>
+    <app-filter [openAdditionalFilters]="openAdditionalFilters"></app-filter>
 </header>
 <div class="tasks">
+    <app-filter-chips [openAdditionalFilters]="openAdditionalFilters"></app-filter-chips>
     <p-dropdown class="sort-dropdown" styleClass="sort-dropdown-primeng" [options]="sortOptions" [ngModel]="sortOption()" (ngModelChange)="sortOption.set($event)" optionLabel="label"></p-dropdown>
     <div class="sort-panel">
         <div class="task-title">&nbsp;</div>

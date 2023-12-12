@@ -8,6 +8,7 @@ import { ConfirmationService, MenuItem } from 'primeng/api';
 import { getSortOptionByValue, getSortOptions } from 'src/app/constants';
 import { SortTasksService } from 'src/app/services/sort-tasks.service';
 import { FilterService } from 'src/app/services/filter.service';
+import { AdditionalFiltersComponent } from '../additional-filters/additional-filters.component';
 
 @Component({
   selector: 'app-tasks-page',
@@ -190,6 +191,15 @@ export class TasksPageComponent {
     else if (this.sortOption().value === SortValue.category) {
       this.sortOption.set(getSortOptionByValue(SortValue.default));
     }
+  }
+
+  openAdditionalFilters = () => {
+    this.ref = this.dialogService.open(AdditionalFiltersComponent, {
+      dismissableMask: true,
+      modal: true,
+      keepInViewport: true,
+      header: "Фильтры"
+    })
   }
   
 }
