@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { getPriorityOptions, getStatusOptions } from 'src/app/constants';
-import { Category, FilterForm } from 'src/app/models';
+import { Category, FilterForm, Status } from 'src/app/models';
 import { FilterService } from 'src/app/services/filter.service';
 import { TaskService } from 'src/app/services/task.service';
 
@@ -13,11 +13,11 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class AdditionalFiltersComponent implements OnInit {
   filterForm: FormGroup = new FormGroup<FilterForm>({
-    status: new FormControl(this.filterService.filters().status),
-    deadlineFrom: new FormControl(this.filterService.filters().deadlineFrom),
-    deadlineTo: new FormControl(this.filterService.filters().deadlineTo),
-    priority: new FormControl(this.filterService.filters().priority),
-    category: new FormControl(this.filterService.filters().category)
+    status: new FormControl(Status.all),
+    deadlineFrom: new FormControl(null),
+    deadlineTo: new FormControl(null),
+    priority: new FormControl(null),
+    category: new FormControl(null)
   })
 
   statusOptions = getStatusOptions();
@@ -37,6 +37,13 @@ export class AdditionalFiltersComponent implements OnInit {
           this.userCategories.push(task.category)
         }
       }
+    })
+    this.filterForm.patchValue({
+      status: this.filterService.filters().status,
+      deadlineFrom: this.filterService.filters().deadlineFrom,
+      deadlineTo:  this.filterService.filters().deadlineTo,
+      priority: this.filterService.filters().priority,
+      category: this.filterService.filters().category
     })
   }
 
