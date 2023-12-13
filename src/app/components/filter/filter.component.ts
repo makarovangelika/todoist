@@ -7,7 +7,7 @@ import { FilterService } from 'src/app/services/filter.service';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
-  @Input() openAdditionalFilters!: () => void
+  @Input() openAdditionalFilters: () => void = () => {}
 
   constructor(public filterService: FilterService) {}
 

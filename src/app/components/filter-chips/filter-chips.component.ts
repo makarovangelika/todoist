@@ -8,7 +8,7 @@ import { FilterService } from 'src/app/services/filter.service';
   styleUrls: ['./filter-chips.component.scss']
 })
 export class FilterChipsComponent {
-  @Input() openAdditionalFilters!: () => void;
+  @Input() openAdditionalFilters: () => void = () => {};
   statusLabels = STATUS_LABELS;
   priorityLabels = PRIORITY_LABELS;
 

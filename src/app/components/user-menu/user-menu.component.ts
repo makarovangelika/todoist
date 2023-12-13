@@ -15,7 +15,7 @@ import { EditCategoryDialogComponent } from '../edit-category-dialog/edit-catego
 })
 export class UserMenuComponent implements OnInit {
   @Input() sidebarVisible = false;
-  @Input() toggleSidebarVisibility!: () => void
+  @Input() toggleSidebarVisibility: () => void = () => {};
   categories: WritableSignal<Category[]> = signal(this.categoryService.getCategories());
   ref: DynamicDialogRef | undefined;
   menuItems: MenuItem[] | undefined;

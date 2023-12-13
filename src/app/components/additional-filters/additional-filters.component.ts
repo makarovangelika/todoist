@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { getPriorityOptions, getStatusOptions } from 'src/app/constants';
 import { Category, FilterForm, Status } from 'src/app/models';
 import { FilterService } from 'src/app/services/filter.service';

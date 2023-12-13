@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CategoryForm } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
-import { categoryNameValidator, editCategoryNameValidator } from 'src/app/validators';
+import { editCategoryNameValidator } from 'src/app/validators';
 
 @Component({
   selector: 'app-edit-category-dialog',

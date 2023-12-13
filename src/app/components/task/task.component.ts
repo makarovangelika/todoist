@@ -9,9 +9,9 @@ import { Task } from 'src/app/models';
 })
 export class TaskComponent {
   @Input() task!: Task;
-  @Input() changeStatus!: (taskId: string) => void;
-  @Input() openEditDialog!: (task: Task) => void;
-  @Input() confirmDelete!: (taskId: string) => void;
+  @Input() changeStatus: (taskId: string) => void = () => {};
+  @Input() openEditDialog: (task: Task) => void = () => {};
+  @Input() confirmDelete: (taskId: string) => void = () => {};
 
   priorityLabels = PRIORITY_LABELS;
 
