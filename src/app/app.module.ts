@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { TasksPageComponent } from './components/tasks-page/tasks-page.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, provideRouter } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -30,11 +30,12 @@ import { FilterComponent } from './components/filter/filter.component';
 import { AdditionalFiltersComponent } from './components/additional-filters/additional-filters.component';
 import { ChipModule } from 'primeng/chip';
 import { FilterChipsComponent } from './components/filter-chips/filter-chips.component';
+import { authGuard } from './guards/auth-guard';
 
 const appRoutes: Routes = [
-  {path: '', component: SignUpPageComponent},
+  {path: 'signup', component: SignUpPageComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'tasks', component: TasksPageComponent}
+  {path: '', component: TasksPageComponent, canActivate: [authGuard]}
 ]
 
 @NgModule({
@@ -73,7 +74,7 @@ const appRoutes: Routes = [
     ChipModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [provideRouter(appRoutes)],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

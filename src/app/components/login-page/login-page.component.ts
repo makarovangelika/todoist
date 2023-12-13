@@ -31,7 +31,7 @@ export class LoginPageComponent {
       const password = this.authForm.value.password as string;
       this.loginService.authorizeUser(email, password).subscribe({
         next: authorizedUser => {
-          this.router.navigate(['/tasks']);
+          this.router.navigate(['']);
         },
         error: error => {
           if (error.message === 'ERR_INVALID_EMAIL_OR_PASSWORD') {

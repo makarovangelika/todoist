@@ -38,7 +38,7 @@ export class SignUpPageComponent {
       next: user => {
         this.loginService.authorizeUser(user.email, user.password).subscribe({
           next: authorizedUser => {
-            this.router.navigate(['/tasks']);
+            this.router.navigate(['']);
           },
           error: error => {
             this.router.navigate(['/login']);
