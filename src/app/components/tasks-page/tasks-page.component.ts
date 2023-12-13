@@ -167,6 +167,9 @@ export class TasksPageComponent {
   triggerSortByDeadline() {
     if (this.sortOption().value !== SortValue.deadline) {
       this.sortOption.set(getSortOptionByValue(SortValue.deadline));
+      if (this.sortPriorityIcon !== 'pi pi-sort') {
+        this.sortPriorityIcon = 'pi pi-sort';
+      }
     }
     else if (this.sortOption().value === SortValue.deadline) {
       this.sortOption.set(getSortOptionByValue(SortValue.default));
@@ -181,12 +184,17 @@ export class TasksPageComponent {
     this.sortPriorityIcon = "pi pi-sort-down";
   }
   cancelSortByPriority() {
-    this.sortOption.set(getSortOptionByValue(SortValue.default));
-    this.sortPriorityIcon = "pi pi-sort"
+    if (this.sortOption().value === SortValue.priorityDown || this.sortOption().value === SortValue.priorityUp) {
+      this.sortOption.set(getSortOptionByValue(SortValue.default));
+      this.sortPriorityIcon = "pi pi-sort"
+    }
   }
   triggerSortByCategory() {
     if (this.sortOption().value !== SortValue.category) {
       this.sortOption.set(getSortOptionByValue(SortValue.category));
+      if (this.sortPriorityIcon !== 'pi pi-sort') {
+        this.sortPriorityIcon = 'pi pi-sort';
+      }
     }
     else if (this.sortOption().value === SortValue.category) {
       this.sortOption.set(getSortOptionByValue(SortValue.default));
