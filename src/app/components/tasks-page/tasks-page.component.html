@@ -1,4 +1,4 @@
-<app-user-menu [sidebarVisible]="sidebarVisible" [toggleSidebarVisibility]="toggleSidebarVisibility"></app-user-menu>
+<app-user-menu [sidebarVisible]="sidebarVisible" (sidebarClosed)="toggleSidebarVisibility()"></app-user-menu>
 <header>
     <div class="header-buttons">
         <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
@@ -22,6 +22,6 @@
              'sort-button-clicked': sortOption().value === 'category'
         }"></button>
     </div>
-    <app-task *ngFor="let task of filteredTasks()" [task]="task" (taskChecked)="changeStatus($event)" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
+    <app-task *ngFor="let task of filteredTasks()" [task]="task" (taskChecked)="changeStatus($event)" (editButtonClicked)="openEditDialog($event)" (deleteButtonClicked)="confirmDelete($event)"></app-task>
 </div>
 <p-confirmDialog></p-confirmDialog>

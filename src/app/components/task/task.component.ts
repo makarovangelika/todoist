@@ -10,8 +10,8 @@ import { Task } from 'src/app/models';
 export class TaskComponent {
   @Input({ required: true }) task!: Task;
   @Output() readonly taskChecked = new EventEmitter<string>();
-  @Input() openEditDialog: (task: Task) => void = () => {};
-  @Input() confirmDelete: (taskId: string) => void = () => {};
+  @Output() readonly editButtonClicked = new EventEmitter<Task>();
+  @Output() readonly deleteButtonClicked = new EventEmitter<string>();
 
   priorityLabels = PRIORITY_LABELS;
 
@@ -19,5 +19,11 @@ export class TaskComponent {
 
   changeStatus(taskId: string) {
     this.taskChecked.emit(taskId);
+  }
+  openEditDialog(task: Task) {
+    this.editButtonClicked.emit(task);
+  }
+  confirmDelete(taskId: string) {
+    this.deleteButtonClicked.emit(taskId);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, WritableSignal, effect, signal } from '@angular/core';
+import { Component, Input, OnInit, Output, WritableSignal, effect, signal, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -15,7 +15,7 @@ import { EditCategoryDialogComponent } from '../edit-category-dialog/edit-catego
 })
 export class UserMenuComponent implements OnInit {
   @Input() sidebarVisible = false;
-  @Input() toggleSidebarVisibility: () => void = () => {};
+  @Output() readonly sidebarClosed = new EventEmitter();
   categories: WritableSignal<Category[]> = signal(this.categoryService.getCategories());
   ref: DynamicDialogRef | undefined;
   menuItems: MenuItem[] | undefined;
@@ -49,7 +49,11 @@ export class UserMenuComponent implements OnInit {
         }
       ]
     }
-    
+  
+  toggleSidebarVisibility() {
+    this.sidebarClosed.emit();
+  }
+
   logout() {
     this.userStorageService.logout();
     this.router.navigate(['/login']);
