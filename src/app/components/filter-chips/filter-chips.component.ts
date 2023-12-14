@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PRIORITY_LABELS, STATUS_LABELS } from 'src/app/constants';
 import { FilterService } from 'src/app/services/filter.service';
 
@@ -8,9 +8,13 @@ import { FilterService } from 'src/app/services/filter.service';
   styleUrls: ['./filter-chips.component.scss']
 })
 export class FilterChipsComponent {
-  @Input() openAdditionalFilters: () => void = () => {};
+  @Output() readonly filterChipClicked = new EventEmitter();
   statusLabels = STATUS_LABELS;
   priorityLabels = PRIORITY_LABELS;
 
   constructor(public filterService: FilterService) {}
+
+  openAdditionalFilters() {
+    this.filterChipClicked.emit();
+  }
 }

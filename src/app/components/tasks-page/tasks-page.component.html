@@ -4,10 +4,10 @@
         <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
         <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
     </div>
-    <app-filter [openAdditionalFilters]="openAdditionalFilters"></app-filter>
+    <app-filter (filterClicked)="openAdditionalFilters()"></app-filter>
 </header>
 <div class="tasks">
-    <app-filter-chips [openAdditionalFilters]="openAdditionalFilters"></app-filter-chips>
+    <app-filter-chips (filterChipClicked)="openAdditionalFilters()"></app-filter-chips>
     <p-dropdown class="sort-dropdown" styleClass="sort-dropdown-primeng" [options]="sortOptions" [ngModel]="sortOption()" (ngModelChange)="sortOption.set($event)" optionLabel="label"></p-dropdown>
     <div class="sort-panel">
         <div class="task-title">&nbsp;</div>
@@ -22,6 +22,6 @@
              'sort-button-clicked': sortOption().value === 'category'
         }"></button>
     </div>
-    <app-task *ngFor="let task of filteredTasks()" [task]="task" [changeStatus]="changeStatus" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
+    <app-task *ngFor="let task of filteredTasks()" [task]="task" (taskChecked)="changeStatus($event)" [openEditDialog]="openEditDialog" [confirmDelete]="confirmDelete"></app-task>
 </div>
 <p-confirmDialog></p-confirmDialog>
