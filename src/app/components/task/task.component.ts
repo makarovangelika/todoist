@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PRIORITY_LABELS } from 'src/app/constants';
 import { Task } from 'src/app/models';
 
@@ -8,7 +8,7 @@ import { Task } from 'src/app/models';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent {
-  @Input({ required: true }) task!: Task;
+  @Input({ required: true }) task: Task | undefined;
   @Output() readonly taskChecked = new EventEmitter<string>();
   @Output() readonly editButtonClicked = new EventEmitter<Task>();
   @Output() readonly deleteButtonClicked = new EventEmitter<string>();

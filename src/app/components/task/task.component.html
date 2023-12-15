@@ -1,4 +1,4 @@
-<div class="task">
+<div class="task" *ngIf="task">
     <div class="task-body" [ngClass]="{
         'low-priority': task.priority === 'low',
         'medium-priority': task.priority === 'medium',
