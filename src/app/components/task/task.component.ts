@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PRIORITY_LABELS } from 'src/app/constants';
 import { Task } from 'src/app/models';
 
