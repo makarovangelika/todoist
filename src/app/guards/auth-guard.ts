@@ -3,5 +3,5 @@ import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } fr
 import { UserStorageService } from "../services/user-storage.service";
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-    return inject(UserStorageService).getAuthorizedUser() ? true : inject(Router).navigate(['/login']);
+    return inject(UserStorageService).getAuthorizedUser() || inject(Router).parseUrl('/login');
 }
