@@ -11,7 +11,7 @@ import { categoryNameValidator } from 'src/app/validators';
   styleUrls: ['./add-category-dialog.component.scss']
 })
 export class AddCategoryDialogComponent {
-  addCategoryForm: FormGroup = new FormGroup<CategoryForm>({
+  addCategoryForm: FormGroup<CategoryForm> = new FormGroup<CategoryForm>({
     name: new FormControl(null, [Validators.required, categoryNameValidator(this.categoryService.getCategories())])
   });
 

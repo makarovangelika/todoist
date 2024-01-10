@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  authForm: FormGroup = new FormGroup<UserForm>({
+  authForm: FormGroup<UserForm> = new FormGroup<UserForm>({
     email: new FormControl(null, {validators: [Validators.required, Validators.email], updateOn: 'blur'}),
     password: new FormControl(null, Validators.required)
   })

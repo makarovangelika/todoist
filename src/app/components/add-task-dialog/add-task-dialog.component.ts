@@ -12,7 +12,7 @@ import { v4 as uuid4 } from "uuid";
   styleUrls: ['./add-task-dialog.component.scss']
 })
 export class AddTaskDialogComponent {
-  addTaskForm: FormGroup = new FormGroup<TaskForm>({
+  addTaskForm: FormGroup<TaskForm> = new FormGroup<TaskForm>({
     description: new FormControl(null, Validators.required),
     deadline: new FormControl(null),
     priority: new FormControl(null),

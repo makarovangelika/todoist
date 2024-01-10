@@ -13,7 +13,7 @@ import { CategoryService } from 'src/app/services/category.service';
 export class EditTaskDialogComponent {
   initialDate = this.dynamicDialogConfig.data.task.deadline ? new Date(this.dynamicDialogConfig.data.task.deadline) : null;
   
-  editTaskForm: FormGroup = new FormGroup<TaskForm>({
+  editTaskForm: FormGroup<TaskForm> = new FormGroup<TaskForm>({
     description: new FormControl(this.dynamicDialogConfig.data.task.description, Validators.required),
     deadline: new FormControl(this.initialDate),
     priority: new FormControl(this.dynamicDialogConfig.data.task.priority),

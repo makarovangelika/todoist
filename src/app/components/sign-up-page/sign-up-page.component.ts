@@ -12,7 +12,7 @@ import { SignUpService } from 'src/app/services/sign-up.service';
 })
 export class SignUpPageComponent {
 
-  registrationForm: FormGroup = new FormGroup<UserForm>({
+  registrationForm: FormGroup<UserForm> = new FormGroup<UserForm>({
     email: new FormControl(null, {validators: [Validators.required, Validators.email], updateOn: 'blur'}),
     password: new FormControl(null, [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}')])
   })

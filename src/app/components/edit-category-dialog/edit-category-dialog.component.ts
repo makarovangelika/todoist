@@ -11,7 +11,7 @@ import { editCategoryNameValidator } from 'src/app/validators';
   styleUrls: ['./edit-category-dialog.component.scss']
 })
 export class EditCategoryDialogComponent {
-  editCategoryForm: FormGroup = new FormGroup<CategoryForm>({
+  editCategoryForm: FormGroup<CategoryForm> = new FormGroup<CategoryForm>({
     name: new FormControl(this.dynamicDialogConfig.data.category.name, [Validators.required, editCategoryNameValidator(this.categoryService.getCategories(), this.dynamicDialogConfig.data.category)])
   });
 

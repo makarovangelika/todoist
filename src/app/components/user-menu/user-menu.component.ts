@@ -31,24 +31,24 @@ export class UserMenuComponent implements OnInit {
                 })
               }
 
-    ngOnInit() {
-      this.menuItems = [
-        {
-          label: "Редактировать",
-          icon: "pi pi-pencil",
-          command: () => {
-            this.openEditDialog(this.activeCategory);
-          }
-        },
-        {
-          label: "Удалить",
-          icon: "pi pi-times",
-          command: () => {
-            this.confirmDelete(this.activeCategory.name);
-          }
+  ngOnInit() {
+    this.menuItems = [
+      {
+        label: "Редактировать",
+        icon: "pi pi-pencil",
+        command: () => {
+          this.openEditDialog(this.activeCategory);
         }
-      ]
-    }
+      },
+      {
+        label: "Удалить",
+        icon: "pi pi-times",
+        command: () => {
+          this.confirmDelete(this.activeCategory.name);
+        }
+      }
+    ]
+  }
   
   toggleSidebarVisibility() {
     this.sidebarClosed.emit();
