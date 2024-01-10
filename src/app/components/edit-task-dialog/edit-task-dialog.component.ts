@@ -44,7 +44,6 @@ export class EditTaskDialogComponent {
       priority: this.editTaskForm.value.priority,
       category: this.editTaskForm.value.category
     }
-    this.dynamicDialogConfig.data.updateTask(this.dynamicDialogConfig.data.task.id, updateTaskData);
-    this.ref.close();
+    this.ref.close(updateTaskData);
   }
 }

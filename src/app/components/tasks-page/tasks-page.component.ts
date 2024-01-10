@@ -103,10 +103,12 @@ export class TasksPageComponent {
       keepInViewport: true,
       header: 'Изменение задачи',
       data: {
-        task: task,
-        updateTask: this.updateTask
+        task: task
       }
     });
+    this.ref.onClose.subscribe((updateTaskData: UpdateTaskData) => {
+      this.updateTask(task.id, updateTaskData);
+    })
   }
 
   updateTask = (editedTaskId: string, updateTaskData: UpdateTaskData) => {
