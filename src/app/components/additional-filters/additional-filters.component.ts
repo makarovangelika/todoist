@@ -12,7 +12,7 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./additional-filters.component.scss']
 })
 export class AdditionalFiltersComponent implements OnInit {
-  filterForm: FormGroup = new FormGroup<FilterForm>({
+  filterForm: FormGroup<FilterForm> = new FormGroup<FilterForm>({
     status: new FormControl(Status.all),
     deadlineFrom: new FormControl(null),
     deadlineTo: new FormControl(null),
@@ -49,11 +49,11 @@ export class AdditionalFiltersComponent implements OnInit {
 
   filter() {
     const filters = {
-      deadlineFrom: this.filterForm.value.deadlineFrom,
-      deadlineTo: this.filterForm.value.deadlineTo,
-      status: this.filterForm.value.status,
-      priority: this.filterForm.value.priority,
-      category: this.filterForm.value.category
+      deadlineFrom: this.filterForm.value.deadlineFrom || null,
+      deadlineTo: this.filterForm.value.deadlineTo || null,
+      status: this.filterForm.value.status || null,
+      priority: this.filterForm.value.priority || null,
+      category: this.filterForm.value.category || null,
     }
     this.filterService.updateFilters(filters);
     this.ref.close();

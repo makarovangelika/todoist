@@ -14,7 +14,7 @@
         <label for="priority-filter" class="filter-label">Приоритет</label>
         <div id="priority-filter">
             <div *ngFor="let priority of priorities" class="checkbox">
-                <p-checkbox name="priorityGroup" [value]="priority.value" [formControl]="$any(filterForm.controls['priority'])" [inputId]="priority.value"></p-checkbox>
+                <p-checkbox name="priorityGroup" [value]="priority.value" [formControl]="filterForm.controls['priority']" [inputId]="priority.value"></p-checkbox>
                 <label [for]="priority.value">{{ priority.label }}</label>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <label for="category-filter" class="filter-label">Категория</label>
         <div id="category-filter">
             <div *ngFor="let category of userCategories" class="checkbox">
-                <p-checkbox name="categoryGroup" [value]="category" [formControl]="$any(filterForm.controls['category'])" [inputId]="category.name"></p-checkbox>
+                <p-checkbox name="categoryGroup" [value]="category" [formControl]="filterForm.controls['category']" [inputId]="category.name"></p-checkbox>
                 <label [for]="category">{{ category.name }}</label>
             </div>
         </div>
