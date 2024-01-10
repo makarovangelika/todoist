@@ -29,7 +29,7 @@ export class LoginPageComponent {
   login() {
       const email = this.authForm.value.email as string;
       const password = this.authForm.value.password as string;
-      this.loginService.authorizeUser(email, password).subscribe({
+      this.loginService.authorizeUser$(email, password).subscribe({
         next: authorizedUser => {
           this.router.navigate(['']);
         },

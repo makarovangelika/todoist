@@ -10,7 +10,7 @@ export class SignUpService {
 
   constructor(private userStorageService: UserStorageService) { }
 
-  registerUser(email: string, password: string): Observable<User> {
+  registerUser$(email: string, password: string): Observable<User> {
     const registration = new Observable<User>(subscriber => {
       if (this.userStorageService.getUser(email)) {
         subscriber.error(new Error("ERR_EMAIL_EXISTS"));

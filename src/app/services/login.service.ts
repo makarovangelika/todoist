@@ -10,7 +10,7 @@ export class LoginService {
 
   constructor(private userStorageService: UserStorageService) { }
 
-  authorizeUser(email: string, password: string): Observable<User> {
+  authorizeUser$(email: string, password: string): Observable<User> {
     const registeredUser = this.userStorageService.getUser(email);
     const authorization = new Observable<User>(subscriber => {
       if (registeredUser && (password === registeredUser.password)) {

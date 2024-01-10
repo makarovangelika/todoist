@@ -34,9 +34,9 @@ export class SignUpPageComponent {
     const email = this.registrationForm.value.email as string;
     const password = this.registrationForm.value.password as string;
     
-    this.signUpService.registerUser(email, password).subscribe({
+    this.signUpService.registerUser$(email, password).subscribe({
       next: user => {
-        this.loginService.authorizeUser(user.email, user.password).subscribe({
+        this.loginService.authorizeUser$(user.email, user.password).subscribe({
           next: authorizedUser => {
             this.router.navigate(['']);
           },
