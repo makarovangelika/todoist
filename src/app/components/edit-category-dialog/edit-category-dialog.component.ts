@@ -27,7 +27,6 @@ export class EditCategoryDialogComponent {
     const updateCategoryData = {
       name: this.editCategoryForm.value.name
     }
-    this.dynamicDialogConfig.data.updateCategory(this.dynamicDialogConfig.data.category.name, updateCategoryData);
-    this.ref.close();
+    this.ref.close(updateCategoryData);
   }
 }

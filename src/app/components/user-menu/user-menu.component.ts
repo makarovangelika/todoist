@@ -85,9 +85,11 @@ export class UserMenuComponent implements OnInit {
       keepInViewport: true,
       header: 'Изменить категорию',
       data: {
-        category: category,
-        updateCategory: this.updateCategory
+        category: category
       }
+    })
+    this.ref.onClose.subscribe((updateCategoryData: UpdateCategoryData) => {
+      this.updateCategory(category.name, updateCategoryData);
     })
   }
 
