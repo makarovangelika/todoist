@@ -82,11 +82,11 @@ export class TasksPageComponent {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Новая задача',
-      data: {
-        addTask: this.addTask
-      }
+      header: 'Новая задача'
     });
+    this.ref.onClose.subscribe((task: Task) => {
+      this.addTask(task);
+    })
   }
 
   addTask = (task: Task) => {

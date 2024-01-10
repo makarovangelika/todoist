@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { getPriorityOptions } from 'src/app/constants';
 import { Priority, TaskForm } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
@@ -33,7 +33,6 @@ export class AddTaskDialogComponent {
   });
 
   constructor(public ref: DynamicDialogRef,
-              public dynamicDialogConfig: DynamicDialogConfig,
               private categoryService: CategoryService) {}
 
   addTask() {
@@ -45,7 +44,6 @@ export class AddTaskDialogComponent {
       priority: this.addTaskForm.value.priority || Priority.low,
       category: this.addTaskForm.value.category
     };
-    this.dynamicDialogConfig.data.addTask(task);
-    this.ref.close();
+    this.ref.close(task);
   }
 }

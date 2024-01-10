@@ -64,10 +64,10 @@ export class UserMenuComponent implements OnInit {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Добавить категорию',
-      data: {
-        addCategory: this.addCategory
-      }
+      header: 'Добавить категорию'
+    })
+    this.ref.onClose.subscribe((category: Category) => {
+      this.addCategory(category);
     })
   }
 

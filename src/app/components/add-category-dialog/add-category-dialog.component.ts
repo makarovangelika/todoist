@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CategoryForm } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
 import { categoryNameValidator } from 'src/app/validators';
@@ -16,7 +16,6 @@ export class AddCategoryDialogComponent {
   });
 
   constructor(public ref: DynamicDialogRef,
-              public dynamicDialogConfig: DynamicDialogConfig,
               private categoryService: CategoryService) {}
 
   get name() {
@@ -27,7 +26,6 @@ export class AddCategoryDialogComponent {
     const category = {
       name: this.addCategoryForm.value.name
     }
-    this.dynamicDialogConfig.data.addCategory(category);
-    this.ref.close();
+    this.ref.close(category);
   }
 }
