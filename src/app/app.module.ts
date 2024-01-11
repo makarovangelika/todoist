@@ -20,9 +20,8 @@ import { CalendarModule  } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
-import { AddCategoryDialogComponent } from './components/add-category-dialog/add-category-dialog.component';
+import { CategoryDialogComponent } from './components/category-dialog/category-dialog.component';
 import { MenuModule } from 'primeng/menu';
-import { EditCategoryDialogComponent } from './components/edit-category-dialog/edit-category-dialog.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { FilterComponent } from './components/filter/filter.component';
 import { AdditionalFiltersComponent } from './components/additional-filters/additional-filters.component';
@@ -45,8 +44,7 @@ const appRoutes: Routes = [
     TasksPageComponent,
     TaskComponent,
     UserMenuComponent,
-    AddCategoryDialogComponent,
-    EditCategoryDialogComponent,
+    CategoryDialogComponent,
     FilterComponent,
     AdditionalFiltersComponent,
     FilterChipsComponent,

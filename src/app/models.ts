@@ -44,7 +44,7 @@ export interface Category {
 export interface CategoryForm {
     name: FormControl<string | null>
 }
-export interface UpdateCategoryData {
+export interface CategoryFormData {
     name: string
 }
 

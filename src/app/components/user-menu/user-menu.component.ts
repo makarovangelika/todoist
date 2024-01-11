@@ -2,11 +2,10 @@ import { Component, Input, OnInit, Output, WritableSignal, effect, signal, Event
 import { Router } from '@angular/router';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Category, UpdateCategoryData } from 'src/app/models';
+import { Category, CategoryFormData } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
 import { UserStorageService } from 'src/app/services/user-storage.service';
-import { AddCategoryDialogComponent } from '../add-category-dialog/add-category-dialog.component';
-import { EditCategoryDialogComponent } from '../edit-category-dialog/edit-category-dialog.component';
+import { CategoryDialogComponent } from '../category-dialog/category-dialog.component';
 
 @Component({
   selector: 'app-user-menu',
@@ -60,15 +59,21 @@ export class UserMenuComponent implements OnInit {
   }
 
   openAddDialog() {
-    this.ref = this.dialogService.open(AddCategoryDialogComponent, {
+    this.ref = this.dialogService.open(CategoryDialogComponent, {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Добавить категорию'
+      header: 'Добавить категорию',
+      data: {
+        categoryFormData: {
+          name: null
+        },
+        buttonLabel: "Добавить"
+      }
     })
-    this.ref.onClose.subscribe((category: Category) => {
-      if (category) {
-        this.addCategory(category);
+    this.ref.onClose.subscribe((categoryFormData: Category) => {
+      if (categoryFormData) {
+        this.addCategory(categoryFormData);
       }
     })
   }
@@ -81,23 +86,26 @@ export class UserMenuComponent implements OnInit {
   }
 
   openEditDialog(category: Category) {
-    this.ref = this.dialogService.open(EditCategoryDialogComponent, {
+    this.ref = this.dialogService.open(CategoryDialogComponent, {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
       header: 'Изменить категорию',
       data: {
-        category: category
+        categoryFormData: {
+          name: category.name
+        },
+        buttonLabel: "Сохранить"
       }
     })
-    this.ref.onClose.subscribe((updateCategoryData: UpdateCategoryData) => {
-      if (updateCategoryData) {
-        this.updateCategory(category.name, updateCategoryData);
+    this.ref.onClose.subscribe((categoryFormData: CategoryFormData) => {
+      if (categoryFormData) {
+        this.updateCategory(category.name, categoryFormData);
       }
     })
   }
 
-  updateCategory = (editedCategoryName: string, updateCategoryData: UpdateCategoryData) => {
+  updateCategory = (editedCategoryName: string, updateCategoryData: CategoryFormData) => {
     this.categories.update(categories => {
       return categories.map(category => {
         if (category.name === editedCategoryName) {

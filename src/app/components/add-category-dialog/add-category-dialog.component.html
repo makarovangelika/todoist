@@ -1,8 +1,0 @@
-<div *ngIf="name?.invalid && name?.touched || name?.dirty">
-    <span *ngIf="name?.errors?.['required']" class="validation-error">Обязательное поле</span>
-    <span *ngIf="name?.errors?.['existedName']" class="validation-error">Категория с названием "{{ name?.errors?.['existedName'].value }}" уже существует</span>
-</div>
-<form [formGroup]="addCategoryForm" (ngSubmit)="addCategory()" class="category-form">
-    <input pInputText type="text" formControlName="name" placeholder="Название" class="category-name" />
-    <button pButton type="submit" label="Добавить" [disabled]="!addCategoryForm.valid" class="add-category-button"></button>
-</form>
