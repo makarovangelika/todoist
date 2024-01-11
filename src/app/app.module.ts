@@ -15,8 +15,6 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { TaskComponent } from './components/task/task.component';
 import { FormsModule } from '@angular/forms';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
-import { AddTaskDialogComponent } from './components/add-task-dialog/add-task-dialog.component';
-import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CalendarModule  } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
@@ -46,8 +44,6 @@ const appRoutes: Routes = [
     LoginPageComponent,
     TasksPageComponent,
     TaskComponent,
-    AddTaskDialogComponent,
-    EditTaskDialogComponent,
     UserMenuComponent,
     AddCategoryDialogComponent,
     EditCategoryDialogComponent,

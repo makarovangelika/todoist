@@ -89,7 +89,8 @@ export class TasksPageComponent {
           deadline: null,
           priority: null,
           category: null
-        }
+        },
+        buttonLabel: "Добавить"
       }
     });
     this.ref.onClose.subscribe((taskFormData: TaskFormData) => {
@@ -122,7 +123,8 @@ export class TasksPageComponent {
           deadline: task.deadline ? new Date(task.deadline) : null,
           priority: task.priority,
           category: task.category
-        }
+        },
+        buttonLabel: "Сохранить"
       }
     });
     this.ref.onClose.subscribe((taskFormData: TaskFormData) => {

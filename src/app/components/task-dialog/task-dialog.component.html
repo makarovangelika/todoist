@@ -1,0 +1,14 @@
+<form [formGroup]="taskForm" (ngSubmit)="saveTaskData()">
+    <input pInputText type="text" formControlName="description" placeholder="Описание" pTooltip="Описание" tooltipPosition="top" class="form-control" />
+    <div *ngIf="description?.invalid && description?.touched || description?.dirty">
+        <span *ngIf="description?.errors?.['required']" class="validation-error">Обязательное поле</span>
+    </div>
+    <div class="form-control deadline-priority">
+        <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" class="form-control-half" styleClass="form-control-half-primeng" appendTo="body" pTooltip="Срок" tooltipPosition="top" placeholder="Срок" [firstDayOfWeek]="1"></p-calendar>
+        <p-dropdown formControlName="priority" [options]="priorities" appendTo="body" class="form-control-half" styleClass="form-control-half-primeng" tooltip="Приоритет" tooltipPosition="top" placeholder="Приоритет"></p-dropdown>
+    </div>
+    <div class="taskform-footer">
+        <p-dropdown formControlName="category" [options]="categories" tooltip="Категория" appendTo="body" placeholder="Категория" tooltipPosition="top" styleClass="category-dropdown-primeng" class="form-control category-dropdown" [showClear]="true"></p-dropdown>
+        <button pButton class="taskform-button" type="submit" [label]="dynamicDialogConfig.data.buttonLabel" [disabled]="!taskForm.valid || !taskForm.dirty"></button>
+    </div>
+</form>
