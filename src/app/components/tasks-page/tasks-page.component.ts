@@ -1,14 +1,14 @@
 import { Component, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { SortOption, SortTooltip, SortValue, Task, UpdateTaskData } from 'src/app/models';
+import { SortOption, SortTooltip, SortValue, Task, TaskFormData } from 'src/app/models';
 import { TaskService } from 'src/app/services/task.service';
-import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
-import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { getSortOptionByValue, getSortOptions } from 'src/app/constants';
 import { SortTasksService } from 'src/app/services/sort-tasks.service';
 import { FilterService } from 'src/app/services/filter.service';
 import { AdditionalFiltersComponent } from '../additional-filters/additional-filters.component';
+import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
+import { v4 as uuid4 } from "uuid";
 
 @Component({
   selector: 'app-tasks-page',
@@ -78,14 +78,28 @@ export class TasksPageComponent {
               }
 
   openAddDialog() {
-    this.ref = this.dialogService.open(AddTaskDialogComponent, {
+    this.ref = this.dialogService.open(TaskDialogComponent, {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Новая задача'
+      header: 'Новая задача',
+      data: {
+        taskFormData: {
+          description: null,
+          deadline: null,
+          priority: null,
+          category: null
+        }
+      }
     });
-    this.ref.onClose.subscribe((task: Task) => {
-      this.addTask(task);
+    this.ref.onClose.subscribe((taskFormData: TaskFormData) => {
+      if (taskFormData) {
+        this.addTask({
+          ...taskFormData,
+          id: uuid4(),
+          done: false
+        });
+      }
     })
   }
 
@@ -97,21 +111,28 @@ export class TasksPageComponent {
   }
 
   openEditDialog = (task: Task) => {
-    this.ref = this.dialogService.open(EditTaskDialogComponent, {
+    this.ref = this.dialogService.open(TaskDialogComponent, {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
       header: 'Изменение задачи',
       data: {
-        task: task
+        taskFormData: {
+          description: task.description,
+          deadline: task.deadline ? new Date(task.deadline) : null,
+          priority: task.priority,
+          category: task.category
+        }
       }
     });
-    this.ref.onClose.subscribe((updateTaskData: UpdateTaskData) => {
-      this.updateTask(task.id, updateTaskData);
+    this.ref.onClose.subscribe((taskFormData: TaskFormData) => {
+      if (taskFormData) {
+        this.updateTask(task.id, taskFormData);
+      }
     })
   }
 
-  updateTask = (editedTaskId: string, updateTaskData: UpdateTaskData) => {
+  updateTask = (editedTaskId: string, updateTaskData: TaskFormData) => {
     this.tasks.update(tasks => {
       return tasks.map(task => {
         if (task.id === editedTaskId) {

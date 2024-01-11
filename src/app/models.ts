@@ -22,6 +22,14 @@ export interface TaskForm {
     priority: FormControl<Priority | null>,
     category: FormControl<Category | null>
 }
+
+export interface TaskFormData {
+    description: string,
+    deadline: string,
+    priority: Priority,
+    category: Category | null
+}
+
 export enum Priority {
     low = "low",
     medium = "medium",
@@ -29,10 +37,6 @@ export enum Priority {
 }
 
 export type CustomError = string | null
-
-export interface UpdateTaskData {
-    description: string
-}
 
 export interface Category {
     name: string;

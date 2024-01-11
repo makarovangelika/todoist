@@ -67,7 +67,9 @@ export class UserMenuComponent implements OnInit {
       header: 'Добавить категорию'
     })
     this.ref.onClose.subscribe((category: Category) => {
-      this.addCategory(category);
+      if (category) {
+        this.addCategory(category);
+      }
     })
   }
 
@@ -89,7 +91,9 @@ export class UserMenuComponent implements OnInit {
       }
     })
     this.ref.onClose.subscribe((updateCategoryData: UpdateCategoryData) => {
-      this.updateCategory(category.name, updateCategoryData);
+      if (updateCategoryData) {
+        this.updateCategory(category.name, updateCategoryData);
+      }
     })
   }
 

@@ -31,6 +31,7 @@ import { AdditionalFiltersComponent } from './components/additional-filters/addi
 import { ChipModule } from 'primeng/chip';
 import { FilterChipsComponent } from './components/filter-chips/filter-chips.component';
 import { authGuard } from './guards/auth-guard';
+import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignUpPageComponent},
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     EditCategoryDialogComponent,
     FilterComponent,
     AdditionalFiltersComponent,
-    FilterChipsComponent
+    FilterChipsComponent,
+    TaskDialogComponent
   ],
   imports: [
     BrowserModule,
