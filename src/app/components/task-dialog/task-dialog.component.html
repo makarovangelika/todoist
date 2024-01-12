@@ -1,7 +1,7 @@
 <form [formGroup]="taskForm" (ngSubmit)="saveTaskData()">
-    <input pInputText type="text" formControlName="description" placeholder="Описание" pTooltip="Описание" tooltipPosition="top" class="form-control" />
-    <div *ngIf="description?.invalid && description?.touched || description?.dirty">
-        <span *ngIf="description?.errors?.['required']" class="validation-error">Обязательное поле</span>
+    <div class="form-control">
+        <input pInputText type="text" formControlName="description" placeholder="Описание" pTooltip="Описание" tooltipPosition="top" class="description" />
+        <val-errors controlName="description"></val-errors>
     </div>
     <div class="form-control deadline-priority">
         <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" class="form-control-half" styleClass="form-control-half-primeng" appendTo="body" pTooltip="Срок" tooltipPosition="top" placeholder="Срок" [firstDayOfWeek]="1"></p-calendar>
