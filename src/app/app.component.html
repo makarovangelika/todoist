@@ -1,1 +1,12 @@
 <router-outlet></router-outlet>
+<val-default-errors>
+    <ng-template valError="required">
+        <small class="p-error">Обязательное поле</small>
+    </ng-template>
+    <ng-template valError="email">
+        <small class="p-error">Неверный формат email</small>
+    </ng-template>
+    <ng-template valError="existedName" let-error="error">
+        <small class="p-error">Категория с названием "{{ error.value }}" уже существует</small>
+    </ng-template>
+</val-default-errors>
