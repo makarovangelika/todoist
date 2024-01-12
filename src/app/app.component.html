@@ -9,4 +9,7 @@
     <ng-template valError="existedName" let-error="error">
         <small class="p-error">Категория с названием "{{ error.value }}" уже существует</small>
     </ng-template>
+    <ng-template valError="pattern">
+        <small class="p-error">Пароль не соответствует требованиям</small>
+    </ng-template>
 </val-default-errors>
