@@ -35,7 +35,7 @@ export class LoginPageComponent {
         },
         error: error => {
           if (error.message === 'ERR_INVALID_EMAIL_OR_PASSWORD') {
-            this.error = 'Неверно введены email или пароль';
+            this.error = $localize `:@@INVALID_EMAIL_OR_PASSWORD:Invalid email or password`;
           }
         }
       });

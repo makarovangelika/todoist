@@ -2,7 +2,7 @@
 <header>
     <div class="header-buttons">
         <button pButton (click)="toggleSidebarVisibility()" icon="pi pi-bars"></button>
-        <button pButton (click)="openAddDialog()" label="Добавить задачу" icon="pi pi-plus"></button>
+        <button pButton (click)="openAddDialog()" i18n-label="@@ADD_TASK" label="Add task" icon="pi pi-plus"></button>
     </div>
     <app-filter (filterClicked)="openAdditionalFilters()"></app-filter>
 </header>
@@ -11,14 +11,14 @@
     <p-dropdown class="sort-dropdown" styleClass="sort-dropdown-primeng" [options]="sortOptions" [ngModel]="sortOption()" (ngModelChange)="sortOption.set($event)" optionLabel="label"></p-dropdown>
     <div class="sort-panel">
         <div class="task-title">&nbsp;</div>
-        <button pButton class="task-property p-button-raised p-button-text" label="Срок" (click)="triggerSortByDeadline()" icon="pi pi-sort" tooltipPosition="top" [pTooltip]="sortTooltip().deadline" iconPos="right" [ngClass]="{
+        <button pButton class="task-property p-button-raised p-button-text" i18n-label="@@DEADLINE" label="Deadline" (click)="triggerSortByDeadline()" icon="pi pi-sort" tooltipPosition="top" [pTooltip]="sortTooltip().deadline" iconPos="right" [ngClass]="{
             'sort-button-clicked': sortOption().value === 'deadline'
         }"></button>
         <p-menu #menu [model]="sortPriorityItems" [popup]="true" appendTo="body"></p-menu>
-        <button pButton class="task-property p-button-raised p-button-text" label="Приоритет" (click)="menu.toggle($event)" [icon]="sortPriorityIcon" iconPos="right" [pTooltip]="sortTooltip().priority" tooltipPosition="top" [ngClass]="{
+        <button pButton class="task-property p-button-raised p-button-text" i18n-label="@@PRIORITY" label="Priority" (click)="menu.toggle($event)" [icon]="sortPriorityIcon" iconPos="right" [pTooltip]="sortTooltip().priority" tooltipPosition="top" [ngClass]="{
             'sort-button-clicked': sortOption().value === 'priorityUp' || sortOption().value === 'priorityDown'
         }"></button>
-        <button pButton class="task-property p-button-raised p-button-text" label="Категория" (click)="triggerSortByCategory()" icon="pi pi-sort" iconPos="right" [pTooltip]="sortTooltip().category" tooltipPosition="top" [ngClass]="{
+        <button pButton class="task-property p-button-raised p-button-text" i18n-label="@@CATEGORY" label="Category" (click)="triggerSortByCategory()" icon="pi pi-sort" iconPos="right" [pTooltip]="sortTooltip().category" tooltipPosition="top" [ngClass]="{
              'sort-button-clicked': sortOption().value === 'category'
         }"></button>
     </div>

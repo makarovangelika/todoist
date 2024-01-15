@@ -37,9 +37,9 @@ export class TasksPageComponent {
 
   sortTooltip: Signal<SortTooltip> = computed(() => {
     return {
-      deadline: this.sortOption().value === SortValue.deadline ? "Отменить сортировку" : "Сортировать",
-      priority: "Сортировать",
-      category: this.sortOption().value === SortValue.category ? "Отменить сортировку" : "Сортировать"
+      deadline: this.sortOption().value === SortValue.deadline ? $localize `:@@CANCEL_SORT:Cancel sort` : $localize `:@@SORT:Sort`,
+      priority: $localize `:@@SORT:Sort`,
+      category: this.sortOption().value === SortValue.category ? $localize `:@@CANCEL_SORT:Cancel sort` : $localize `:@@SORT:Sort`
     }
   });
   
@@ -55,21 +55,21 @@ export class TasksPageComponent {
                   this.taskService.updateTasks(this.tasks());
                 });
                  this.sortPriorityItems = [{
-                  label: "По возрастанию",
+                  label: $localize `:@@UP:Up`,
                   icon: " pi pi-sort-up",
                   command: () => {
                     this.triggerSortByPriorityUp();
                   }
                  },
                 {
-                  label: "По убыванию",
+                  label: $localize `:@@DOWN:Down`,
                   icon: "pi pi-sort-down",
                   command: () => {
                     this.triggerSortByPriorityDown();
                   }
                 },
                 {
-                  label: "Отменить",
+                  label: $localize `:@@CANCEL:Cancel sort`,
                   icon: "pi pi-times",
                   command: () => {
                     this.cancelSortByPriority();
@@ -82,7 +82,7 @@ export class TasksPageComponent {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Новая задача',
+      header: $localize `:@@NEW_TASK:New task`,
       data: {
         taskFormData: {
           description: null,
@@ -90,7 +90,7 @@ export class TasksPageComponent {
           priority: null,
           category: null
         },
-        buttonLabel: "Добавить"
+        buttonLabel: $localize `:@@ADD:Add`
       }
     });
     this.ref.onClose.subscribe((taskFormData: TaskFormData) => {
@@ -116,7 +116,7 @@ export class TasksPageComponent {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Изменение задачи',
+      header: $localize `:@@EDITING_TASK:Editing task`,
       data: {
         taskFormData: {
           description: task.description,
@@ -124,7 +124,7 @@ export class TasksPageComponent {
           priority: task.priority,
           category: task.category
         },
-        buttonLabel: "Сохранить"
+        buttonLabel: $localize `:@@SAVE:Save`
       }
     });
     this.ref.onClose.subscribe((taskFormData: TaskFormData) => {
@@ -158,10 +158,10 @@ export class TasksPageComponent {
 
   confirmDelete = (taskId: string) => {
     this.confirmationService.confirm({
-      message: 'Вы уверены, что хотите удалить задачу?',
-      header: 'Удалить задачу?',
-      acceptLabel: 'Удалить',
-      rejectLabel: 'Отмена',
+      message: $localize `:@@ARE_YOU-SURE_YOU_WANT_TO_DELETE_TASK:Are you sure you want to delete task?`,
+      header: $localize `:@@DELETE_TASK?:Delete task?`,
+      acceptLabel: $localize `:@@DELETE:Delete`,
+      rejectLabel: $localize `:@@CANCEL:Cancel`,
       acceptButtonStyleClass: 'accept-delete-button confirm-delete-button',
       rejectButtonStyleClass: 'confirm-delete-button',
       defaultFocus: 'none',
@@ -231,7 +231,7 @@ export class TasksPageComponent {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: "Фильтры"
+      header: $localize `:@@FILTERS:Filters`
     })
   }
   

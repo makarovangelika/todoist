@@ -47,7 +47,7 @@ export class SignUpPageComponent {
       },
       error: error => {
         if (error.message === 'ERR_EMAIL_EXISTS') {
-          this.error = 'Учётная запись с таким email уже зарегистрирована';
+          this.error = $localize `:@@ACCOUNT_WITH_THIS_EMAIL_ALREADY_EXISTS:Account with this email already exists`;
         }
       }
     });

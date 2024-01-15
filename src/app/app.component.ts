@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private config: PrimeNGConfig,
               private errorConfig: ValdemortConfig) {
                 errorConfig.shouldDisplayErrors = control => control.dirty;
+                errorConfig.errorsClasses = 'p-error';
               }
 
   ngOnInit() {

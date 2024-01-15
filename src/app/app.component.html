@@ -1,15 +1,9 @@
 <router-outlet></router-outlet>
 <val-default-errors>
-    <ng-template valError="required">
-        <small class="p-error">Обязательное поле</small>
-    </ng-template>
     <ng-template valError="email">
-        <small class="p-error">Неверный формат email</small>
-    </ng-template>
-    <ng-template valError="existedName" let-error="error">
-        <small class="p-error">Категория с названием "{{ error.value }}" уже существует</small>
+        <small class="p-error" i18n="@@INVALID_EMAIL_FORMAT">Invalid email format</small>
     </ng-template>
     <ng-template valError="pattern">
-        <small class="p-error">Пароль не соответствует требованиям</small>
+        <small class="p-error" i18n="@@PASSWORD_DOESN'T_MEET_REQUIREMENTS">Password doesn't meet requirements</small>
     </ng-template>
 </val-default-errors>

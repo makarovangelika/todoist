@@ -1,6 +1,6 @@
 <h1>Todoist</h1>
 <div class="registration-container">
-    <h2 class="w-full">Войти</h2>
+    <h2 class="w-full"i18n="@@LOG_IN">Log in</h2>
     <span *ngIf="error" class="registration-error">{{ error }}</span>
     <form [formGroup]="authForm" (ngSubmit)="login()" class="w-full">
         <span class="p-float-label w-full">
@@ -10,12 +10,12 @@
         </span>
         <span class="p-float-label w-full">
             <p-password id="password" [toggleMask]="true" formControlName="password" inputStyleClass="w-full"></p-password>
-            <label for="password">Пароль</label>
+            <label for="password" i18n="@@PASSWORD">Password</label>
             <val-errors controlName="password"></val-errors>
         </span>
-        <button pButton type="submit" label="Войти" [disabled]="!authForm.valid" class="w-full"></button>
+        <button pButton type="submit" i18n-label="@@LOG_IN" label="Log in" [disabled]="!authForm.valid" class="w-full"></button>
     </form>
-    <div class="w-full">Ещё нет аккаунта? 
-        <a routerLink="/signup">Зарегистрироваться</a>
+    <div class="w-full" i18n="@@DON'T_HAVE_ACCOUNT_YET">Don't have account yet? 
+        <a routerLink="/signup">Sign up</a>
     </div>
 </div>

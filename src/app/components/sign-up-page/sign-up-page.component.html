@@ -1,6 +1,6 @@
 <h1>Todoist</h1>
 <div class="registration-container">
-    <h2 class="w-full">Регистрация</h2>
+    <h2 class="w-full" i18n="@@REGISTRATION">Registration</h2>
     <span *ngIf="error" class="registration-error">{{ error }}</span>
     <form [formGroup]="registrationForm" (ngSubmit)="signUp()" class="w-full">
         <span class="p-float-label w-full">
@@ -11,24 +11,24 @@
         <span class="p-float-label w-full">
             <p-password id="password" [toggleMask]="true" formControlName="password" inputStyleClass="w-full">
                 <ng-template pTemplate="header">
-                    <h6>Введите пароль</h6>
+                    <h6 i18n="@@ENTER_PASSWORD">Enter password</h6>
                 </ng-template>
                 <ng-template pTemplate="footer">
                     <p-divider></p-divider>
                     <ul>
-                        <li>Хотя бы одна строчная буква</li>
-                        <li>Хотя бы одна прописная буква</li>
-                        <li>Хотя бы одна цифра</li>
-                        <li>Минимум 8 символов</li>
+                        <li i18n="@@AT_LEAST_ONE_LOWERCASE">At least one lowercase</li>
+                        <li i18n="@@AT_LEAST_ONE_UPPERCASE">At least one uppercase</li>
+                        <li i18n="@@AT_LEAST_ONE_DIGIT">At least one digit</li>
+                        <li i18n="@@MINIMUN_8_CHARACTERS">Minimum 8 characters</li>
                     </ul>
                 </ng-template>
             </p-password>
-            <label for="password">Пароль</label>
+            <label for="password" i18n="@@PASSWORD">Password</label>
             <val-errors controlName="password"></val-errors>
         </span>
-        <button pButton type="submit" label="Зарегистрироваться" [disabled]="!registrationForm.valid" class="w-full"></button>
+        <button pButton type="submit" i18n-label="@@SIGN_UP" label="Sign up" [disabled]="!registrationForm.valid" class="w-full"></button>
     </form>
-    <div class="w-full">Уже есть аккаунт? Тогда 
-        <a routerLink="/login">войдите</a>
+    <div class="w-full" i18n="@@ALREADY_HAVE_ACCOUNT?_THEN">Already have account? Then 
+        <a routerLink="/login">Log in</a>
     </div>
 </div>

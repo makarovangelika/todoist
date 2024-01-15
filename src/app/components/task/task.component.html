@@ -21,8 +21,8 @@
             </div>
     </div>
     <div class="task-buttons">
-        <button pButton (click)="openEditDialog(task)" icon="pi pi-pencil" class="p-button-raised p-button-text" pTooltip="Изменить задачу" tooltipPosition="left"></button>
-        <button pButton icon="pi pi-trash" (click)="confirmDelete(task.id)" class="p-button-raised p-button-text task-button" pTooltip="Удалить задачу" tooltipPosition="left"></button>
+        <button pButton (click)="openEditDialog(task)" icon="pi pi-pencil" class="p-button-raised p-button-text" i18n-pTooltip="@@EDIT_TASK" pTooltip="Edit task" tooltipPosition="left"></button>
+        <button pButton icon="pi pi-trash" (click)="confirmDelete(task.id)" class="p-button-raised p-button-text task-button" i18n-pTooltip="@@DELETE_TASK" pTooltip="Delete task" tooltipPosition="left"></button>
     </div>
 </div>
 <p-divider></p-divider>

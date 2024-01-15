@@ -5,19 +5,19 @@
     <ng-template pTemplate="content">
         <div class="category-wrapper">
             <div class="category-menu">
-                <span class="category-menu-title">Мои категории</span>
-                <p-button icon="pi pi-plus" (click)="openAddDialog()" pTooltip="Добавить категорию" styleClass="p-button-text category-button"></p-button>
+                <span class="category-menu-title" i18n="@@MY-CATEGORIES">My categories</span>
+                <p-button icon="pi pi-plus" (click)="openAddDialog()" i18n-pTooltip="@@ADD_CATEGORY" pTooltip="Add category" styleClass="p-button-text category-button"></p-button>
             </div>
         </div>
         <div class="category-wrapper" *ngFor="let category of categories()">
             <div class="category-name">
                 <span>{{ category.name }}</span>
                 <p-menu #menu [popup]="true" [model]="menuItems" appendTo="body"></p-menu>
-                <p-button icon="pi pi-ellipsis-h" styleClass="p-button-text category-button" (click)="activeCategory = category; menu.toggle($event)" pTooltip="Действия в категории"></p-button>
+                <p-button icon="pi pi-ellipsis-h" styleClass="p-button-text category-button" (click)="activeCategory = category; menu.toggle($event)" i18n-pTooltip="@@ACTIONS_WITH_CATEGORY" pTooltip="Actions with category"></p-button>
             </div>
         </div>
     </ng-template>
     <ng-template pTemplate="footer">
-        <p-button label="Выйти" (click)="logout()" styleClass="p-button-text" icon="pi pi-sign-out"></p-button>
+        <p-button i18n-label="@@LOG_OUT" label="Log out" (click)="logout()" styleClass="p-button-text" icon="pi pi-sign-out"></p-button>
     </ng-template>
 </p-sidebar>

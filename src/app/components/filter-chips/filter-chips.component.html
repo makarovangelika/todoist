@@ -5,13 +5,13 @@
         </button>
     </p-chip>
     <p-chip [removable]="true" *ngIf="filterService.filters().deadlineFrom" (onRemove)="filterService.clearFilter('deadlineFrom')">
-        <button type="button" (click)="openAdditionalFilters()" class="chip-button">
-            с {{filterService.filters().deadlineFrom | date:'dd.MM.yy' }}
+        <button type="button" (click)="openAdditionalFilters()" class="chip-button" i18n="@@FROM">
+            from {{filterService.filters().deadlineFrom | date:'dd.MM.yy' }}
         </button>
     </p-chip>
     <p-chip [removable]="true" *ngIf="filterService.filters().deadlineTo" (onRemove)="filterService.clearFilter('deadlineTo')">
-        <button type="button" (click)="openAdditionalFilters()" class="chip-button">
-            по {{ filterService.filters().deadlineTo | date:'dd.MM.yy' }}
+        <button type="button" (click)="openAdditionalFilters()" class="chip-button" i18n="@@TO">
+            to {{ filterService.filters().deadlineTo | date:'dd.MM.yy' }}
         </button>
     </p-chip>
     <p-chip [removable]="true" *ngFor="let priority of filterService.filters().priority" (onRemove)="filterService.removePriorityCheckbox(priority)">

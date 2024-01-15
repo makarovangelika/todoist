@@ -33,14 +33,14 @@ export class UserMenuComponent implements OnInit {
   ngOnInit() {
     this.menuItems = [
       {
-        label: "Редактировать",
+        label: $localize `:@@EDIT:Edit`,
         icon: "pi pi-pencil",
         command: () => {
           this.openEditDialog(this.activeCategory);
         }
       },
       {
-        label: "Удалить",
+        label: $localize `:@@DELETE:Delete`,
         icon: "pi pi-times",
         command: () => {
           this.confirmDelete(this.activeCategory.name);
@@ -63,12 +63,12 @@ export class UserMenuComponent implements OnInit {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Добавить категорию',
+      header: $localize `:@@ADD_CATEGORY:Add category`,
       data: {
         categoryFormData: {
           name: null
         },
-        buttonLabel: "Добавить"
+        buttonLabel: $localize `:@@ADD:Add`
       }
     })
     this.ref.onClose.subscribe((categoryFormData: Category) => {
@@ -90,12 +90,12 @@ export class UserMenuComponent implements OnInit {
       dismissableMask: true,
       modal: true,
       keepInViewport: true,
-      header: 'Изменить категорию',
+      header: $localize `:@@EDIT_CATEGORY:Edit category`,
       data: {
         categoryFormData: {
           name: category.name
         },
-        buttonLabel: "Сохранить"
+        buttonLabel: $localize `:@@SAVE:Save`
       }
     })
     this.ref.onClose.subscribe((categoryFormData: CategoryFormData) => {
@@ -121,10 +121,10 @@ export class UserMenuComponent implements OnInit {
 
   confirmDelete(categoryName: string) {
     this.confirmationService.confirm({
-      message: `Вы уверены, что хотите удалить категорию ${categoryName}?`,
-      header: 'Удалить категорию?',
-      acceptLabel: 'Удалить',
-      rejectLabel: 'Отмена',
+      message: $localize `:@@ARE_YOU_SURE_YOU_WANT_TO_DELETE_CATEGORY:Are you sure you want to delete category ${categoryName}?`,
+      header:$localize `:@@DELETE_CATEGORY:Delete category?`,
+      acceptLabel: $localize `:@@DELETE:Delete`,
+      rejectLabel: $localize `:@@CANCEL:Cancel`,
       acceptButtonStyleClass: 'accept-delete-button confirm-delete-button',
       rejectButtonStyleClass: 'confirm-delete-button',
       accept: () => {

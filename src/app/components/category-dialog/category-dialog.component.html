@@ -1,5 +1,12 @@
 <form [formGroup]="categoryForm" (ngSubmit)="saveCategoryData()" class="category-form">
-    <input pInputText type="text" formControlName="name" placeholder="Название" class="category-name" />
-    <val-errors controlName="name"></val-errors>
+    <input pInputText type="text" formControlName="name" i18n-placeholder="@@NAME" placeholder="Name" class="category-name" />
+    <val-errors controlName="name">
+        <ng-template valError="required">
+            <small i18n="@@REQUIRED">Required</small>
+        </ng-template>
+        <ng-template valError="existedName" let-error="error">
+            <small i18n="@@CATEGORY_WITH_NAME_ALREADY_EXISTS">Category with the name "{{ error.value }}" already exists</small>
+        </ng-template>
+    </val-errors>
     <button pButton type="submit" [label]="dynamicDialogConfig.data.buttonLabel" [disabled]="!categoryForm.valid || !categoryForm.dirty" class="categoryform-button"></button>
 </form>

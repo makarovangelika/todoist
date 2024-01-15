@@ -1,17 +1,17 @@
 <form [formGroup]="filterForm" (ngSubmit)="filter()" class="filter-form">
     <div class="filter status-filter">
-        <label for="status-filter" class="filter-label">Показывать</label>
+        <label for="status-filter" class="filter-label" i18n="@@SHOW">Show</label>
         <p-dropdown [options]="statusOptions" id="status-filter" formControlName="status" appendTo="body" styleClass="status-dropdown"></p-dropdown>
     </div>
     <div class="filter">
-        <label for="deadline-filter" class="filter-label">Срок</label>
+        <label for="deadline-filter" class="filter-label" i18n="@@DEADLINE">Deadline</label>
         <div id="deadline-filter">
-            <p-calendar formControlName="deadlineFrom" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Начало" styleClass="filter-calendar"></p-calendar>
-            <p-calendar formControlName="deadlineTo" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" placeholder="Конец" styleClass="filter-calendar"></p-calendar>
+            <p-calendar formControlName="deadlineFrom" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" i18n-placeholder="@@START" placeholder="Start" styleClass="filter-calendar"></p-calendar>
+            <p-calendar formControlName="deadlineTo" dateFormat="dd.mm.y" [showIcon]="true" appendTo="body" i18n-placeholder="@@END" placeholder="End" styleClass="filter-calendar"></p-calendar>
         </div>
     </div>
     <div class="filter">
-        <label for="priority-filter" class="filter-label">Приоритет</label>
+        <label for="priority-filter" class="filter-label" i18n="@@PRIORITY">Priority</label>
         <div id="priority-filter">
             <div *ngFor="let priority of priorities" class="checkbox">
                 <p-checkbox name="priorityGroup" [value]="priority.value" [formControl]="filterForm.controls['priority']" [inputId]="priority.value"></p-checkbox>
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="filter">
-        <label for="category-filter" class="filter-label">Категория</label>
+        <label for="category-filter" class="filter-label" i18n="@@CATEGORY">Category</label>
         <div id="category-filter">
             <div *ngFor="let category of userCategories" class="checkbox">
                 <p-checkbox name="categoryGroup" [value]="category" [formControl]="filterForm.controls['category']" [inputId]="category.name"></p-checkbox>
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="filter-buttons">
-        <button pButton type="button" label="Сбросить" (click)="clearFilters()" class="clear-filters"></button>
-        <button pButton type="submit" label="Применить" [disabled]="!filterForm.dirty"></button>
+        <button pButton type="button" i18n-label="@@CLEAR" label="Clear" (click)="clearFilters()" class="clear-filters"></button>
+        <button pButton type="submit" i18n-label="@@APPLY" label="Apply" [disabled]="!filterForm.dirty"></button>
     </div>
 </form>

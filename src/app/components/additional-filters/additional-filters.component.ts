@@ -23,7 +23,7 @@ export class AdditionalFiltersComponent implements OnInit {
   statusOptions = getStatusOptions();
   priorities = getPriorityOptions();
   userCategories: Category[] = [{
-    name: "Без категории"
+    name: $localize `:@@WITHOUT_CATEGORY:Without category`
   }];
 
   constructor(private ref: DynamicDialogRef,
