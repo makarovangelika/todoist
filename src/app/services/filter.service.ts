@@ -72,7 +72,7 @@ export class FilterService {
     return tasks.filter(task => {
       for (let category of this.filters().category!) {
         if (!task.category) {
-          if (category.name === "Without category") {
+          if (category.name === "Без категории") {
             return true;
           }
         } else {

@@ -13,6 +13,11 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "locales": {
+          "ru": "src/locale/messages.ru.json"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -52,6 +57,9 @@
               ],
               "outputHashing": "all"
             },
+            "ru": {
+              "localize": ["ru"]
+              },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -69,6 +77,9 @@
             "production": {
               "browserTarget": "todoist:build:production"
             },
+            "ru": {
+              "browserTarget": "todoist:build:ru"
+              },
             "development": {
               "browserTarget": "todoist:build:development"
             }
