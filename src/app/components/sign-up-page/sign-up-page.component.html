@@ -6,7 +6,6 @@
         <span class="p-float-label w-full">
             <input pInputText type="text" id="email" formControlName="email" class="w-full" />
             <label for="email">Email</label>
-            <val-errors controlName="email"></val-errors>
         </span>
         <span class="p-float-label w-full">
             <p-password id="password" [toggleMask]="true" formControlName="password" inputStyleClass="w-full">
@@ -24,7 +23,6 @@
                 </ng-template>
             </p-password>
             <label for="password" i18n="@@PASSWORD">Password</label>
-            <val-errors controlName="password"></val-errors>
         </span>
         <button pButton type="submit" i18n-label="@@SIGN_UP" label="Sign up" [disabled]="!registrationForm.valid" class="w-full"></button>
     </form>

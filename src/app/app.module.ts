@@ -29,7 +29,6 @@ import { ChipModule } from 'primeng/chip';
 import { FilterChipsComponent } from './components/filter-chips/filter-chips.component';
 import { authGuard } from './guards/auth-guard';
 import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
-import { ValdemortModule } from 'ngx-valdemort';
 import { MessagesModule } from 'primeng/messages';
 
 const appRoutes: Routes = [
@@ -70,7 +69,6 @@ const appRoutes: Routes = [
     MenuModule,
     TooltipModule,
     ChipModule,
-    ValdemortModule,
     MessagesModule,
     RouterModule.forRoot(appRoutes)
   ],

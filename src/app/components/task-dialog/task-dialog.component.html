@@ -1,7 +1,6 @@
 <form [formGroup]="taskForm" (ngSubmit)="saveTaskData()">
     <div class="form-control">
         <input pInputText type="text" formControlName="description" i18n-placeholder="@@DESCRIPTION" placeholder="Description" i18n-pTooltip="@@DESCRIPTION" pTooltip="Description" tooltipPosition="top" class="description" />
-        <val-errors controlName="description"></val-errors>
     </div>
     <div class="form-control deadline-priority">
         <p-calendar formControlName="deadline" dateFormat="dd.mm.y" [showIcon]="true" [minDate]="minDate" class="form-control-half" styleClass="form-control-half-primeng" appendTo="body" i18n-pTooltip="@@DEADLINE" pTooltip="Deadline" tooltipPosition="top" i18n-placeholder="@@DEADLINE" placeholder="Deadline" [firstDayOfWeek]="1"></p-calendar>

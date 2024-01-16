@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ValdemortConfig } from 'ngx-valdemort';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -10,11 +9,7 @@ import { PrimeNGConfig } from 'primeng/api';
 export class AppComponent implements OnInit {
   title = 'todoist';
 
-  constructor(private config: PrimeNGConfig,
-              private errorConfig: ValdemortConfig) {
-                errorConfig.shouldDisplayErrors = control => control.dirty;
-                errorConfig.errorsClasses = 'p-error';
-              }
+  constructor(private config: PrimeNGConfig) {}
 
   ngOnInit() {
     this.config.setTranslation(require('../../ru.json').ru);
